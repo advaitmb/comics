@@ -1,0 +1,232 @@
+main {
+	overflow: hidden;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #ffffff;
+}
+
+.legend {
+  display: none;
+}
+
+#tooltip {
+    position: absolute;
+    text-align: left;
+    height: auto;
+    padding: 10px;
+    background: #162F44;
+    pointer-events: none;
+    z-index: 100;
+}
+#tooltip.hidden {
+    display: none;
+}
+#tooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 11px;
+    color: white;
+    line-height: 15px;
+}
+
+.between {
+  stroke: "black";
+  stroke-width: 1px;
+}
+
+
+#yAxis_genName {
+	display: none;
+	}
+
+
+.tick {
+	font-size: 12px;
+}
+
+	/* GRAPHIC CODE */
+.graphic {
+	width: 100%;
+	position: relative;
+}
+
+.graphicLeft {
+	width:70%;
+	position:relative;
+}
+
+.graphic__prose {
+	width: 25%;
+	margin-left:70%;
+	padding-top: 50px;
+}
+
+.graphic__prose p{
+	font-size: 15px;
+}
+
+.graphic__prose .trigger {
+	padding: 0;
+	margin: 0;
+	min-height: 240px;
+}
+
+
+
+
+.dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis {
+	position:relative;
+	margin-left: 2rem;
+	z-index: 1;
+}
+
+.genNames__vis svg {
+	position: relative;
+	display:block;
+	margin-left: 2rem;
+}
+
+.powerSplit__vis svg {
+	position: relative;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.dimChart__vis svg {
+	position: relative;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.graphic__vis svg {
+	position: relative;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.teams__vis svg {
+	position: relative;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#introGifs {
+	max-width: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100px;
+}
+
+.midTitle {
+	text-align: center;
+}
+
+.paddedIntro {
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top: 200px;
+	text-align: center;
+}
+
+.paddedBody, .chartHed {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top: 50px;
+}
+
+.chartHed {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top: 10px;
+}
+
+
+.graphicWrapper {
+	position:relative;
+	width:100%;
+}
+
+.listNames {
+	position:absolute;
+	width: 25%;
+	margin-left:70%;
+}
+
+/*.listNamesWrapper {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 10px;
+}*/
+
+.paddedBody p{
+	font-size: 15px;
+}
+
+.chartBody {
+	position:relative;
+}
+
+
+
+/*#genTitle {
+  text-transform: uppercase;
+  font-size: 18px;
+  text-align: center;
+}*/
+
+#genNames {
+	width: 30%;
+float:right;
+	font-size:10px;
+	padding-right: 2rem;
+}
+
+
+.chartTitle {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.chartText {
+padding-top:0px;
+margin-top:0px;
+font-size: 12px;
+}
+
+.powerYAxis {
+	color: white;
+}
+
+#onePercent {
+	position:absolute;
+	left:65%;
+	top:30%;
+	width: 200px;
+	font-size: 12px;
+}

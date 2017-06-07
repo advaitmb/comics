@@ -1,0 +1,169 @@
+(function() {
+
+var margin = {top: 100, right: 50, bottom: 50, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 700 - margin.top - margin.bottom;
+
+var y = d3.scale.ordinal()
+    .rangeRoundBands([0, height], 1);
+
+var x = d3.scale.linear()
+    .range([width, 0]);
+
+var color = d3.scale.category10();
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("top");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var svg = d3.select("#genNames_graph").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
+  if (error) throw error;
+
+  // data.sort(function(x, y){
+  //  return Math.abs(d3.ascending(x.gen_cat, y.gen_cat));
+  // });
+
+  data.forEach(function(d) {
+    d.gen_per = +d.gen_per;
+    d.count = +d.count;
+    d.per_fake = +d.per_fake;
+  });
+
+
+  x.domain([30,-30]);
+  y.domain(data.map(function(d) { return d.gen_cat; }));
+
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("id", "xAxis")
+      .attr("transform", "translate(0, -50)")
+      .call(xAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("x", width)
+      .attr("y", 20)
+      .style("text-anchor", "end")
+      .text("male");
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .attr("id", "yAxis_genName")
+      .call(yAxis)
+    .append("text")
+      .attr("class", "label")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("categories")
+
+  svg.selectAll(".dot")
+      .data(data)
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("r", 10)
+      // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
+      .attr("cx", function(d) { return x(d.gen_per); })
+      .attr("cy", function(d) { return y(d.gen_cat); })
+      .style("opacity", function(d) {
+        if (d.dim == 1) {return 0.9}
+        else {return 0.3}
+        })
+      .style("stroke-width", 0.5)
+      .style("fill", function(d){
+        if (d.gender == 1) {return "blue"}
+          else {return "orange"}
+      })
+      // .style("fill", "grey")
+
+      .on('mouseover', function (d) {
+          var section = d3.select(this);
+          section.style("opacity", 1)
+                 .style("stroke-width", 1.5);
+          d3.select('#tooltip')
+          .style("left", (d3.event.pageX + 5) + "px")
+          .style("top", (d3.event.pageY - 28) + "px")
+          .select('#value')
+          .text( Math.round(d.gen_per).toFixed(2) + "%" );
+           d3.select('#tooltip').classed('hidden', false);
+          })
+      .on("click",  function(d){
+          $("#genNames").html(d.char_list);
+          $("#genTitle").html(d.gen_name);
+          })
+      .on('mouseout', function () {
+          var section = d3.select(this);
+          section.style("opacity", function(d) {
+              if (d.dim == 1) {return 0.9}
+              else {return 0.3}
+              })
+                 .style("stroke-width", 0.5);
+          d3.select('#tooltip').classed('hidden', true);
+        });
+
+
+  svg.selectAll(".dodo")
+  .data(data)
+ .enter().append("text")
+  .attr("class", "dodo")
+  .attr("font-size", 12)
+  .attr("x", function(d) {
+    if (d.gen_per <=0){return x(d.gen_per)-15}
+      else {return x(d.gen_per)+15}
+       })
+  .attr("y", function(d) {
+    if (d.gen_per <=0){return y(d.gen_cat)+4}
+      else {return y(d.gen_cat)+4}
+       })
+  .attr('text-anchor', function(d) {
+    if (d.gen_per <= 0) {return 'end'}
+      else {return 'start'}
+    })
+  .text(function(d) { return d.gen_name;});
+
+
+var lineEnd = 0;
+
+svg.append("line")
+.attr("x1", function(){return x(lineEnd)})
+.attr("y1", -40)
+.attr("x2", function(){return x(lineEnd)})
+.attr("y2", height+50)
+.style("stroke-width", 0.3)
+.style("stroke", "black")
+.style("fill", "none");
+
+
+      // Make the dotted lines between the dots
+
+      var linesBetween = svg.selectAll("lines.between")
+        .data(data)
+        .enter()
+        .append("line");
+
+      linesBetween.attr("class", "between")
+        .style("stroke-width", 0.2)
+        .style("stroke", "black")
+        .style("fill", "none")
+        .attr("x1", function(d){return x(d.gen_per)})
+        .attr("y1", function(d){return y(d.gen_cat)})
+        .attr("x2", function(d){return x(d.per_fake)})
+        .attr("y2", function(d){return y(d.gen_cat)})
+
+});
+
+
+init()
+})()
