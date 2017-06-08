@@ -81,13 +81,18 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         if (d.dim == 1) {return 0.9}
         else {return 0.3}
         })
-      .style("stroke-width", 0.5)
+      .style("stroke", function(d){
+        if (d.gen_name == "lady"){return "black"}
+          else {return "white"}
+        })
+      .style("stroke-width", function(d){
+        if (d.gen_name == "lady") {return 4}
+          else {return 0.5}
+        })
       .style("fill", function(d){
         if (d.gender == 1) {return "blue"}
           else {return "orange"}
       })
-      // .style("fill", "grey")
-
       .on('mouseover', function (d) {
           var section = d3.select(this);
           section.style("opacity", 1)
@@ -109,7 +114,14 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
               if (d.dim == 1) {return 0.9}
               else {return 0.3}
               })
-                 .style("stroke-width", 0.5);
+                .style("stroke", function(d){
+                  if (d.gen_name == "lady"){return "black"}
+                  else {return "white"}
+               })
+                .style("stroke-width", function(d){
+                  if (d.gen_name == "lady") {return 4}
+                    else {return 0.5}
+              })
           d3.select('#tooltip').classed('hidden', true);
         });
 
