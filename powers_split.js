@@ -4,22 +4,13 @@ var margin = {top: 100, right: 50, bottom: 50, left: 10},
     width = 800 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-var y = d3.scale.ordinal()
-    .rangeRoundBands([0, height], 1);
+var y = d3.scaleBand()
+    .range([0, height], 1);
 
-var x = d3.scale.linear()
+var x = d3.scaleLinear()
     .range([width, 0]);
 
-var color = d3.scale.category10();
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("top");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("right")
-    .tickSize("width");
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var svg = d3.select("#powerSplit_graph").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -76,36 +67,21 @@ svg.append("text")
   .attr("y", -10)
   .text("More male");
 
- 
-
   svg.append("g")
       .attr("class", "x axis")
       .attr("id", "xAxis")
       .attr("transform", "translate(0, -50)")
-      .call(xAxis);
-    // .append("text")
-    //   .attr("class", "label")
-    //   .attr("x", width)
-    //   .attr("y", -6)
-    //   .style("text-anchor", "end");
+      .call(d3.axisTop(x));
 
   svg.append("g")
       .attr("class", "powerYAxis")
       .call(customYAxis)
-    // .append("text")
-    //   .attr("class", "label")
-    //   .attr("y", 6)
-    //   .attr("dy", ".71em")
-    //   .style("text-anchor", "end")
-    //   .text("")
-
 
 function customYAxis(g) {
-  g.call(yAxis);
+  g.call(d3.axisLeft(y));
   g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
-  g.selectAll(".tick text").attr("x", 325).attr("dy", -15);
+  g.selectAll(".tick text").attr("x", 405).attr("dy", -35);
 }
-
 
   svg.selectAll(".dot2")
       .data(data)
@@ -118,12 +94,6 @@ function customYAxis(g) {
       .style("opacity", 0.5)
       .style("stroke-width", 0.5)
       .style("fill", catColors)
-      // .style("fill", function(d){
-      //   if (d.gender == 1) {return "blue"}
-      //     else {return "orange"}
-      // })
-      // .style("fill", "grey")
-
       .on('mouseover', function (d) {
           var section = d3.select(this);
           section.style("opacity", 1)
@@ -143,26 +113,6 @@ function customYAxis(g) {
         });
 
 
- //  svg.selectAll(".dodo")
- //  .data(data)
- // .enter().append("text")
- //  .attr("class", "dodo")
- //  .attr("font-size", 12)
- //  .attr("x", function(d) { 
- //    if (d.gen_per <=0){return x(d.perdiffMF)-15}
- //      else {return x(d.perdiffMF)+15}
- //       })
- //  .attr("y", function(d) { 
- //    if (d.gen_per <=0){return y(d.category_wiki)+4}
- //      else {return y(d.category_wiki)+4}
- //       })
- //  .attr('text-anchor', function(d) {
- //    if (d.perdiffMF <= 0) {return 'end'}
- //      else {return 'start'}
- //    })
- //  .text(function(d) { return d.category_wiki;});
-
-
 d3.selectAll(".tick").each(function(d,i){
   var tick = d3.select(this),
       text = tick.select('text'),
@@ -177,23 +127,7 @@ d3.selectAll(".tick").each(function(d,i){
 });
 
 
-      // Make the dotted lines between the dots
-
-      // var linesBetween = svg.selectAll("lines.between")
-      //   .data(data)
-      //   .enter()
-      //   .append("line");
-
-      // linesBetween.attr("class", "between")
-      //   .style("stroke-width", 0.2)
-      //   .style("stroke", "black")
-      //   .style("fill", "none")
-      //   .attr("x1", function(d){return x(d.perdiffMF)})
-      //   .attr("y1", function(d){return y(d.category_wiki)})
-      //   .attr("x2", function(d){return x(d.per_fake)})
-      //   .attr("y2", function(d){return y(d.category_wiki)})
-
 });
 
-init()
+// init()
 })()
