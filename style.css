@@ -78,7 +78,7 @@ main {
 
 
 
-.dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis {
+.dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis, .career_chart__vis {
 	position:relative;
 	margin-left: 2rem;
 	z-index: 1;
