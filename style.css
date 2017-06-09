@@ -59,11 +59,6 @@ main {
 	position: relative;
 }
 
-.graphicLeft {
-	width:70%;
-	position:relative;
-}
-
 .graphic__prose {
 	width: 25%;
 	margin-left:70%;
@@ -92,7 +87,6 @@ main {
 .genNames__vis svg {
 	position: relative;
 	display:block;
-	margin-left: 2rem;
 }
 
 .powerSplit__vis svg {
@@ -165,12 +159,6 @@ IMG.displayed {
 	padding-top: 10px;
 }
 
-
-.graphicWrapper {
-	position:relative;
-	width:100%;
-}
-
 .listNames {
 	position:absolute;
 	width: 25%;
@@ -193,17 +181,34 @@ IMG.displayed {
 }
 
 
+.graphicWrapper {
+	position:relative;
+	width:100%;
+}
 
-/*#genTitle {
-  text-transform: uppercase;
-  font-size: 18px;
-  text-align: center;
-}*/
+
+.graphicLeft {
+	width:70%;
+	position:relative;
+}
+
+
+#genTitle {
+	position:absolute;
+  	text-transform: uppercase;
+  	font-size: 18px;
+  	text-align: left;
+	left:65%;
+}
+
 
 #genNames {
+	position: absolute;
 	width: 30%;
-float:right;
-	font-size:10px;
+	float: right;
+	left: 65%;
+	top: 40px;
+	font-size: 10px;
 	padding-right: 2rem;
 }
 

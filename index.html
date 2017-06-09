@@ -193,7 +193,7 @@
 
 	</div>
 
-	<div class="chartHed">
+<!-- 	<div class="chartHed">
 		<p class="chartTitle">Superpower percentages by gender</p>
 		<p class="chartText">The percentage of male and female characters* that have each power</p>
 		<button id="zoomPowers" class="graphic__vis chartTitle">zoom in</button>
@@ -201,14 +201,7 @@
 
 	<div class="graphic">
 			<div id="graph" class='graphic__vis'></div>
-	</div>
-
-	<div class="paddedBody">
-		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. </p>
-
-		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. </p>
-
-	</div>
+	</div> -->
 
 	<div class="chartHed">
 		<p class="chartTitle">Powers and their percent differences</p>
@@ -240,8 +233,7 @@
 
 	<div class="paddedBody">
 		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.
-		Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters (ie. There is an X percentage difference between the percent of males with the power X and the percent of females with the power X.
-		Making things even more clear, we chart the percent difference. How we see immediately that a) there are specifically female powers, where we don't really see that for men and b) the powers that favour women are of the point and pose variety.
+		Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles.</p>
 
 	</div>
 
@@ -251,18 +243,17 @@
 
 		<div class="chartHed">
 			<p class="chartTitle">Gendered names and their counterparts</p>
-			<p class="chartText">The percent of characters* tktktkt</p>
-			<button id="reorder">Reorder button (to come)</button>
-		</div>
+			<p class="chartText">Percent of male and female characters with gendered names. Bright colours highlight diminutive names</p>
+<!-- 			<button id="reorder">Reorder button (to come)</button>
+ -->		</div>
 
-		<div class="graphicWrapper"
-			<div class="graphicLeft">
+		<div class="graphicWrapper">
 				<div id="genNames_graph" class='genNames__vis'>
+				<p id="genTitle">Lady</p>	
 				<p id="genNames" style="font-size:12px;">
-					Click on a gendered name to find the characters that fit the category.
+					Lady Blackhawk | Lady Shiva | Lady Vic | Lady Eve | Phantom Lady | Lady Luna | Ladytron | Lady Blaze | Lady Liberty | Gray Lady | Lady Flash | Lady Tawna | Lady Jamma | Lady Clayface | Lady Quark | Lady Lunar | Lady Chian | Lady Merria | Sable Lady | Lady Luck | Spider Lady | Lady Celia | Lady Sonar | Lady Viper | Lady Styx | Lady Memory | Lady Spellbinder | Lady Frankenstein | Lady Chronos | Lady Turquoise | Hamburger Lady | Lady Liberty | Lady Cop | Ladybug | Lady Zand | Lady Amethyst | Lady Sapphire | Lady Moonstone | Lady Aquamarine | Lady Sardonyx | Dagger Lady | Lady Danger | Lady Laminate | Lady Bluuz | Lady Mordiel | Twilight Lady | Phantom Lady | Lady Senshe | Lady Marabunta | Lady Tiger Fist | Lady Weeds | Lady Pelikaia | Ladybug | Lady Sutherland | Lady Ayleen Valiante | Snake Lady | Lady Ashley | Wart Lady | Iron Lady | Granite Lady | Djinn,Lady of the Lightning | Lady Kala | Lady Deathstrike | Ladyhawk | Lady Burning Fish | Lady Mastermind | Lady Lark | Lady Ursula | Lady Octopus | Lady Luck | Lady Vermin | Kidney Lady | Lady London | Cousin Betsy The Plant Lady | Lady Janice | Lady Tuvia | Lady Rosamund | Lady Daemon | Asbestos Lady | Lady Grey | Pink Lady | Lady Bullseye | Lady Trident | Lady Yune | Lady Jane | Lady of Ten Suns | Lady Jessica | Lady Tenelle | Lady Deadpool | Lady Stilt-Man | Lady Fynn-Geres | Lady Gorgon | Lady Shadra | Lady Sif (Cho-Foster) | Lady Lark (Cadaver) | Lady Allana | Lady Alophic | Lady Waziria | Lady Mary Dering | Lady Spider | Lady Caterpillar | Lady Hellbender.
 				</p>
 				</div>
-			</div>
 		</div>
 
 		<div class="paddedBody">
@@ -322,16 +313,14 @@
 
 </main>
 
-
-
-	<script src='d3.min.js'></script>
+	<script src='d3.v4.min.js'></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
 	<script src='genNames_stacked.js'></script>
 	<script src='powers_split.js'></script>
 	<script src='genNames_split.js'></script>
 	<script src='teams.js'></script>
 	<script src='powers.js'></script>
-
 
 
 	<script src='bundle.js?version=1495145297027'></script>

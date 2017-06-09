@@ -4,21 +4,21 @@ var margin = {top: 100, right: 50, bottom: 50, left: 40},
     width = 600 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
-var y = d3.scale.ordinal()
-    .rangeRoundBands([0, height], 1);
+var y = d3.scaleBand()
+    .range([0, height], 1);
 
-var x = d3.scale.linear()
+var x = d3.scaleLinear()
     .range([width, 0]);
 
-var color = d3.scale.category10();
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("top");
+// var xAxis = d3.svg.axis()
+//     .scale(x)
+//     .orient("top");
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+// var yAxis = d3.svg.axis()
+//     .scale(y)
+//     .orient("left");
 
 var svg = d3.select("#genNames_graph").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -49,25 +49,31 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("id", "xAxis")
       .attr("transform", "translate(0, -50)")
-      .call(xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width)
-      .attr("y", 20)
-      .style("text-anchor", "end")
-      .text("male");
+      .call(d3.axisTop(x));
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .attr("id", "yAxis_genName")
-      .call(yAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("categories")
+  // svg.append("g")
+  //     .attr("class", "x axis")
+  //     .attr("id", "xAxis")
+  //     .attr("transform", "translate(0, -50)")
+  //     .call(xAxis)
+    // .append("text")
+    //   .attr("class", "label")
+    //   .attr("x", width)
+    //   .attr("y", 20)
+    //   .style("text-anchor", "end")
+    //   .text("male");
+
+  // svg.append("g")
+  //     .attr("class", "y axis")
+  //     .attr("id", "yAxis_genName")
+  //     .call(yAxis)
+  //   .append("text")
+  //     .attr("class", "label")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", ".71em")
+  //     .style("text-anchor", "end")
+  //     .text("categories")
 
   svg.selectAll(".dot")
       .data(data)
@@ -81,13 +87,18 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         if (d.dim == 1) {return 0.9}
         else {return 0.3}
         })
-      .style("stroke-width", 0.5)
+      .style("stroke", function(d){
+        if (d.gen_name == "lady"){return "black"}
+          else {return "white"}
+        })
+      .style("stroke-width", function(d){
+        if (d.gen_name == "lady") {return 4}
+          else {return 0.5}
+        })
       .style("fill", function(d){
         if (d.gender == 1) {return "blue"}
           else {return "orange"}
       })
-      // .style("fill", "grey")
-
       .on('mouseover', function (d) {
           var section = d3.select(this);
           section.style("opacity", 1)
@@ -109,7 +120,14 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
               if (d.dim == 1) {return 0.9}
               else {return 0.3}
               })
-                 .style("stroke-width", 0.5);
+                .style("stroke", function(d){
+                  if (d.gen_name == "lady"){return "black"}
+                  else {return "white"}
+               })
+                .style("stroke-width", function(d){
+                  if (d.gen_name == "lady") {return 4}
+                    else {return 0.5}
+              })
           d3.select('#tooltip').classed('hidden', true);
         });
 
@@ -132,6 +150,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       else {return 'start'}
     })
   .text(function(d) { return d.gen_name;});
+
 
 
 var lineEnd = 0;
@@ -165,5 +184,5 @@ svg.append("line")
 });
 
 
-init()
+// init()
 })()
