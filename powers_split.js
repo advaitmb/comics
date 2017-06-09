@@ -67,8 +67,6 @@ svg.append("text")
   .attr("y", -10)
   .text("More male");
 
- 
-
   svg.append("g")
       .attr("class", "x axis")
       .attr("id", "xAxis")
