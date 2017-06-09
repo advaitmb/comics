@@ -57,10 +57,12 @@ d3.csv("teams.csv", function(error, data) {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
+
  svg.append("g")
       .attr("class", "y axis")
-      .attr("id", "teamYAxis")
-      .call(d3.axisLeft(y));
+      .attr("id", "yAxis")
+      .call(d3.axisLeft(y)
+        .tickFormat(d3.format(".0%")));
 
 
 
@@ -142,12 +144,13 @@ d3.csv("teams.csv", function(error, data) {
     .enter().append("circle")
     // .filter(function(d) { return d.percent >= 0.5 })
       .attr("class", "dotTeams")
-      .attr("r", 5)
+      .attr("r", 6)
       // .attr("r", function(d){return d.male*2})
       .attr("cx", function(d) { return x(d.members); })
       .attr("cy", function(d) { return y(d.percent); })
       .style("opacity", 0.6)
       .style("stroke-width", 0.5)
+      .style("stroke", "white")
       .style("fill", "grey")
       // .style("fill", function(d) {
       //   if(d.percent >= 0.5){return "red"}
