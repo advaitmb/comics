@@ -310,12 +310,12 @@ var yScale = d3.scaleBand()
 
 svg.append('g')
 	.call(d3.axisTop(xScale))
-    .tickFormat(function(d) { return parseInt(d, 10) })
-    .ticks(xMax);
+    // .tickFormat(function(d) { return parseInt(d, 10) })
+    // .ticks(xMax);
 
 svg.append('g')
 	.call(d3.axisLeft(yScale))
-	.outerTickSize(0);
+	// .outerTickSize(0);
 
 // var yAxis = d3.svg.axis()
 //         .scale(yScale)
