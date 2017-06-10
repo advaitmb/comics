@@ -233,11 +233,11 @@ font-size: 12px;
 	font-size: 12px;
 }
 
-
 #outliers {
 	position:absolute;
-	top:30%;
-	left:20%;
+	top:83%;
+	left:13%;
+	z-index: 100;
 }
 
 

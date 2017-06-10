@@ -19,15 +19,6 @@ var svg = d3.select("#powerSplit_graph").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// var firstXDomain = function(d) { return d.per_females }
-// var firstYDomain = function(d) { return d.per_males }
-
-// var zoomXDomain = function(d) { if(d.per_females<5) return d.per_females }
-// var zoomYDomain = function(d) { if(d.per_males<5) return d.per_males }
-
-// var splitXDomain = [0,11]
-// var splitXDomain = [-90,90]
-
 var catColors = function(d) { return color(d.category_wiki); }
 
 
@@ -42,7 +33,7 @@ d3.csv("powerGender.csv", function(error, data) {
   });
 
 
-  x.domain([90,-90]).nice();
+  x.domain([150,-150]);
   y.domain(data.map(function(d) { return d.category_wiki; }));
 
 
@@ -116,21 +107,76 @@ function customYAxis(g) {
         });
 
 
-d3.selectAll(".tick").each(function(d,i){
-  var tick = d3.select(this),
-      text = tick.select('text'),
-      bBox = text.node().getBBox();
+  d3.selectAll(".tick").each(function(d,i){
+    var tick = d3.select(this),
+        text = tick.select('text'),
+        bBox = text.node().getBBox();
 
-  tick.insert('rect', ':first-child')
-    .attr('x', bBox.x - 3)
-    .attr('y', bBox.y - 3)
-    .attr('height', bBox.height + 6)
-    .attr('width', bBox.width + 6)
-    .style('fill', "yellow");      
+    tick.insert('rect', ':first-child')
+      .attr('x', bBox.x - 3)
+      .attr('y', bBox.y - 3)
+      .attr('height', bBox.height + 6)
+      .attr('width', bBox.width + 6)
+      .style('fill', "yellow");      
+  });
+
+
 });
 
 
+
+
+function outlier(){
+
+d3.csv("powerGender.csv", function(error, data) {
+  if (error) throw error;
+
+x.domain([700,-700]).nice();
+
+d3.select("#xAxis")
+  .transition().duration(1000)
+  .call(d3.axisTop(x))
+
+ d3.selectAll('circle') // move the circles
+      .transition().duration(1000)
+      .delay(function (d,i) { return i*10})
+      .attr("cx", function(d) { return x(d.perdiffMF); })
+      .attr("cy", function(d) { return y(d.category_wiki); })
+
 });
+
+} //end function outlier();
+
+
+
+$( "#outliers" ).click(function() {
+ outlier();
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // init()
 })()
