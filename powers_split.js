@@ -10,6 +10,7 @@ var y = d3.scaleBand()
 var x = d3.scaleLinear()
     .range([width, 0]);
 
+
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var svg = d3.select("#powerSplit_graph").append("svg")
@@ -56,32 +57,34 @@ svg.append("line")
   .style("stroke", "black")
   .style("fill", "none")
 
+svg.append("text")
+  .attr("class", "small")
+  .attr("x", 200)
+  .attr("y", -30)
+  .text("<--- More female");
 
 svg.append("text")
-  .attr("x", 0)
-  .attr("y", -10)
-  .text("More female");
+  .attr("class", "small")
+  .attr("x", width-300)
+  .attr("y", -30)
+  .text("More male --->");
 
-svg.append("text")
-  .attr("x", width-70)
-  .attr("y", -10)
-  .text("More male");
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("id", "xAxis")
+  .attr("transform", "translate(0, -50)")
+  .call(d3.axisTop(x));
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("id", "xAxis")
-      .attr("transform", "translate(0, -50)")
-      .call(d3.axisTop(x));
-
-  svg.append("g")
-      .attr("class", "powerYAxis")
-      .call(customYAxis)
+svg.append("g")
+  .attr("class", "powerYAxis")
+  .call(customYAxis)
 
 function customYAxis(g) {
   g.call(d3.axisLeft(y));
   g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
   g.selectAll(".tick text").attr("x", 405).attr("dy", -35);
 }
+
 
   svg.selectAll(".dot2")
       .data(data)
@@ -93,7 +96,7 @@ function customYAxis(g) {
       .attr("cy", function(d) { return y(d.category_wiki); })
       .style("opacity", 0.5)
       .style("stroke-width", 0.5)
-      .style("fill", catColors)
+      .style("fill", "grey")
       .on('mouseover', function (d) {
           var section = d3.select(this);
           section.style("opacity", 1)
@@ -102,7 +105,7 @@ function customYAxis(g) {
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .html(d.power + "<br>% diff: " + Math.round(d.perdiffMF).toFixed(1) + "%");
+          .html(d.power + "<br>% diff: " + Math.round(d.perdiffMF).toFixed(1) + "%<br>Female: " + d.per_females + "%<br>Male: " + d.per_males + "%" );
            d3.select('#tooltip').classed('hidden', false);
           })
       .on('mouseout', function () {
