@@ -1,110 +1,154 @@
-// set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+/* global d3  queue */
 
-// parse the date / time
-var parseTime = d3.timeParse("%d-%b-%y");
+const table = d3.select('.table-container').append('table');
+table.append('thead');
+table.append('tbody');
 
-// set the ranges
-var x = d3.scaleTime().range([0, width]);
-var y = d3.scaleLinear().range([height, 0]);
+queue()
+  .defer(d3.json, 'qcew.json')
+  .defer(d3.json, 'stateface.json')
+  .await(ready);
 
-// define the line
-var valueline = d3.line()
-    .x(function(d) { return x(d.date1); })
-    .y(function(d) { return y(d.close); });
-
-// append the svg obgect to the body of the page
-// appends a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
-// Get the data
-d3.csv("data2.csv", function(error, data) {
+function ready(error, qcew, stateface) {
   if (error) throw error;
 
-  // format the data
-  data.forEach(function(d) {
-      d.date1 = parseTime(d.date);
-      d.close = +d.close;
-      d.open = +d.open;  //  <= added this for tidy house keeping
-      d.diff = Math.round(( d.close - d.open ) * 100 ) / 100;
-  });
+  const columns = [
+    {
+      head: 'State',
+      cl: 'state',
+      html(row) {
+        const sfLetter = stateface[row.state_abbrev];
+        const icon = `<span class='stateface'>${sfLetter}</span>`;
+        const text = `<span class='title'>${row.state}</span>`;
+        return icon + text;
+      },
+    },
+    {
+      head: 'Employment (millions)',
+      cl: 'emp',
+      html(row) {
+        const scale = d3.scaleThreshold()
+          .domain([1, 2, 4, 6])
+          .range([1, 2, 3, 4, 5]);
 
-  // Scale the range of the data
-  x.domain(d3.extent(data, function(d) { return d.date1; }));
-  y.domain([0, d3.max(data, function(d) { return d.close; })]);
+        const icon = '<span class="fa fa-male"></span>';
+        const value = d3.format(',.1f')(row.emp / 1000000);
+        const nIcons = scale(value);
+        const text = `<span class='text'>${value}</span>`;
+        return text + d3.range(nIcons)
+          .map(() => icon).join('');
+      },
+    },
+    {
+      head: 'Change in Employment',
+      cl: 'emp_pc',
+      html(row) {
+        const scale = d3.scaleThreshold()
+          .domain([0, 0.045])
+          .range(['down', 'right', 'up']);
+        const icon = `<span class='fa fa-arrow-${scale(row.emp_pc)}'></span>`;
+        const value = d3.format(',.0%')(row.emp_pc);
+        const text = `<span class='text'>${value}</span>`;
+        return text + icon;
+      },
+    },
+    {
+      head: 'Wage (weekly)',
+      cl: 'wage',
+      html(row) {
+        const scale = d3.scaleThreshold()
+          .domain([850, 1000])
+          .range([1, 2, 3]);
 
-  // Add the valueline path.
-  svg.append("path")
-      .data([data])
-      .attr("class", "line")
-      .attr("d", valueline);
+        const icon = '<span class="fa fa-money fa-rotate-90"></span>';
+        const nIcons = scale(row.wage);
+        const value = d3.format('$,')(row.wage);
+        const text = `<span class='text'>${value}</span>`;
+        return text + d3.range(nIcons)
+          .map(() => icon).join('');
+      },
+    },
+    {
+      head: 'Change in Wage',
+      cl: 'wage_pc',
+      html(row) {
+        const scale = d3.scaleThreshold()
+          .domain([0, 0.07])
+          .range(['down', 'right', 'up']);
 
-  // Add the X Axis
-  svg.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+        const icon = `<span class='fa fa-arrow-${scale(row.wage_pc)}'></span>`;
+        const value = d3.format(',.0%')(row.wage_pc);
+        const text = `<span class='text'>${value}</span>`;
+        return text + icon;
+      },
+    },
+  ];
 
-  // Add the Y Axis
-  svg.append("g")
-      .call(d3.axisLeft(y));
+  table.call(renderTable);
 
-// The table generation function
-function tabulate(data, columns) {
-    var table = d3.select("body").append("table")
-            .attr("style", "margin-left: 360px")
-            .style("border-collapse", "collapse")
-            .style("border", "2px black solid"),
-        thead = table.append("thead"),
-        tbody = table.append("tbody");
+  function renderTable(table) {
+    const tableUpdate = table.select('thead')
+      .selectAll('th')
+        .data(columns);
 
-    // append the header row
-    thead.append("tr")
-        .selectAll("th")
-        .data(columns)
-        .enter()
-        .append("th")
-            .text(function(column) { return column; });
+    const tableEnter = tableUpdate
+      .enter().append('th')
+        .attr('class', d => d.cl)
+        .text(d => d.head)
+        .on('click', (d) => {
+          let ascending;
+          if (d.ascending) {
+            ascending = false;
+          } else {
+            ascending = true;
+          }
+          d.ascending = ascending;
+          qcew.sort((a, b) => {
+            if (ascending) {
+              return d3.ascending(a[d.cl], b[d.cl]);
+            }
+            return d3.descending(a[d.cl], b[d.cl]);
+          });
+          table.call(renderTable);
+        });
 
-    // create a row for each object in the data
-    var rows = tbody.selectAll("tr")
-        .data(data)
-        .enter()
-        .append("tr");
+    const trUpdate = table.select('tbody').selectAll('tr')
+      .data(qcew);
 
-    // create a cell in each row for each column
-    var cells = rows.selectAll("td")
-        .data(function(row) {
-            return columns.map(function(column) {
-                return {column: column, value: row[column]};
-            });
-        })
-        .enter()
-        .append("td")
-        .attr("style", "font-family: Courier") // sets the font style
-            .html(function(d) { return d.value; });
-    
-    return table;
+    const trEnter = trUpdate.enter().append('tr');
+
+    const trMerge = trUpdate.merge(trEnter)
+      .on('mouseenter', mouseenter)
+      .on('mouseleave', mouseleave);
+
+    const tdUpdate = trMerge.selectAll('td')
+      .data((row, i) => columns.map((c) => {
+        const cell = {};
+        d3.keys(c).forEach((k) => {
+          cell[k] = typeof c[k] === 'function' ? c[k](row, i) : c[k];
+        });
+        return cell;
+      }));
+
+    const tdEnter = tdUpdate.enter().append('td');
+
+    tdEnter
+      .attr('class', d => d.cl)
+      .style('background-color', '#fff')
+      .style('border-bottom', '.5px solid white');
+
+    tdEnter.merge(tdUpdate).html(d => d.html);
+  }
 }
 
-// render the table
-var peopleTable = tabulate(data, ["date", "close", "open", "diff"]);
+function mouseenter() {
+  d3.select(this).selectAll('td')
+    .style('background-color', '#f0f0f0')
+    .style('border-bottom', '.5px solid slategrey');
+}
 
-peopleTable.selectAll("tbody tr") 
-           .sort(function(a, b) {
-             return d3.descending(a.close, b.close);
-           });
-
-peopleTable.selectAll("thead th")
-           .text(function(column) {
-             return column.charAt(0).toUpperCase() + column.substr(1);
-           });
-
-});
+function mouseleave() {
+  d3.select(this).selectAll('td')
+    .style('background-color', '#fff')
+    .style('border-bottom', '.5px solid white');
+}
