@@ -224,9 +224,6 @@ margin-top:0px;
 font-size: 12px;
 }
 
-.powerYAxis {
-	color: white;
-}
 
 #onePercent {
 	position:absolute;
@@ -235,3 +232,21 @@ font-size: 12px;
 	width: 200px;
 	font-size: 12px;
 }
+
+#outliers {
+	position:absolute;
+	top:83%;
+	left:13%;
+	z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+

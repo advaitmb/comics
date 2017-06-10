@@ -36,6 +36,7 @@
 	<link rel="stylesheet" href="critical.css" />
 	<link rel="stylesheet" href="bundle.css" />
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="comic.css" />
 
 
 	<style>
@@ -204,13 +205,29 @@
 	</div> -->
 
 	<div class="chartHed">
-		<p class="chartTitle">Powers and their percent differences</p>
+		<p class="chartTitle tk-canela">Powers and their percent differences</p>
 		<p class="chartText">Grouped into categories, we visualize the percent difference between the percentage of male and female characters that have a particular power. Powers on the left of the line are</p>
 	</div>
 
 	<div class="graphic">
+			<button id="outliers"><--OUTLIERS</button>
 			<div id="powerSplit_graph" class='powerSplit__vis'></div>
 	</div>
+
+<!-- EXPERT OPINION-->
+<article class="comic">
+   <div class="panel">
+    <p class="text top-left">Expert Opinion!</p>
+    <p style="padding:20px;">Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the</p>
+  </div>
+  <div class="panel bold" style="padding:20px;font-size:15px;">Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters</div>
+  <div class="panel">
+  	<p class="text bottom-right">Author Authorson</p>
+  </div>
+  <div class="panel"></div>
+  <div class="panel">A;SLDKJFA;LSKDJF</div>
+</article>
+
 
 
 
@@ -223,7 +240,7 @@
 	</div>
 
 	<div class="chartHed">
-		<p class="chartTitle">Gendered names are not all equal</p>
+		<p class="chartTitle tk-canela">Gendered names are not all equal</p>
 		<p class="chartText">A portion of both male and female characters have gendered names. A much greater percentage of female characters, however, are given names that are diminutive - weak or child-like in nature</p>
 	</div>
 
@@ -242,7 +259,7 @@
 	<!-- GENDERED NAMES SECTION-->
 
 		<div class="chartHed">
-			<p class="chartTitle">Gendered names and their counterparts</p>
+			<p class="chartTitle tk-canela">Gendered names and their counterparts</p>
 			<p class="chartText">Percent of male and female characters with gendered names. Bright colours highlight diminutive names</p>
 <!-- 			<button id="reorder">Reorder button (to come)</button>
  -->		</div>
@@ -291,7 +308,7 @@
 </div>
 
 	<div class="chartHed">
-		<p class="chartTitle">Every team in DC and Marvel</p>
+		<p class="chartTitle tk-canela">Every team in DC and Marvel</p>
 		<p class="chartText">Each dot represents one of over 2000 teams in the DC and Marvel universes</p>
 		<button id="allTeams">allTeams |</button>
 		<button id="fiftyPercent">>50% women |</button>
@@ -316,16 +333,15 @@
 
 </main>
 
-
-
-	<script src='d3.min.js'></script>
+	<script src='d3.v4.min.js'></script>
+	<script src="//d3js.org/d3-scale-chromatic.v0.3.min.js"></script>
+	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
 	<script src='genNames_stacked.js'></script>
 	<script src='powers_split.js'></script>
 	<script src='genNames_split.js'></script>
 	<script src='teams.js'></script>
 	<script src='powers.js'></script>
-
 
 
 	<script src='bundle.js?version=1495145297027'></script>

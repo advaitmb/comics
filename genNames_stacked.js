@@ -264,7 +264,7 @@ dataset = dataset.map(function (d) {
         });
     });
 
-var stack = d3.layout.stack();
+var stack = d3.stack();
 
 stack(dataset);
 
@@ -288,9 +288,10 @@ var svg = d3.select('#dimChart')
         .attr('height', height + margins.top + margins.bottom)
         .append('g')
         .attr('transform', 'translate(' + margins.left + ',' + margins.top + ')');
+
 var xMax = numberOfPeople;
 
-var xScale = d3.scale.linear()
+var xScale = d3.scaleLinear()
         .domain([0, xMax])
         .range([0, width]);
 
@@ -298,20 +299,28 @@ var values = dataset[0].map(function (d) {
         return d.y;
         });
 
-var yScale = d3.scale.ordinal()
-        .domain(values)
-        .rangeRoundBands([0, height], .2);
+var yScale = d3.scaleBand()
+	.domain(values)
+    .range([0, height], .2);
 
-var xAxis = d3.svg.axis()
-        .scale(xScale)
-        .orient('top')
-        .tickFormat(function(d) { return parseInt(d, 10) })
-        .ticks(xMax);
+// var yScale = d3.scaleOrdinal()
+//         .domain(values)
+//         .rangeRoundBands([0, height], .2);
 
-var yAxis = d3.svg.axis()
-        .scale(yScale)
-        .outerTickSize(0)
-        .orient('left');
+
+svg.append('g')
+	.call(d3.axisTop(xScale))
+    // .tickFormat(function(d) { return parseInt(d, 10) })
+    // .ticks(xMax);
+
+svg.append('g')
+	.call(d3.axisLeft(yScale))
+	// .outerTickSize(0);
+
+// var yAxis = d3.svg.axis()
+//         .scale(yScale)
+//         .outerTickSize(0)
+//         .orient('left');
 
 var groups = svg.selectAll('g')
         .data(dataset)

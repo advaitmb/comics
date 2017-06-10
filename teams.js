@@ -4,21 +4,13 @@ var margin = {top: 20, right: 20, bottom: 50, left: 40},
     width = 900 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
+var x = d3.scaleLinear()
     .range([0, width]);
 
-var y = d3.scale.linear()
+var y = d3.scaleLinear()
     .range([height, 0]);
 
-var color = d3.scale.category10();
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var svg = d3.select("#teams_graph").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -58,75 +50,91 @@ d3.csv("teams.csv", function(error, data) {
   x.domain(d3.extent(data, firstXDomain)).nice();
   y.domain(d3.extent(data, firstYDomain)).nice();
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("id", "teamXAxis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("x", width)
-      .attr("y", -6)
-      .style("text-anchor", "end")
-      .text("# Members");
 
   svg.append("g")
+      .attr("class", "x axis")
+      .attr("id", "xAxis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+
+ svg.append("g")
       .attr("class", "y axis")
-      .attr("id", "teamYAxis")
-      .call(yAxis)
-    .append("text")
-      .attr("class", "label")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("% female")
+      .attr("id", "yAxis")
+      .call(d3.axisLeft(y)
+        .tickFormat(d3.format(".0%")));
+
+
+
+  // svg.append("g")
+  //     .attr("class", "x axis")
+  //     .attr("id", "teamXAxis")
+  //     .attr("transform", "translate(0," + height + ")")
+  //     .call(xAxis)
+  //   .append("text")
+  //     .attr("class", "label")
+  //     .attr("x", width)
+  //     .attr("y", -6)
+  //     .style("text-anchor", "end")
+  //     .text("# Members");
+
+  // svg.append("g")
+  //     .attr("class", "y axis")
+  //     .attr("id", "teamYAxis")
+  //     .call(yAxis)
+  //   .append("text")
+  //     .attr("class", "label")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", ".71em")
+  //     .style("text-anchor", "end")
+  //     .text("% female")
 
 
 // Text for displaying number of teams
 
-svg.append("text")
-  .text("Number of teams")
-  .attr({
-    x: "70%",
-    y: 40,
-    "font-size": 15,
-    "fill": "red",
-    "text-anchor": "middle",
-    id: "teamNumberText"
-  })
+// svg.append("text")
+//   .text("Number of teams")
+//   .attr({
+//     x: "70%",
+//     y: 40,
+//     "font-size": 15,
+//     "fill": "red",
+//     "text-anchor": "middle",
+//     id: "teamNumberText"
+//   })
 
-svg.append("text")
-  .text("2300")
-  .attr({
-    x: "70%",
-    y:  70,
-    "font-size": 30,
-    "text-anchor": "middle",
-    id: "teamNumber"
-  })
+// svg.append("text")
+//   .text("2300")
+//   .attr({
+//     x: "70%",
+//     y:  70,
+//     "font-size": 30,
+//     "text-anchor": "middle",
+//     id: "teamNumber"
+//   })
 
 
-  svg.append("text")
-  .text("Percent of teams")
-  .attr({
-    x: "70%",
-    y: 100,
-    "font-size": 15,
-    "fill": "red",
-    "text-anchor": "middle",
-    id: "teamPercentText"
-  })
+//   svg.append("text")
+//   .text("Percent of teams")
+//   .attr({
+//     x: "70%",
+//     y: 100,
+//     "font-size": 15,
+//     "fill": "red",
+//     "text-anchor": "middle",
+//     id: "teamPercentText"
+//   })
 
-svg.append("text")
-  .text("100%")
-  .attr({
-    x: "70%",
-    y:  130,
-    "font-size": 30,
-    "text-anchor": "middle",
-    id: "teamPercentNumber"
-  })
+// svg.append("text")
+//   .text("100%")
+//   .attr({
+//     x: "70%",
+//     y:  130,
+//     "font-size": 30,
+//     "text-anchor": "middle",
+//     id: "teamPercentNumber"
+//   })
 
 
 
@@ -136,12 +144,13 @@ svg.append("text")
     .enter().append("circle")
     // .filter(function(d) { return d.percent >= 0.5 })
       .attr("class", "dotTeams")
-      .attr("r", 5)
+      .attr("r", 6)
       // .attr("r", function(d){return d.male*2})
       .attr("cx", function(d) { return x(d.members); })
       .attr("cy", function(d) { return y(d.percent); })
       .style("opacity", 0.6)
       .style("stroke-width", 0.5)
+      .style("stroke", "white")
       .style("fill", "grey")
       // .style("fill", function(d) {
       //   if(d.percent >= 0.5){return "red"}
@@ -178,16 +187,16 @@ function fiftyWomen(thisXDomain, thisYDomain) {
 
     d3.select("#teamYAxis")
       .transition().duration(1000)
-      .call(yAxis);
+      .call(d3.axisLeft(y));
 
     d3.select("#teamXAxis")
       .transition().duration(1000)
-      .call(xAxis);
+      .call(d3.axisBottom(x));
 
-      d3.selectAll('.dotTeams') // move the circles
-        .filter(function(d) { return d.percent < 0.5 })
-        .transition().duration(1)
-        .style("opacity", 0);
+    d3.selectAll('.dotTeams') // move the circles
+       .filter(function(d) { return d.percent < 0.5 })
+       .transition().duration(1)
+       .style("opacity", 0);
 
     d3.selectAll('.dotTeams') // move the circles
       .filter(function(d) { return d.percent >= 0.5 })
@@ -217,10 +226,6 @@ $("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<
 
 
 
-
-
-
-
 // ALL THE BUTTONS
 
 $("#fiftyPercent").click(function() {
@@ -228,16 +233,5 @@ $("#fiftyPercent").click(function() {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-init()
+// init()
 })()
