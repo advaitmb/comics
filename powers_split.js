@@ -92,13 +92,13 @@ function customYAxis(g) {
       // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
       .attr("cx", function(d) { return x(d.perdiffMF); })
       .attr("cy", function(d) { return y(d.category_wiki); })
-      .style("opacity", 0.8)
+      .style("opacity", 1)
       .style("stroke", "white")
       .style("stroke-width", 0.5)
       .style("fill", function(d) { return powersColor(d.perdiffMF); })
       .on('mouseover', function (d) {
           var section = d3.select(this);
-          section.style("opacity", 1)
+          section.style("stroke", "black")
                  .style("stroke-width", 1.5);
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
@@ -109,7 +109,7 @@ function customYAxis(g) {
           })
       .on('mouseout', function () {
           var section = d3.select(this);
-          section.style("opacity", 0.5)
+          section.style("stroke", "white")
                  .style("stroke-width", 0.5);
           d3.select('#tooltip').classed('hidden', true); 
         });
@@ -142,12 +142,12 @@ d3.csv("powerGender.csv", function(error, data) {
 x.domain([700,-700]).nice();
 
 d3.select("#xAxis")
-  .transition().duration(1000)
+  .transition().duration(500)
   .call(d3.axisTop(x))
 
  d3.selectAll('circle') // move the circles
-      .transition().duration(1000)
-      .delay(function (d,i) { return i*10})
+      .transition().duration(500)
+      // .delay(function (d,i) { return i*10})
       .attr("cx", function(d) { return x(d.perdiffMF); })
       .attr("cy", function(d) { return y(d.category_wiki); })
 
