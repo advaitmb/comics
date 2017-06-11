@@ -32,21 +32,28 @@ d3.csv("powerGender.csv", function(error, data) {
     d.per_fake = +d.per_fake;
   });
 
+  function powersColor(t) {
+  var cutoff=100.0;
+  t=Math.abs(t)/cutoff;
+  if(t>1.0) t=1.0;
+  return d3.interpolateYlOrRd(t);
+}
+
 
   x.domain([150,-150]);
   y.domain(data.map(function(d) { return d.category_wiki; }));
 
 
-var lineEnd = 0;
+// var lineEnd = 0;
 
-svg.append("line")
-  .attr("x1", function(){return x(lineEnd)})
-  .attr("y1", -40)
-  .attr("x2", function(){return x(lineEnd)})
-  .attr("y2", height+50)
-  .style("stroke-width", 0.3)
-  .style("stroke", "black")
-  .style("fill", "none")
+// svg.append("line")
+//   .attr("x1", function(){return x(lineEnd)})
+//   .attr("y1", -40)
+//   .attr("x2", function(){return x(lineEnd)})
+//   .attr("y2", height+50)
+//   .style("stroke-width", 0.3)
+//   .style("stroke", "black")
+//   .style("fill", "none")
 
 svg.append("text")
   .attr("class", "small")
@@ -85,9 +92,10 @@ function customYAxis(g) {
       // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
       .attr("cx", function(d) { return x(d.perdiffMF); })
       .attr("cy", function(d) { return y(d.category_wiki); })
-      .style("opacity", 0.5)
+      .style("opacity", 0.8)
+      .style("stroke", "white")
       .style("stroke-width", 0.5)
-      .style("fill", "grey")
+      .style("fill", function(d) { return powersColor(d.perdiffMF); })
       .on('mouseover', function (d) {
           var section = d3.select(this);
           section.style("opacity", 1)
