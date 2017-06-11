@@ -182,8 +182,11 @@ IMG.displayed {
 
 
 .graphicWrapper {
+	margin-right: auto;
+	margin-left: auto;
 	position:relative;
 	width:100%;
+	max-width: 1000px;
 }
 
 
