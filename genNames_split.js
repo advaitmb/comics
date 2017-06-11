@@ -30,37 +30,16 @@ var svg = d3.select("#genNames_graph").append("svg")
 d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   if (error) throw error;
 
-  // data.sort(function(x, y){
-  //  return Math.abs(d3.ascending(x.gen_cat, y.gen_cat));
-  // });
+ data.sort(function(x, y){
+  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
+  else return -1
+});
 
   data.forEach(function(d) {
     d.gen_per = +d.gen_per;
     d.count = +d.count;
     d.per_fake = +d.per_fake;
   });
-
-
-//Tyler's simple functions for sorting
-function ascendingFemaleNames(data) {data.sort(function(x, y){
-  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
-  else return -1
-});}
-function descendingFemaleNames(data) {data.sort(function(x, y){
-  if(x.gender==2 && y.gender==2) return d3.descending(x.gen_per,y.gen_per)
-  else return -1
-});}
-function descendingMaleNames(data) {data.sort(function(x, y){
-  if(x.gender==1 && y.gender==1) return d3.descending(x.gen_per,y.gen_per)
-  else return 1
-});}
-function ascendingMaleNames(data) {data.sort(function(x, y){
-  if(x.gender==1 && y.gender==1) return d3.ascending(x.gen_per,y.gen_per)
-  else return 1
-});}
-
-descendingFemaleNames(data)
-
 
 
   x.domain([30,-30]);
@@ -97,10 +76,10 @@ descendingFemaleNames(data)
   //     .style("text-anchor", "end")
   //     .text("categories")
 
-  svg.selectAll(".dot")
+  svg.selectAll(".genDot")
       .data(data)
     .enter().append("circle")
-      .attr("class", "dot")
+      .attr("class", "genDot")
       .attr("r", 10)
       // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
       .attr("cx", function(d) { return x(d.gen_per); })
@@ -205,6 +184,148 @@ svg.append("line")
 
 
 });
+
+
+
+
+
+function maleOrder(){
+
+d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
+  if (error) throw error;
+
+  data.forEach(function(d) {
+    d.gen_per = +d.gen_per;
+    d.count = +d.count;
+    d.per_fake = +d.per_fake;
+  });
+
+
+function descendingMaleNames(data) {data.sort(function(x, y){
+  if(x.gender==1 && y.gender==1) return d3.descending(x.gen_per,y.gen_per)
+  else return 1
+});}
+
+descendingMaleNames(data);
+
+  x.domain([30,-30]);
+  y.domain(data.map(function(d) { return d.gen_cat; }));
+
+ d3.selectAll('.genDot') // move the circles
+      .transition().duration(500)
+      .delay(function (d,i) { return i*10})
+      .attr("cx", function(d) { return x(d.gen_per); })
+      .attr("cy", function(d) { return y(d.gen_cat); });
+
+ d3.selectAll('.dodo')
+      .transition().duration(500)
+      .delay(function (d,i) { return i*10})
+      .attr("x", function(d) {
+    if (d.gen_per <=0){return x(d.gen_per)-15}
+      else {return x(d.gen_per)+15}
+       })
+  .attr("y", function(d) {
+    if (d.gen_per <=0){return y(d.gen_cat)+4}
+      else {return y(d.gen_cat)+4}
+       })
+  .attr('text-anchor', function(d) {
+    if (d.gen_per <= 0) {return 'end'}
+      else {return 'start'}
+    })
+  .text(function(d) { return d.gen_name;});
+
+
+d3.selectAll(".between")
+  .data(data)
+  .transition().duration(500)
+  .delay(function (d,i) { return i*10})
+  .attr("x1", function(d){return x(d.gen_per)})
+  .attr("y1", function(d){return y(d.gen_cat)})
+  .attr("x2", function(d){return x(d.per_fake)})
+  .attr("y2", function(d){return y(d.gen_cat)})
+
+});
+
+
+}; //end maleOrder();
+
+
+
+
+function femaleOrder(){
+
+d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
+  if (error) throw error;
+
+  data.forEach(function(d) {
+    d.gen_per = +d.gen_per;
+    d.count = +d.count;
+    d.per_fake = +d.per_fake;
+  });
+
+
+function ascendingFemaleNames(data) {data.sort(function(x, y){
+  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
+  else return -1
+});}
+
+ascendingFemaleNames(data);
+
+  x.domain([30,-30]);
+  y.domain(data.map(function(d) { return d.gen_cat; }));
+
+ d3.selectAll('.genDot') // move the circles
+      .transition().duration(500)
+      .delay(function (d,i) { return i*10})
+      .attr("cx", function(d) { return x(d.gen_per); })
+      .attr("cy", function(d) { return y(d.gen_cat); });
+
+ d3.selectAll('.dodo')
+      .transition().duration(500)
+      .delay(function (d,i) { return i*10})
+      .attr("x", function(d) {
+    if (d.gen_per <=0){return x(d.gen_per)-15}
+      else {return x(d.gen_per)+15}
+       })
+  .attr("y", function(d) {
+    if (d.gen_per <=0){return y(d.gen_cat)+4}
+      else {return y(d.gen_cat)+4}
+       })
+  .attr('text-anchor', function(d) {
+    if (d.gen_per <= 0) {return 'end'}
+      else {return 'start'}
+    })
+  .text(function(d) { return d.gen_name;});
+
+
+d3.selectAll(".between")
+  .data(data)
+  .transition().duration(500)
+  .delay(function (d,i) { return i*10})
+  .attr("x1", function(d){return x(d.gen_per)})
+  .attr("y1", function(d){return y(d.gen_cat)})
+  .attr("x2", function(d){return x(d.per_fake)})
+  .attr("y2", function(d){return y(d.gen_cat)})
+
+});
+
+
+}; //end femaleOrder();
+
+
+$( "#descendingFemale" ).click(function() {
+ femaleOrder();
+});
+
+$( "#descendingMale" ).click(function() {
+ maleOrder();
+});
+
+
+
+
+
+
 
 
 
