@@ -1,87 +1,41 @@
 /* global d3  queue */
 
-const table = d3.select('.table-container').append('table');
+const table = d3.select('#career_chart').append('table');
 table.append('thead');
 table.append('tbody');
 
-queue()
-  .defer(d3.json, 'qcew.json')
-  .defer(d3.json, 'stateface.json')
-  .await(ready);
 
-function ready(error, qcew, stateface) {
+d3.csv("titles_big2.csv", function(error, titles) {
   if (error) throw error;
 
   const columns = [
     {
-      head: 'State',
-      cl: 'state',
+      head: 'Title',
+      cl: 'title',
       html(row) {
-        const sfLetter = stateface[row.state_abbrev];
-        const icon = `<span class='stateface'>${sfLetter}</span>`;
-        const text = `<span class='title'>${row.state}</span>`;
-        return icon + text;
+        const sftitle = titles[row.title];
+        const text = `<span class='title'>${row.title}</span>`;
+        return text;
       },
     },
-    {
-      head: 'Employment (millions)',
-      cl: 'emp',
+      {
+      head: 'Male',
+      cl: 'num_males',
       html(row) {
-        const scale = d3.scaleThreshold()
-          .domain([1, 2, 4, 6])
-          .range([1, 2, 3, 4, 5]);
-
-        const icon = '<span class="fa fa-male"></span>';
-        const value = d3.format(',.1f')(row.emp / 1000000);
-        const nIcons = scale(value);
-        const text = `<span class='text'>${value}</span>`;
-        return text + d3.range(nIcons)
-          .map(() => icon).join('');
+        const sfmales = titles[row.num_males];
+        const text = `<span class='title'>${row.num_males}</span>`;
+        return text;
       },
     },
-    {
-      head: 'Change in Employment',
-      cl: 'emp_pc',
+      {
+      head: 'Female',
+      cl: 'num_females',
       html(row) {
-        const scale = d3.scaleThreshold()
-          .domain([0, 0.045])
-          .range(['down', 'right', 'up']);
-        const icon = `<span class='fa fa-arrow-${scale(row.emp_pc)}'></span>`;
-        const value = d3.format(',.0%')(row.emp_pc);
-        const text = `<span class='text'>${value}</span>`;
-        return text + icon;
+        const sffemales = titles[row.num_females];
+        const text = `<span class='title'>${row.num_females}</span>`;
+        return text;
       },
-    },
-    {
-      head: 'Wage (weekly)',
-      cl: 'wage',
-      html(row) {
-        const scale = d3.scaleThreshold()
-          .domain([850, 1000])
-          .range([1, 2, 3]);
-
-        const icon = '<span class="fa fa-money fa-rotate-90"></span>';
-        const nIcons = scale(row.wage);
-        const value = d3.format('$,')(row.wage);
-        const text = `<span class='text'>${value}</span>`;
-        return text + d3.range(nIcons)
-          .map(() => icon).join('');
-      },
-    },
-    {
-      head: 'Change in Wage',
-      cl: 'wage_pc',
-      html(row) {
-        const scale = d3.scaleThreshold()
-          .domain([0, 0.07])
-          .range(['down', 'right', 'up']);
-
-        const icon = `<span class='fa fa-arrow-${scale(row.wage_pc)}'></span>`;
-        const value = d3.format(',.0%')(row.wage_pc);
-        const text = `<span class='text'>${value}</span>`;
-        return text + icon;
-      },
-    },
+    }
   ];
 
   table.call(renderTable);
@@ -94,32 +48,30 @@ function ready(error, qcew, stateface) {
     const tableEnter = tableUpdate
       .enter().append('th')
         .attr('class', d => d.cl)
-        .text(d => d.head)
-        .on('click', (d) => {
-          let ascending;
-          if (d.ascending) {
-            ascending = false;
-          } else {
-            ascending = true;
-          }
-          d.ascending = ascending;
-          qcew.sort((a, b) => {
-            if (ascending) {
-              return d3.ascending(a[d.cl], b[d.cl]);
-            }
-            return d3.descending(a[d.cl], b[d.cl]);
-          });
-          table.call(renderTable);
-        });
+        .text(d => d.head);
+        // .on('click', (d) => {
+        //   let ascending;
+        //   if (d.ascending) {
+        //     ascending = false;
+        //   } else {
+        //     ascending = true;
+        //   }
+        //   d.ascending = ascending;
+        //   qcew.sort((a, b) => {
+        //     if (ascending) {
+        //       return d3.ascending(a[d.cl], b[d.cl]);
+        //     }
+        //     return d3.descending(a[d.cl], b[d.cl]);
+        //   });
+        //   table.call(renderTable);
+        // });
 
     const trUpdate = table.select('tbody').selectAll('tr')
-      .data(qcew);
+      .data(titles);
 
     const trEnter = trUpdate.enter().append('tr');
 
-    const trMerge = trUpdate.merge(trEnter)
-      .on('mouseenter', mouseenter)
-      .on('mouseleave', mouseleave);
+    const trMerge = trUpdate.merge(trEnter);
 
     const tdUpdate = trMerge.selectAll('td')
       .data((row, i) => columns.map((c) => {
@@ -139,16 +91,5 @@ function ready(error, qcew, stateface) {
 
     tdEnter.merge(tdUpdate).html(d => d.html);
   }
-}
+})
 
-function mouseenter() {
-  d3.select(this).selectAll('td')
-    .style('background-color', '#f0f0f0')
-    .style('border-bottom', '.5px solid slategrey');
-}
-
-function mouseleave() {
-  d3.select(this).selectAll('td')
-    .style('background-color', '#fff')
-    .style('border-bottom', '.5px solid white');
-}

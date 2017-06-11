@@ -41,6 +41,28 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   });
 
 
+//Tyler's simple functions for sorting
+function ascendingFemaleNames(data) {data.sort(function(x, y){
+  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
+  else return -1
+});}
+function descendingFemaleNames(data) {data.sort(function(x, y){
+  if(x.gender==2 && y.gender==2) return d3.descending(x.gen_per,y.gen_per)
+  else return -1
+});}
+function descendingMaleNames(data) {data.sort(function(x, y){
+  if(x.gender==1 && y.gender==1) return d3.descending(x.gen_per,y.gen_per)
+  else return 1
+});}
+function ascendingMaleNames(data) {data.sort(function(x, y){
+  if(x.gender==1 && y.gender==1) return d3.ascending(x.gen_per,y.gen_per)
+  else return 1
+});}
+
+descendingFemaleNames(data)
+
+
+
   x.domain([30,-30]);
   y.domain(data.map(function(d) { return d.gen_cat; }));
 
@@ -181,7 +203,9 @@ svg.append("line")
         .attr("x2", function(d){return x(d.per_fake)})
         .attr("y2", function(d){return y(d.gen_cat)})
 
+
 });
+
 
 
 // init()

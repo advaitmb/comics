@@ -86,33 +86,40 @@ main {
 
 .genNames__vis svg {
 	position: relative;
-	display:block;
+	display: block;
+}
+
+.career_chart__vis {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .powerSplit__vis svg {
 	position: relative;
-	display:block;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .dimChart__vis svg {
 	position: relative;
-	display:block;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .graphic__vis svg {
 	position: relative;
-	display:block;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .teams__vis svg {
 	position: relative;
-	display:block;
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -164,13 +171,6 @@ IMG.displayed {
 	width: 25%;
 	margin-left:70%;
 }
-
-/*.listNamesWrapper {
-	position:relative;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 10px;
-}*/
 
 .paddedBody p{
 	font-size: 15px;
