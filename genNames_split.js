@@ -101,8 +101,7 @@ ascendingFemaleNames(data);
       })
       .on('mouseover', function (d) {
           var section = d3.select(this);
-          section.style("opacity", 1)
-                 .style("stroke-width", 1.5);
+          section.style("stroke-width", 1.5);
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
@@ -116,11 +115,7 @@ ascendingFemaleNames(data);
           })
       .on('mouseout', function () {
           var section = d3.select(this);
-          section.style("opacity", function(d) {
-              if (d.dim == 1) {return 0.9}
-              else {return 0.3}
-              })
-                .style("stroke", function(d){
+          section.style("stroke", function(d){
                   if (d.gen_name == "lady"){return "black"}
                   else {return "white"}
                })
