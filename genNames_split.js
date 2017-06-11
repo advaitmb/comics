@@ -115,7 +115,8 @@ ascendingFemaleNames(data);
           })
       .on('mouseout', function () {
           var section = d3.select(this);
-          section.style("stroke", function(d){
+          section
+                .style("stroke", function(d){
                   if (d.gen_name == "lady"){return "black"}
                   else {return "white"}
                })
