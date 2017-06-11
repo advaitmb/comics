@@ -30,16 +30,18 @@ var svg = d3.select("#genNames_graph").append("svg")
 d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   if (error) throw error;
 
- data.sort(function(x, y){
-  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
-  else return -1
-});
-
   data.forEach(function(d) {
     d.gen_per = +d.gen_per;
     d.count = +d.count;
     d.per_fake = +d.per_fake;
   });
+
+  function ascendingFemaleNames(data) {data.sort(function(x, y){
+  if(x.gender==2 && y.gender==2) return d3.ascending(x.gen_per,y.gen_per)
+  else return -1
+});}
+
+ascendingFemaleNames(data);
 
 
   x.domain([30,-30]);
@@ -84,10 +86,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
       .attr("cx", function(d) { return x(d.gen_per); })
       .attr("cy", function(d) { return y(d.gen_cat); })
-      .style("opacity", function(d) {
-        if (d.dim == 1) {return 0.9}
-        else {return 0.3}
-        })
+      .style("opacity", 1)
       .style("stroke", function(d){
         if (d.gen_name == "lady"){return "black"}
           else {return "white"}
