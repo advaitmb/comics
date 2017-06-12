@@ -59,12 +59,14 @@ svg.append("text")
   .attr("class", "small")
   .attr("x", 200)
   .attr("y", -30)
+  .attr("class", "label")
   .text("<--- More female");
 
 svg.append("text")
   .attr("class", "small")
   .attr("x", width-300)
   .attr("y", -30)
+  .attr("class", "label")
   .text("More male --->");
 
 svg.append("g")
@@ -89,7 +91,7 @@ function customYAxis(g) {
     .enter().append("circle")
       .attr("class", "dot2")
       .attr("r", 10)
-      // .attr("r", function(d){return Math.abs(d.perdiffMF)/4})
+      // .attr("r", function(d){return Math.abs(d.total)/100})
       .attr("cx", function(d) { return x(d.perdiffMF); })
       .attr("cy", function(d) { return y(d.category_wiki); })
       .style("opacity", 1)
@@ -114,6 +116,8 @@ function customYAxis(g) {
           d3.select('#tooltip').classed('hidden', true); 
         });
 
+  // d3.selectAll(".tick")
+  //       .attr("class", "label");
 
   d3.selectAll(".tick").each(function(d,i){
     var tick = d3.select(this),
@@ -125,12 +129,12 @@ function customYAxis(g) {
       .attr('y', bBox.y - 3)
       .attr('height', bBox.height + 6)
       .attr('width', bBox.width + 6)
-      .style('fill', "yellow");      
+      .style('fill', "white");
+      // .style('fill', "#182a37");      
   });
 
 
 });
-
 
 
 
@@ -140,6 +144,7 @@ d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
 x.domain([700,-700]).nice();
+
 
 d3.select("#xAxis")
   .transition().duration(500)

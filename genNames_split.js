@@ -169,7 +169,7 @@ svg.append("line")
         .append("line");
 
       linesBetween.attr("class", "between")
-        .style("stroke-width", 0.2)
+        .style("stroke-width", 0.5)
         .style("stroke", "black")
         .style("fill", "none")
         .attr("x1", function(d){return x(d.gen_per)})
