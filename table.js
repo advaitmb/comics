@@ -48,23 +48,23 @@ d3.csv("titles_big2.csv", function(error, titles) {
     const tableEnter = tableUpdate
       .enter().append('th')
         .attr('class', d => d.cl)
-        .text(d => d.head);
-        // .on('click', (d) => {
-        //   let ascending;
-        //   if (d.ascending) {
-        //     ascending = false;
-        //   } else {
-        //     ascending = true;
-        //   }
-        //   d.ascending = ascending;
-        //   qcew.sort((a, b) => {
-        //     if (ascending) {
-        //       return d3.ascending(a[d.cl], b[d.cl]);
-        //     }
-        //     return d3.descending(a[d.cl], b[d.cl]);
-        //   });
-        //   table.call(renderTable);
-        // });
+        .text(d => d.head)
+        .on('click', (d) => {
+          let ascending;
+          if (d.ascending) {
+            ascending = false;
+          } else {
+            ascending = true;
+          }
+          d.ascending = ascending;
+          titles.sort((a, b) => {
+            if (ascending) {
+              return d3.ascending(a[d.cl], b[d.cl]);
+            }
+            return d3.descending(a[d.cl], b[d.cl]);
+          });
+          table.call(renderTable);
+        });
 
     const trUpdate = table.select('tbody').selectAll('tr')
       .data(titles);
@@ -86,8 +86,10 @@ d3.csv("titles_big2.csv", function(error, titles) {
 
     tdEnter
       .attr('class', d => d.cl)
-      .style('background-color', '#fff')
-      .style('border-bottom', '.5px solid white');
+      .style('background-color', 'yellow')
+      .style('border-bottom', '.5px solid white')
+      .style('padding-right', '20px')
+      .style('padding', '5px');
 
     tdEnter.merge(tdUpdate).html(d => d.html);
   }

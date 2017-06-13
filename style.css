@@ -286,13 +286,30 @@ font-size: 12px;
 table {
 	margin-right: auto;
 	margin-left: auto;
+	width:100%;
+	max-width: 600px;
 }
 
-.title, .num_males, .num_females {
+td {
 	font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .05em;
+     border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+
+th {
+	background-color: #182a37;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
 }
 
 
