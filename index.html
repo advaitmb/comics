@@ -208,11 +208,14 @@
 	<div class="chartHed">
 		<p class="chartTitle tk-atlas medium">Powers and their percent differences</p>
 		<p class="chartText">Grouped into categories, we visualize the percent difference between the percentage of male and female characters that have a particular power. Powers on the left of the line are</p>
+		<button id="outliers" class="btn"><--OUTLIERS</button>
+		<button id="outliers_back" class="btn">BACK--></button>
+		<button id="powers_radius" class="btn">SIZE BY CHARACTER TOTALS</button>
 	</div>
 
 	<div class="graphic">
-			<button id="outliers" class="btn"><--OUTLIERS</button>
-			<div id="powerSplit_graph" class='powerSplit__vis'></div>
+			<div id="powerSplit_graph" class='powerSplit__vis'>
+			</div>
 	</div>
 
 <!-- EXPERT OPINION-->
@@ -314,10 +317,10 @@
 	<div class="chartHed">
 		<p class="chartTitle tk-atlas medium">Every team in DC and Marvel</p>
 		<p class="chartText">Each dot represents one of over 2000 teams in the DC and Marvel universes</p>
-		<button id="allTeams">allTeams |</button>
-		<button id="fiftyPercent">>50% women |</button>
-		<button id="tokenWoman">The token women |</button>
-		<button id="onlyWomen">Only Women</button>
+		<button id="allTeams" class="btn">allTeams</button>
+		<button id="fiftyPercent" class="btn">>50% women</button>
+		<button id="tokenWoman" class="btn">The token women</button>
+		<button id="onlyWomen" class="btn">Only Women</button>
 	</div>
 
 		<div class="graphic">
@@ -341,7 +344,6 @@
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>	
 	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
-	<script src='genNames_stacked.js'></script>
 	<script src='powers_split.js'></script>
 	<script src='genNames_split.js'></script>
 	<script src='table.js'></script>

@@ -234,11 +234,12 @@ font-size: 12px;
 	font-size: 12px;
 }
 
-#outliers {
-	position:absolute;
-	top:83%;
-	left:13%;
-	z-index: 100;
+#outliers_back {
+	display:none;
+}
+
+#powers_radius {
+	float:right;
 }
 
 .label, .dodo {
@@ -267,6 +268,10 @@ font-size: 12px;
     font-size: 12px;
     transition: background-color 250ms;
     }
+
+.btn:hover {
+	background-color: red;
+}
 
 .tick {
 	color: red;

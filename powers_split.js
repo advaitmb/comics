@@ -21,7 +21,6 @@ var svg = d3.select("#powerSplit_graph").append("svg")
 
 var catColors = function(d) { return color(d.category_wiki); }
 
-
 d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
@@ -90,8 +89,8 @@ function customYAxis(g) {
       .data(data)
     .enter().append("circle")
       .attr("class", "dot2")
-      // .attr("r", 10)
-      .attr("r", function(d){return Math.abs(d.total)/100})
+      .attr("r", 10)
+      // .attr("r", function(d){return Math.abs(d.total)/100})
       .attr("cx", function(d) { return x(d.perdiffMF); })
       .attr("cy", function(d) { return y(d.category_wiki); })
       .style("opacity", 1)
@@ -137,6 +136,28 @@ function customYAxis(g) {
 });
 
 
+function outlier_back(){
+
+d3.csv("powerGender.csv", function(error, data) {
+  if (error) throw error;
+
+x.domain([150,-150]).nice();
+
+
+d3.select("#xAxis")
+  .transition().duration(500)
+  .call(d3.axisTop(x))
+
+ d3.selectAll('.dot2') // move the circles
+      .transition().duration(500)
+      // .delay(function (d,i) { return i*10})
+      .attr("cx", function(d) { return x(d.perdiffMF); })
+      .attr("cy", function(d) { return y(d.category_wiki); })
+
+});
+
+} //end function outlier();
+
 
 function outlier(){
 
@@ -150,7 +171,7 @@ d3.select("#xAxis")
   .transition().duration(500)
   .call(d3.axisTop(x))
 
- d3.selectAll('circle') // move the circles
+ d3.selectAll('.dot2') // move the circles
       .transition().duration(500)
       // .delay(function (d,i) { return i*10})
       .attr("cx", function(d) { return x(d.perdiffMF); })
@@ -162,8 +183,27 @@ d3.select("#xAxis")
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 $( "#outliers" ).click(function() {
  outlier();
+ $("#outliers_back").show();
+ $( "#outliers").hide();
+
+  $( "#outliers_back").click(function() {
+    outlier_back();
+    $( "#outliers_back").hide();
+    $("#outliers").show();
+    })
 });
 
 
