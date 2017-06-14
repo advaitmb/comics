@@ -5,7 +5,7 @@ var margin = {top: 100, right: 50, bottom: 50, left: 10},
     height = 600 - margin.top - margin.bottom;
 
 var y = d3.scaleBand()
-    .range([0, height], 1);
+    .range([10, height], 1);
 
 var x = d3.scaleLinear()
     .range([width, 0]);

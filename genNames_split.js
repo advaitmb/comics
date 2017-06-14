@@ -5,7 +5,7 @@ var margin = {top: 100, right: 50, bottom: 50, left: 40},
     height = 700 - margin.top - margin.bottom;
 
 var y = d3.scaleBand()
-    .range([0, height], 1);
+    .range([10, height], 1);
 
 var x = d3.scaleLinear()
     .range([width, 0]);
@@ -87,21 +87,24 @@ ascendingFemaleNames(data);
       .attr("cx", function(d) { return x(d.gen_per); })
       .attr("cy", function(d) { return y(d.gen_cat); })
       .style("opacity", 1)
-      .style("stroke", function(d){
-        if (d.gen_name == "lady"){return "black"}
-          else {return "white"}
-        })
-      .style("stroke-width", function(d){
-        if (d.gen_name == "lady") {return 4}
-          else {return 0.5}
-        })
+      .style("stroke", 'white')
+      .style("stroke-width", 0.5)
+      // .style("stroke", function(d){
+      //   if (d.gen_name == "lady"){return "black"}
+      //     else {return "white"}
+      //   })
+      // .style("stroke-width", function(d){
+      //   if (d.gen_name == "lady") {return 4}
+      //     else {return 0.5}
+      //   })
       .style("fill", function(d){
         if (d.gender == 1) {return "blue"}
           else {return "orange"}
       })
       .on('mouseover', function (d) {
           var section = d3.select(this);
-          section.style("stroke-width", 1.5);
+          section.style("stroke", 'black')
+      .style("stroke-width", 1.5)
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
@@ -112,18 +115,21 @@ ascendingFemaleNames(data);
       .on("click",  function(d){
           $("#genNames").html(d.char_list);
           $("#genTitle").html(d.gen_name);
-          })
+          var section = d3.select(this);
+          section.style("fill", 'red');
+          }) 
       .on('mouseout', function () {
           var section = d3.select(this);
-          section
-                .style("stroke", function(d){
-                  if (d.gen_name == "lady"){return "black"}
-                  else {return "white"}
-               })
-                .style("stroke-width", function(d){
-                  if (d.gen_name == "lady") {return 4}
-                    else {return 0.5}
-              })
+          section.style("stroke", 'white')
+          .style("stroke-width", 0.5)
+              //   .style("stroke", function(d){
+              //     if (d.gen_name == "lady"){return "black"}
+              //     else {return "white"}
+              //  })
+              //   .style("stroke-width", function(d){
+              //     if (d.gen_name == "lady") {return 4}
+              //       else {return 0.5}
+              // })
           d3.select('#tooltip').classed('hidden', true);
         });
 
@@ -147,6 +153,20 @@ ascendingFemaleNames(data);
     })
   .text(function(d) { return d.gen_name;});
 
+
+svg.append("text")
+  .attr("class", "small")
+  .attr("x", 70)
+  .attr("y", -30)
+  .attr("class", "label")
+  .text("<--- Female percents");
+
+svg.append("text")
+  .attr("class", "small")
+  .attr("x", width-200)
+  .attr("y", -30)
+  .attr("class", "label")
+  .text("Male percents --->");
 
 
 var lineEnd = 0;
@@ -315,12 +335,6 @@ $( "#descendingFemale" ).click(function() {
 $( "#descendingMale" ).click(function() {
  maleOrder();
 });
-
-
-
-
-
-
 
 
 
