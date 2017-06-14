@@ -10,6 +10,13 @@ var y = d3.scaleBand()
 var x = d3.scaleLinear()
     .range([width, 0]);
 
+// Functions for offsetting annotations    
+function dy(t) {
+  return y(t)-y(0);
+}
+function dx(t) {
+  return x(t)-x(0);
+}
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -41,6 +48,159 @@ d3.csv("powerGender.csv", function(error, data) {
 
   x.domain([150,-150]);
   y.domain(data.map(function(d) { return d.category_wiki; }));
+
+
+
+
+
+
+
+
+
+
+  //Threshhold annotation example
+  // const thresholdAnnotations = [
+  //   // Only a single annotation in this example array
+  //   {
+  //     note: {
+  //       title: "The 50% line",
+  //       label: "Only teams above this line have more women members than men"
+  //     },
+  //     // x,y are the point that the annotation points too
+  //     // (by using the functions x() and y() this is done in graph units rather than pixels)
+  //     x: x(100),
+  //     y: y(0.5),
+  //     // dx,dy are how FAR the annotation text is from the point x,y
+  //     // (since svg measures the positions from top to bottom [or something], I made a new little routine to make the conversion everytime)
+  //     dx: dx(15),
+  //     dy: dy(0.05),
+  //     subject: {
+  //       x1: x(0),
+  //       x2: x(400)
+  //     }
+  //   }
+  // ]
+  // const makeThresholdAnnotations = d3.annotation()
+  //   .editMode(false)
+  //   .type(d3.annotationXYThreshold)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+  //   .annotations(thresholdAnnotations)
+  // svg.append("g")
+  //     .attr("class", "annotation-group")
+  //     .call(makeThresholdAnnotations) //This needs to call the object made above
+
+
+  //Circle annotation examples
+  const circleAnnotations_powers = [
+    // Two annotations in this example array
+    {
+      note: {
+        title: "How to read",
+        label: "This is the percent difference between the percentages of male and female characters with this power, not the percent of males with the power"
+      },
+      // x,y are the point that the annotation points too
+      // (by using the functions x() and y() this is done in graph units rather than pixels)
+      x: x(50),
+      y: y(200),
+      // dx,dy are how FAR the annotation text is from the point x,y
+      dx: dx(75),
+      dy: dy(-0.01),
+      subject: {
+        radius: 15,         //Size of the the circling
+        radiusPadding: 5    //A little gap between the annotation line and the circle
+      }
+    }
+  ]
+  const makeCircleAnnotations_powers = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCalloutCircle)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+    .annotations(circleAnnotations_powers)
+  svg.append("g")
+      .attr("class", "annotation-group")
+      .call(makeCircleAnnotations_powers)      //This needs to call the object made above
+
+
+  //Rectangle annotation examples
+  const rectangleAnnotations_powers = [
+    // This is an array of 2 annotations
+    {
+      note: {
+        title: "Emotional appeal",
+        label: "Powers of the mind are disproportionately possesed by female characters"
+      },
+      // x,y are the upper left hand side of the box
+      x: x(-10),
+      y: y(1.05),
+      // dx,dy are how FAR the ***annotation*** text is from the point x,y
+      dx: dx(75),
+      dy: dy(-0.01),
+      subject: {
+        // width and height are the size of the box so use dx() and dy() to give difference from start
+        width: dx(60),
+        height: dy(-0.1)
+      }
+    }
+  ]
+  const makeRectangleAnnotations_powers = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCalloutRect)      //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+    .annotations(rectangleAnnotations_powers)
+  svg.append("g")
+      .attr("class", "annotation-group")
+      .call(makeRectangleAnnotations_powers)     //This needs to call the object made above
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // var lineEnd = 0;
