@@ -2,6 +2,10 @@ main {
 	overflow: hidden;
 }
 
+.intro__dek {
+	width:400px;
+	text-align: center;
+}
 
 .axis path,
 .axis line {
