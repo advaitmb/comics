@@ -148,7 +148,7 @@ IMG.displayed {
 	margin-right: auto;
 	width:60%;
 	padding-top: 200px;
-	text-align: center;
+	text-align: left;
 }
 
 .paddedBody, .chartHed {
@@ -158,6 +158,21 @@ IMG.displayed {
 	width:60%;
 	padding-top: 50px;
 }
+
+.expertOpinion {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+	width:60%;
+}
+
+.expertText {
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+
 
 .chartHed {
 	position:relative;
@@ -333,6 +348,25 @@ th {
     letter-spacing: .05em;
     font-size: 12px;
 }
+
+
+.expert {
+	background-color: red;
+	color:white;
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    float:left;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+
+}
+
 
 
 
