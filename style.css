@@ -238,6 +238,8 @@ IMG.displayed {
   	text-transform: uppercase;
   	text-align: left;
 	left:65%;
+	color:rgb(105,174,68);
+	font-weight: 500;
 }
 
 

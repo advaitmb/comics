@@ -55,18 +55,19 @@ ascendingFemaleNames(data);
       .attr("cx", function(d) { return x(d.gen_per); })
       .attr("cy", function(d) { return y(d.gen_cat); })
       .style("opacity", 1)
-      .style("stroke", 'white')
-      .style("stroke-width", 0.5)
-      // .style("stroke", function(d){
-      //   if (d.gen_name == "lady"){return "black"}
-      //     else {return "white"}
-      //   })
-      // .style("stroke-width", function(d){
-      //   if (d.gen_name == "lady") {return 4}
-      //     else {return 0.5}
-      //   })
+      // .style("stroke", 'white')
+      // .style("stroke-width", 0.5)
+      .style("stroke", function(d){
+        if (d.gen_name == "lord"){return "rgb(105,174,68)"}
+          else {return "white"}
+        })
+      .style("stroke-width", function(d){
+        if (d.gen_name == "lord") {return 2}
+          else {return 0.5}
+        })
       .style("fill", function(d){
-        if (d.gender == 1) {return "rgb(39,123,191)"}
+        if (d.gen_name == "lord" ) {return "white"}
+          else if (d.gender == 1) {return "rgb(39,123,191)"}
           else {return "rgb(243,185,47)"}
       })
       .on('mouseover', function (d) {
@@ -86,7 +87,7 @@ ascendingFemaleNames(data);
               if (d.gender == 1) {return "rgb(39,123,191)"}
               else {return "rgb(243,185,47)"}
           }).style("stroke", 'white').style("stroke-width", 0.5)
-          d3.select(this).style("fill", 'white').style("stroke", "black").style("stroke-width", 1.5);
+          d3.select(this).style("fill", 'white').style("stroke", "rgb(105,174,68)").style("stroke-width", 2);
           }) 
       .on('mouseout', function () {
           var section = d3.select(this);
