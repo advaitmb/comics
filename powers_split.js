@@ -135,7 +135,7 @@ d3.csv("powerGender.csv", function(error, data) {
     {
       note: {
         title: "Emotional appeal",
-        label: "Powers of the mind are disproportionately possesed by female characters"
+        label: "Powers of the mind are possesed disproportionately by female characters"
       },
       // x,y are the upper left hand side of the box
       x: x(-200),
@@ -238,7 +238,8 @@ svg.append("g")
   .attr("class", "x axis")
   .attr("id", "xAxis")
   .attr("transform", "translate(0, -50)")
-  .call(d3.axisTop(x));
+  .call(d3.axisTop(x)
+    .tickFormat(d3.format("0.0%")));
 
 svg.append("g")
   .attr("class", "powerYAxis")
@@ -271,7 +272,8 @@ function customYAxis(g) {
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .html(d.power + "<br>% diff: " + Math.round(d.perdiffMF).toFixed(1) + "%<br>Female: " + d.per_females + "%<br>Male: " + d.per_males + "%" );
+          // .html("<span class='tk-atlas small'>" + d.power + "</span>" + "<br><hr>Percent difference: " + Math.round(d.perdiffMF).toFixed(1) + "%<br>Female: " + Math.round(d.per_females).toFixed(3) + "%<br>Male: " + Math.round(d.per_males).toFixed(3) + "%" );
+          .html("<span class='tk-atlas small'>" + d.power + "</span>" + "<br><hr>Percent difference: " + Math.round(d.perdiffMF).toFixed(1) + "%<br>Total Characters: " + d.total);
            d3.select('#tooltip').classed('hidden', false);
           })
       .on('mouseout', function () {
@@ -307,7 +309,8 @@ function outlier_back(){
 d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
-x.domain([140,-140]).nice();
+x.domain([150,-150]);
+y.domain(data.map(function(d) { return d.category_wiki; }));
 
 
 d3.select("#xAxis")
@@ -322,8 +325,8 @@ d3.select("#xAxis")
 
 });
 
-$("#read_anno").show();
-$("#emotion_anno").show();
+$("#read_anno").delay(500).show(500);
+$("#emotion_anno").delay(500).show(500);
 
 } //end function outlier();
 
@@ -348,8 +351,8 @@ d3.select("#xAxis")
 
 });
 
-$("#read_anno").hide();
-$("#emotion_anno").hide();
+$("#read_anno").delay(100).hide(500);
+$("#emotion_anno").delay(100).hide(500);
 
 } //end function outlier();
 
@@ -360,7 +363,32 @@ $("#emotion_anno").hide();
 
 
 
+function powerR() {
 
+d3.csv("powerGender.csv", function(error, data) {
+  if (error) throw error;
+
+ d3.selectAll('.dot2') // move the circles
+      .transition().duration(500)
+      .delay(function (d,i) { return i*2})
+      .attr("r", function(d){return Math.abs(d.total)/80})
+
+})
+
+}
+
+function normR() {
+
+d3.csv("powerGender.csv", function(error, data) {
+  if (error) throw error;
+
+ d3.selectAll('.dot2') // move the circles
+      .transition().duration(500)
+      .delay(function (d,i) { return i*2})
+      .attr("r", 10)
+})
+
+}
 
 
 
@@ -378,14 +406,13 @@ $( "#outliers" ).click(function() {
     })
 });
 
+$("#powers_radius").click(function() {
+  powerR();
+})
 
-
-
-
-
-
-
-
+$("#norm_radius").click(function() {
+  normR();
+})
 
 
 

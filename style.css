@@ -31,9 +31,11 @@ main {
     pointer-events: none;
     z-index: 100;
 }
+
 #tooltip.hidden {
     display: none;
 }
+
 #tooltip p {
     margin: 0;
     font-family: sans-serif;
@@ -274,8 +276,20 @@ margin-top:0px;
 	display:none;
 }
 
-#powers_radius {
+#powers_radius, #norm_radius {
 	float:right;
+}
+
+#sizeBy {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #182a37;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    float:right;
 }
 
 .label, .dodo {
@@ -322,6 +336,7 @@ margin-top:0px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .05em;
+    z-index: 100;
 }
 
 table {
@@ -370,6 +385,7 @@ th {
     margin-bottom: 0px;
 
 }
+
 
 
 .remaining-content span {
