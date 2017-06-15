@@ -181,7 +181,7 @@
 
 <!-- INTRODUCTION -->
 
-	<div class="paddedIntro">
+	<div class="paddedIntro small">
 		<p>“Wonder Woman of the forties was not the same as Wonder Woman of the fifties ... When you're asking different populations about what wonder woman was like, you can get different answers. There are certain things about these long-standing characters, like a Superman or a Wonder Woman, that remain the same, but then there are other things that change over time depending on the writer, the artist, the editor, the company, what medium comics are being delivered in, how they're being sold ... so there are a lot of reasons why they change over time.”</p>
 		<p><strong>Narrator:</strong> An hour later, back at the battalion headquarters —</p>
 		<p><strong>Hawk Man:</strong> Wonder Woman. The members of the Justice Battalion feel that even though you're now an honorary member, we'd like you to act as our secretary!</p>
@@ -193,7 +193,7 @@
 
 
 <!-- POINT AND POSE POWERS -->
-	<div class="paddedBody tk-atlas">
+	<div class="paddedBody small">
 		<h3 class="midTitle">Point and pose powers</h3>
 		<p> X% of female characters and X% of male characters in the DC and Marvel Universes have some sort of power. These powers differ significantly, from sonic scream and water control, to beserker strength and prehensile hair. </p>
 
@@ -203,7 +203,7 @@
 
 	<div class="chartHed">
 		<p class="chartTitle tk-atlas medium">Powers and their percent differences</p>
-		<p class="chartText tk-atlas small">Grouped into categories, we visualize the percent difference between the percentage of male and female characters that have a particular power. Powers on the left of the line are</p>
+		<p class="chartText tk-atlas small">The percent difference of men with a power (normalized by number of men with powers) and women with that power (normalized by number of women with powers)</p>
 		<button id="outliers" class="btn"><--OUTLIERS</button>
 		<button id="outliers_back" class="btn">BACK--></button>
 		<button id="powers_radius" class="btn">SIZE BY CHARACTER TOTALS</button>
@@ -242,7 +242,7 @@
 
 
 <!-- GENDERED NAMES SECTION-->
-	<div class="paddedBody">
+	<div class="paddedBody small">
 		<h3 class="midTitle">Little Miss Lassgirl</h3>
 		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.
 		Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters (ie. There is an X percentage difference between the percent of males with the power X and the percent of females with the power X.
@@ -253,8 +253,8 @@
 	<!-- GENDERED NAMES SECTION-->
 
 		<div class="chartHed">
-			<p class="chartTitle tk-atlas medium">Gendered names and their counterparts</p>
-			<p class="chartText tk-atlas small">Percent of male and female characters with gendered names.</p>
+			<p class="chartTitle tk-atlas medium">Not all gendered names are equal</p>
+			<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names.</p>
 			<button id="descendingMale" class="btn">Order by male</button>
 			<button id="descendingFemale" class="btn">Order by female</button>	
 		</div>
@@ -271,7 +271,7 @@
 		<hr class="note tk-atlas small">
 	<p class="note tk-atlas small">DATA NOTE: Percentages are determined only from characters with gendered names. (ie. 13% of women with gendered names have 'girl' in their name). In the DC and Marvel universes, there are TKTK male characters with gendered names, and TKTK female characters with gendered names.</p>
 
-		<div class="paddedBody">
+		<div class="paddedBody small">
 			<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.
 			Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters (ie. There is an X percentage difference between the percent of males with the power X and the percent of females with the power X.
 			Making things even more clear, we chart the percent difference. How we see immediately that a) there are specifically female powers, where we don't really see that for men and b) the powers that favour women are of the point and pose variety.
@@ -287,8 +287,8 @@
 
 
 <!-- PROFESSIONAL TITLES SECTION-->
-	<div class="paddedBody">
-		<h3 class="midTitle">Professional titles</h3>
+	<div class="paddedBody small">
+		<h3 class="midTitle">Nurse or nothing</h3>
 		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.</p>
 		<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.
 		Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters (ie. There is an X percentage difference between the percent of males with the power X and the percent of females with the power X.
@@ -320,7 +320,7 @@
 
 
 <!-- TEAMS SECTION -->
-<div class="paddedBody">
+<div class="paddedBody small">
 	<h3 class="midTitle">Token team members</h3>
 	<p> Both male and female characters are equally likely to be on teams. Of all characters, 46% are on a team — where 49% of females are on a team, and 48% of males are on a team. However, there is a significant difference when we look at the make-up of the teams themselves. 
 
@@ -344,7 +344,7 @@
 	<hr class="note tk-atlas small">
 	<p class="note tk-atlas small">NOTE</p>
 
-<div class="paddedBody">
+<div class="paddedBody small">
 	<p> Powers powers powers intro. Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah.
 	Let's zoom in to get a better look at the places where we see the most variation in powers, and we'll size the bubbles by the percent difference between male and female characters (ie. There is an X percentage difference between the percent of males with the power X and the percent of females with the power X.
 	Making things even more clear, we chart the percent difference. How we see immediately that a) there are specifically female powers, where we don't really see that for men and b) the powers that favour women are of the point and pose variety.
@@ -368,11 +368,14 @@
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>	
 	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
+	<script src="jQuery.succinct.min.js"></script>
 	<script src='powers_split.js'></script>
 	<script src='genNames_split.js'></script>
 	<script src='table.js'></script>
 	<script src='teams_anno.js'></script>
 	<script src='powers.js'></script>
+
+	
 
 
 	<script src='bundle.js?version=1495145297027'></script>

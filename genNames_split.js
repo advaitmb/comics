@@ -98,8 +98,8 @@ ascendingFemaleNames(data);
       //     else {return 0.5}
       //   })
       .style("fill", function(d){
-        if (d.gender == 1) {return "blue"}
-          else {return "orange"}
+        if (d.gender == 1) {return "rgb(39,123,191)"}
+          else {return "rgb(243,185,47)"}
       })
       .on('mouseover', function (d) {
           var section = d3.select(this);

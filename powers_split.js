@@ -99,11 +99,11 @@ d3.csv("powerGender.csv", function(error, data) {
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(50),
-      y: y(200),
-      // dx,dy are how FAR the annotation text is from the point x,y
+      x: x(47.5),         //Give x() the percent difference you want
+      y: y('Objects'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
+      // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
       dx: dx(75),
-      dy: dy(-0.01),
+      dy: 0,
       subject: {
         radius: 15,         //Size of the the circling
         radiusPadding: 5    //A little gap between the annotation line and the circle
@@ -128,11 +128,11 @@ d3.csv("powerGender.csv", function(error, data) {
         label: "Powers of the mind are disproportionately possesed by female characters"
       },
       // x,y are the upper left hand side of the box
-      x: x(-10),
-      y: y(1.05),
+      x: x(-145),
+      y: y("Mentality-based powers")+10,
       // dx,dy are how FAR the ***annotation*** text is from the point x,y
       dx: dx(75),
-      dy: dy(-0.01),
+      dy: 0,
       subject: {
         // width and height are the size of the box so use dx() and dy() to give difference from start
         width: dx(60),
