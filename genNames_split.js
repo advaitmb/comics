@@ -113,7 +113,7 @@ ascendingFemaleNames(data);
            d3.select('#tooltip').classed('hidden', false);
           })
       .on("click",  function(d){
-          $("#genNames").html(d.char_list);
+          $(".genNames").html(d.char_list);
           $("#genTitle").html(d.gen_name);
           var section = d3.select(this);
           section.style("fill", 'red');

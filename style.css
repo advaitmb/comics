@@ -240,7 +240,7 @@ IMG.displayed {
 }
 
 
-#genNames {
+.genNames {
 	position: absolute;
 	width: 30%;
 	float: right;
@@ -373,7 +373,9 @@ th {
 }
 
 
-
+.remaining-content span {
+    display:none;
+}
 
 /*DOT STYLING*/
 
