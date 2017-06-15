@@ -149,9 +149,10 @@ IMG.displayed {
 	width:60%;
 	padding-top: 200px;
 	text-align: left;
+	font-size: 12px;
 }
 
-.paddedBody, .chartHed {
+.chartHed {
 	position:relative;
 	margin-left: auto;
 	margin-right: auto;
@@ -159,6 +160,14 @@ IMG.displayed {
 	padding-top: 50px;
 }
 
+.paddedBody {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top: 50px;
+	font-size: 12px;
+}
 .expertOpinion {
 	position:relative;
 	margin-left: auto;
@@ -186,10 +195,6 @@ IMG.displayed {
 	position:absolute;
 	width: 25%;
 	margin-left:70%;
-}
-
-.paddedBody p{
-	font-size: 15px;
 }
 
 .chartBody {
