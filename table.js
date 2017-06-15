@@ -4,6 +4,19 @@ const table = d3.select('#career_chart').append('table');
 table.append('thead');
 table.append('tbody');
 
+function numColor(t) {
+  var cutoff=440.0;
+  t=Math.abs(t)/cutoff;
+  if(t>1.0) t=1.0;
+  return d3.interpolateYlOrRd(t);
+}
+function cellColor(t) {
+  if(t.cl=='title') return 'white'
+  else{
+    var val=t.html.split("<span class='title'>")[1].split("</span>")[0];
+    return numColor(parseInt(val,10))
+  }
+}
 
 d3.csv("titles_big2.csv", function(error, titles) {
   if (error) throw error;
@@ -51,17 +64,12 @@ d3.csv("titles_big2.csv", function(error, titles) {
         .text(d => d.head)
         .on('click', (d) => {
           let ascending;
-          if (d.ascending) {
-            ascending = false;
-          } else {
-            ascending = true;
-          }
+          if (d.ascending) { ascending = false;}
+          else { ascending = true;}
           d.ascending = ascending;
           titles.sort((a, b) => {
-            if (ascending) {
-              return d3.ascending(a[d.cl], b[d.cl]);
-            }
-            return d3.descending(a[d.cl], b[d.cl]);
+            if (ascending) {return d3.ascending(parseInt(a[d.cl],10), parseInt(b[d.cl],10));}
+            return d3.descending(parseInt(a[d.cl],10), parseInt(b[d.cl],10));
           });
           table.call(renderTable);
         });
@@ -86,7 +94,8 @@ d3.csv("titles_big2.csv", function(error, titles) {
 
     tdEnter
       .attr('class', d => d.cl)
-      .style('background-color', 'yellow')
+      // .style('background-color', 'yellow')
+      .style("background-color", function(d) { return cellColor(d); })
       .style('border-bottom', '.5px solid white')
       .style('padding-right', '20px')
       .style('padding', '5px');
@@ -94,4 +103,3 @@ d3.csv("titles_big2.csv", function(error, titles) {
     tdEnter.merge(tdUpdate).html(d => d.html);
   }
 })
-
