@@ -1,6 +1,6 @@
 (function() {
 
-var margin = {top: 20, right: 20, bottom: 50, left: 40},
+var margin = {top: 60, right: 20, bottom: 50, left: 40},
     width = 900 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -91,7 +91,7 @@ d3.csv("teams.csv", function(error, data) {
     {
       note: {
         title: "The 50% line",
-        label: "Only teams above this line have more women members than men"
+        label: "Teams above this line have more female members than male"
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
@@ -113,54 +113,55 @@ d3.csv("teams.csv", function(error, data) {
     .annotations(thresholdAnnotations)
   svg.append("g")
       .attr("class", "annotation-group")
+      .attr("id", "fiftyLine")
       .call(makeThresholdAnnotations) //This needs to call the object made above
 
 
   //Circle annotation examples
-  const circleAnnotations = [
-    // Two annotations in this example array
-    {
-      note: {
-        title: "Amazons Attack!",
-        label: "All the Amazons from Wonder Woman comics are women --- and there are many of them."
-      },
-      // x,y are the point that the annotation points too
-      // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(155),
-      y: y(0.975),
-      // dx,dy are how FAR the annotation text is from the point x,y
-      dx: dx(75),
-      dy: dy(-0.01),
-      subject: {
-        radius: 25,         //Size of the the circling
-        radiusPadding: 5    //A little gap between the annotation line and the circle
-      }
-    },
-    {
-      note: {
-        title: "It's right in the name",
-        label: "Not even the X-men pass 50%"
-      },
-      // x,y are the point that the annotation points too
-      // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(305),
-      y: y(0.42),
-      // dx,dy are how FAR the annotation text is from the point x,y
-      dx: dx(50),
-      dy: dy(0.3),
-      subject: {
-        radius: 50,
-        radiusPadding: 5
-      }
-    }
-  ]
-  const makeCircleAnnotations = d3.annotation()
-    .editMode(false)
-    .type(d3.annotationCalloutCircle)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
-    .annotations(circleAnnotations)
-  svg.append("g")
-      .attr("class", "annotation-group")
-      .call(makeCircleAnnotations)      //This needs to call the object made above
+  // const circleAnnotations = [
+  //   // Two annotations in this example array
+  //   {
+  //     note: {
+  //       title: "Amazons Attack!",
+  //       label: "All the Amazons from Wonder Woman comics are women --- and there are many of them."
+  //     },
+  //     // x,y are the point that the annotation points too
+  //     // (by using the functions x() and y() this is done in graph units rather than pixels)
+  //     x: x(155),
+  //     y: y(0.975),
+  //     // dx,dy are how FAR the annotation text is from the point x,y
+  //     dx: dx(75),
+  //     dy: dy(-0.01),
+  //     subject: {
+  //       radius: 25,         //Size of the the circling
+  //       radiusPadding: 5    //A little gap between the annotation line and the circle
+  //     }
+  //   },
+  //   {
+  //     note: {
+  //       title: "It's right in the name",
+  //       label: "Not even the X-men pass 50%"
+  //     },
+  //     // x,y are the point that the annotation points too
+  //     // (by using the functions x() and y() this is done in graph units rather than pixels)
+  //     x: x(305),
+  //     y: y(0.42),
+  //     // dx,dy are how FAR the annotation text is from the point x,y
+  //     dx: dx(50),
+  //     dy: dy(0.3),
+  //     subject: {
+  //       radius: 50,
+  //       radiusPadding: 5
+  //     }
+  //   }
+  // ]
+  // const makeCircleAnnotations = d3.annotation()
+  //   .editMode(false)
+  //   .type(d3.annotationCalloutCircle)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+  //   .annotations(circleAnnotations)
+  // svg.append("g")
+  //     .attr("class", "annotation-group")
+  //     .call(makeCircleAnnotations)      //This needs to call the object made above
 
 
   //Rectangle annotation examples
@@ -168,38 +169,38 @@ d3.csv("teams.csv", function(error, data) {
     // This is an array of 2 annotations
     {
       note: {
-        title: "100%",
-        label: "These teams are made of only women"
+        title: "100 percent",
+        label: "These teams consist of only female characters"
       },
       // x,y are the upper left hand side of the box
       x: x(-10),
       y: y(1.05),
       // dx,dy are how FAR the ***annotation*** text is from the point x,y
       dx: dx(75),
-      dy: dy(-0.01),
+      dy: dy(-0.05),
       subject: {
         // width and height are the size of the box so use dx() and dy() to give difference from start
         width: dx(60),
-        height: dy(-0.1)
-      }
-    },
-    {
-      note: {
-        title: "0%",
-        label: "These teams are made of only men"
-      },
-      // x,y are the upper left hand side of the box
-      x: x(-10),
-      y: y(-0.05),
-      // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(75),
-      dy: dy(-0.01),
-      subject: {
-        // width and height are the size of the box so use dx() and dy() to give difference from start
-        width: dx(60),
-        height: dy(0.1)
+        height: dy(-0.08)
       }
     }
+    // {
+    //   note: {
+    //     title: "0%",
+    //     label: "These teams are made of only men"
+    //   },
+    //   // x,y are the upper left hand side of the box
+    //   x: x(-10),
+    //   y: y(-0.05),
+    //   // dx,dy are how FAR the ***annotation*** text is from the point x,y
+    //   dx: dx(75),
+    //   dy: dy(0.01),
+    //   subject: {
+    //     // width and height are the size of the box so use dx() and dy() to give difference from start
+    //     width: dx(60),
+    //     height: dy(0.1)
+    //   }
+    // }
   ]
   const makeRectangleAnnotations = d3.annotation()
     .editMode(false)
@@ -207,72 +208,73 @@ d3.csv("teams.csv", function(error, data) {
     .annotations(rectangleAnnotations)
   svg.append("g")
       .attr("class", "annotation-group")
+      .attr("id", "firstTeamAnno")
       .call(makeRectangleAnnotations)     //This needs to call the object made above
 
 
-  //Curvy annotation examples
-  const curvyAnnotations = [
-    // This is an array of 4 annotations
-    {
-      note: {
-        title: "In the Navy",
-        label: "blah blah"
-      },
-      // x,y are the upper left hand side of the box
-      x: x(40),
-      y: y(0.05),
-      // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(30),
-      dy: dy(0.05)
-      //No subject for curvy annotations
-    },
-    {
-      note: {
-        title: "NYPC",
-        label: "blah blah"
-      },
-      // x,y are the upper left hand side of the box
-      x: x(110),
-      y: y(0.19),
-      // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(50),
-      dy: dy(0.2)
-      //No subject for curvy annotations
-    },
-    {
-      note: {
-        title: "Women AWOL",
-        label: "blah blah"
-      },
-      // x,y are the upper left hand side of the box
-      x: x(225),
-      y: y(0.1),
-      // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(10),
-      dy: dy(0.1)
-      //No subject for curvy annotations
-    },
-    {
-      note: {
-        title: "et tu, fictional Corps??",
-        label: "blah blah"
-      },
-      // x,y are the upper left hand side of the box
-      x: x(365),
-      y: y(0.25),
-      // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(-25),
-      dy: dy(-0.1)
-      //No subject for curvy annotations
-    }
-  ]
-  const makeCurvyAnnotations = d3.annotation()
-    .editMode(false)
-    .type(d3.annotationCalloutCurve)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
-    .annotations(curvyAnnotations)
-  svg.append("g")
-      .attr("class", "annotation-group")
-      .call(makeCurvyAnnotations)     //This needs to call the object made above
+  // //Curvy annotation examples
+  // const curvyAnnotations = [
+  //   // This is an array of 4 annotations
+  //   {
+  //     note: {
+  //       title: "In the Navy",
+  //       label: "blah blah"
+  //     },
+  //     // x,y are the upper left hand side of the box
+  //     x: x(40),
+  //     y: y(0.05),
+  //     // dx,dy are how FAR the ***annotation*** text is from the point x,y
+  //     dx: dx(30),
+  //     dy: dy(0.05)
+  //     //No subject for curvy annotations
+  //   },
+  //   {
+  //     note: {
+  //       title: "NYPC",
+  //       label: "blah blah"
+  //     },
+  //     // x,y are the upper left hand side of the box
+  //     x: x(110),
+  //     y: y(0.19),
+  //     // dx,dy are how FAR the ***annotation*** text is from the point x,y
+  //     dx: dx(50),
+  //     dy: dy(0.2)
+  //     //No subject for curvy annotations
+  //   },
+  //   {
+  //     note: {
+  //       title: "Women AWOL",
+  //       label: "blah blah"
+  //     },
+  //     // x,y are the upper left hand side of the box
+  //     x: x(225),
+  //     y: y(0.1),
+  //     // dx,dy are how FAR the ***annotation*** text is from the point x,y
+  //     dx: dx(10),
+  //     dy: dy(0.1)
+  //     //No subject for curvy annotations
+  //   },
+  //   {
+  //     note: {
+  //       title: "et tu, fictional Corps??",
+  //       label: "blah blah"
+  //     },
+  //     // x,y are the upper left hand side of the box
+  //     x: x(365),
+  //     y: y(0.25),
+  //     // dx,dy are how FAR the ***annotation*** text is from the point x,y
+  //     dx: dx(-25),
+  //     dy: dy(-0.1)
+  //     //No subject for curvy annotations
+  //   }
+  // ]
+  // const makeCurvyAnnotations = d3.annotation()
+  //   .editMode(false)
+  //   .type(d3.annotationCalloutCurve)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+  //   .annotations(curvyAnnotations)
+  // svg.append("g")
+  //     .attr("class", "annotation-group")
+  //     .call(makeCurvyAnnotations)     //This needs to call the object made above
 
 
 
@@ -298,14 +300,14 @@ d3.csv("teams.csv", function(error, data) {
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("id", "xAxis")
+      .attr("id", "xAxis_team")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
 
  svg.append("g")
       .attr("class", "y axis")
-      .attr("id", "yAxis")
+      .attr("id", "yAxis_team")
       .call(d3.axisLeft(y)
         .tickFormat(d3.format(".0%")));
 
@@ -334,54 +336,6 @@ d3.csv("teams.csv", function(error, data) {
   //     .attr("dy", ".71em")
   //     .style("text-anchor", "end")
   //     .text("% female")
-
-
-// Text for displaying number of teams
-
-// svg.append("text")
-//   .text("Number of teams")
-//   .attr({
-//     x: "70%",
-//     y: 40,
-//     "font-size": 15,
-//     "fill": "red",
-//     "text-anchor": "middle",
-//     id: "teamNumberText"
-//   })
-
-// svg.append("text")
-//   .text("2300")
-//   .attr({
-//     x: "70%",
-//     y:  70,
-//     "font-size": 30,
-//     "text-anchor": "middle",
-//     id: "teamNumber"
-//   })
-
-
-//   svg.append("text")
-//   .text("Percent of teams")
-//   .attr({
-//     x: "70%",
-//     y: 100,
-//     "font-size": 15,
-//     "fill": "red",
-//     "text-anchor": "middle",
-//     id: "teamPercentText"
-//   })
-
-// svg.append("text")
-//   .text("100%")
-//   .attr({
-//     x: "70%",
-//     y:  130,
-//     "font-size": 30,
-//     "text-anchor": "middle",
-//     id: "teamPercentNumber"
-//   })
-
-
 
 
   svg.selectAll(".dotTeams")
@@ -422,6 +376,148 @@ d3.csv("teams.csv", function(error, data) {
 
 
 
+
+
+
+
+
+
+
+
+function allTeams(firstXDomain, firstYDomain){
+
+d3.csv("teams.csv", function(error, data) {
+  if (error) throw error;
+
+   data.forEach(function(d) {
+    d.percent = +d.percent;
+    d.members = +d.members;
+    d.female = +d.female;
+    d.male = +d.male;
+  });
+
+
+  x.domain(d3.extent(data, firstXDomain)).nice();
+  y.domain(d3.extent(data, firstYDomain)).nice();
+
+    d3.select("#yAxis_team")
+      .transition().duration(1000)
+      .call(d3.axisLeft(y)
+        .tickFormat(d3.format(".0%")));
+
+    d3.select("#xAxis_team")
+      .transition().duration(1000)
+      .call(d3.axisBottom(x));
+
+    d3.selectAll('.dotTeams') // move the circles
+       .enter().append("circle")
+       .transition().duration(1)
+       .style("opacity", 0.6)
+       .style("fill", "grey");
+
+    d3.selectAll('.dotTeams') // move the circles
+      .transition().duration(1000)
+      .delay(function (d,i) { return i})
+      .attr("cx", function(d) { return x_jitter(d.members); })
+      .attr("cy", function(d) { return y_jitter(d.percent); })
+      .style("fill", "grey");
+
+$("#firstTeamAnno").show();
+$("#fiftyLine").show();
+
+d3.select("#noOfTeams")
+.transition().duration(1000)
+.text("2000")
+
+d3.select("#perOfTeams")
+.transition().duration(1000)
+.text("100%")
+
+$("#onePercent").hide();
+
+
+
+
+});
+} //end function allTeams()
+
+
+
+
+
+
+
+
+
+
+function tokenWomen(firstXDomain, firstYDomain) {
+
+  d3.csv("teams.csv", function(error, data) {
+    if (error) throw error;
+
+  x.domain(d3.extent(data, firstXDomain)).nice();
+  y.domain(d3.extent(data, firstYDomain)).nice();
+
+    d3.select("#yAxis_team")
+      .transition().duration(1000)
+      .call(d3.axisLeft(y)
+        .tickFormat(d3.format(".0%")));
+
+    d3.select("#xAxis_team")
+      .transition().duration(1000)
+      .call(d3.axisBottom(x));
+
+    d3.selectAll('.dotTeams') // move the circles
+       .filter(function(d) { return d.female > 1 })
+       .transition().duration(1)
+       .style("opacity", 0)
+       .remove();
+
+    d3.selectAll('.dotTeams') // move the circles
+      .filter(function(d) { return d.female == 1 })
+      .transition().duration(1000)
+      .delay(function (d,i) { return i})
+      .attr("cx", function(d) { return x_jitter(d.members); })
+      .attr("cy", function(d) { return y_jitter(d.percent); })
+      .style("fill", function(d){
+        if (d.female>d.male && d.male != 0){return "rgb(234,70,46)"}
+          else {return "grey"}
+      });
+
+$("#firstTeamAnno").hide();
+$("#fiftyLine").hide();
+
+d3.select("#noOfTeams")
+.transition().duration(1000)
+.text("255")
+
+d3.select("#perOfTeams")
+.transition().duration(1000)
+.text("8.9%")
+
+$("#onePercent").hide()
+  });
+
+} //end function fiftyWomen()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function fiftyWomen(thisXDomain, thisYDomain) {
 
   d3.csv("teams.csv", function(error, data) {
@@ -430,39 +526,44 @@ function fiftyWomen(thisXDomain, thisYDomain) {
     x.domain(d3.extent(data, thisXDomain)).nice();
     y.domain(d3.extent(data, thisYDomain)).nice();
 
-    d3.select("#teamYAxis")
+    d3.select("#yAxis_team")
       .transition().duration(1000)
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(y)
+        .tickFormat(d3.format(".0%")));
 
-    d3.select("#teamXAxis")
+    d3.select("#xAxis_team")
       .transition().duration(1000)
       .call(d3.axisBottom(x));
 
     d3.selectAll('.dotTeams') // move the circles
        .filter(function(d) { return d.percent < 0.5 })
        .transition().duration(1)
-       .style("opacity", 0);
+       .style("opacity", 0)
+       .remove();
 
     d3.selectAll('.dotTeams') // move the circles
       .filter(function(d) { return d.percent >= 0.5 })
       .transition().duration(1000)
       .delay(function (d,i) { return i})
-      .attr("cx", function(d){return x(d.members); })
-      .attr("cy", function(d){return y(d.percent); })
+      .attr("cx", function(d) { return x_jitter(d.members); })
+      .attr("cy", function(d) { return y_jitter(d.percent); })
       .style("fill", function(d){
-        if (d.female>d.male && d.male != 0){return "yellow"}
+        if (d.female>d.male && d.male != 0){return "rgb(234,70,46)"}
           else {return "grey"}
       });
 
-d3.select("#teamNumber")
+$("#firstTeamAnno").hide();
+$("#fiftyLine").hide();
+
+d3.select("#noOfTeams")
 .transition().duration(1000)
 .text("255")
 
-d3.select("#teamPercentNumber")
+d3.select("#perOfTeams")
 .transition().duration(1000)
 .text("8.9%")
 
-$("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<br>This means that <span style='background-color:yellow'>only 10% of these teams are both mixed-gender<br> and have more women than men.</span> That's only 1% of all teams in the DC and Marvel universes.");
+$("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<br>This means that <span style='background-color:rgb(234,70,46);color:white;'>only 10% of these teams are both mixed-gender<br> and have more women than men.</span> That's only 1% of all teams in the DC and Marvel universes.");
 
   });
 
@@ -473,6 +574,18 @@ $("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<
 // ALL THE BUTTONS
 
 $("#fiftyPercent").click(function() {
+  fiftyWomen(fiftyXDomain, fiftyYDomain);
+})
+
+$("#allTeams").click(function() {
+ allTeams(firstXDomain, firstYDomain);
+})
+
+$("#tokenWoman").click(function() {
+  tokenWomen(firstXDomain, firstYDomain);
+})
+
+$("#onlyWomen").click(function() {
   fiftyWomen(fiftyXDomain, fiftyYDomain);
 })
 

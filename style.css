@@ -264,8 +264,8 @@ margin-top:0px;
 
 #onePercent {
 	position:absolute;
-	left:65%;
-	top:30%;
+	left:68%;
+	top:40%;
 	width: 200px;
 	font-size: 12px;
 }
@@ -383,12 +383,39 @@ th {
 }
 
 
-
-
 /*ANNOTATION STYLING
 */
 
 .annotation-group {
 	font-size: 12px;
 }
+
+
+/*TEAMS STYLING*/
+
+#teamNumber {
+	position:absolute;
+	left:800px;
+	top:50px;
+}
+
+#noOfTeams {
+	position:absolute;
+	left:830px;
+	top:70px;
+}
+
+#teamPercentNumber {
+	position:absolute;
+	left:800px;
+	top:110px;
+}
+
+#perOfTeams {
+	position:absolute;
+	left:830px;
+	top:130px;
+}
+
+
 

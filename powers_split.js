@@ -99,14 +99,14 @@ d3.csv("powerGender.csv", function(error, data) {
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(47.5),         //Give x() the percent difference you want
+      x: x(47),         //Give x() the percent difference you want
       y: y('Objects'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
       // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
-      dx: dx(75),
+      dx: dx(35),
       dy: 0,
       subject: {
         radius: 15,         //Size of the the circling
-        radiusPadding: 5    //A little gap between the annotation line and the circle
+        radiusPadding: 0    //A little gap between the annotation line and the circle
       }
     }
   ]
@@ -115,8 +115,18 @@ d3.csv("powerGender.csv", function(error, data) {
     .type(d3.annotationCalloutCircle)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
     .annotations(circleAnnotations_powers)
   svg.append("g")
+      .attr("id", "read_anno")
       .attr("class", "annotation-group")
       .call(makeCircleAnnotations_powers)      //This needs to call the object made above
+
+
+
+
+
+
+
+
+
 
 
   //Rectangle annotation examples
@@ -128,23 +138,19 @@ d3.csv("powerGender.csv", function(error, data) {
         label: "Powers of the mind are disproportionately possesed by female characters"
       },
       // x,y are the upper left hand side of the box
-      x: x(-145),
+      x: x(-200),
       y: y("Mentality-based powers")+10,
       // dx,dy are how FAR the ***annotation*** text is from the point x,y
       dx: dx(75),
       dy: 0,
-      subject: {
-        // width and height are the size of the box so use dx() and dy() to give difference from start
-        width: dx(60),
-        height: dy(-0.1)
-      }
     }
   ]
   const makeRectangleAnnotations_powers = d3.annotation()
     .editMode(false)
-    .type(d3.annotationCalloutRect)      //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+    .type(d3.annotationXYThreshold)      //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
     .annotations(rectangleAnnotations_powers)
   svg.append("g")
+      .attr("id", "emotion_anno")
       .attr("class", "annotation-group")
       .call(makeRectangleAnnotations_powers)     //This needs to call the object made above
 
@@ -301,7 +307,7 @@ function outlier_back(){
 d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
-x.domain([150,-150]).nice();
+x.domain([140,-140]).nice();
 
 
 d3.select("#xAxis")
@@ -315,6 +321,9 @@ d3.select("#xAxis")
       .attr("cy", function(d) { return y(d.category_wiki); })
 
 });
+
+$("#read_anno").show();
+$("#emotion_anno").show();
 
 } //end function outlier();
 
@@ -338,6 +347,9 @@ d3.select("#xAxis")
       .attr("cy", function(d) { return y(d.category_wiki); })
 
 });
+
+$("#read_anno").hide();
+$("#emotion_anno").hide();
 
 } //end function outlier();
 
