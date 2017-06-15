@@ -12,14 +12,6 @@ var x = d3.scaleLinear()
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-// var xAxis = d3.svg.axis()
-//     .scale(x)
-//     .orient("top");
-
-// var yAxis = d3.svg.axis()
-//     .scale(y)
-//     .orient("left");
-
 var svg = d3.select("#genNames_graph").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -54,30 +46,6 @@ ascendingFemaleNames(data);
       .attr("transform", "translate(0, -50)")
       .call(d3.axisTop(x));
 
-  // svg.append("g")
-  //     .attr("class", "x axis")
-  //     .attr("id", "xAxis")
-  //     .attr("transform", "translate(0, -50)")
-  //     .call(xAxis)
-    // .append("text")
-    //   .attr("class", "label")
-    //   .attr("x", width)
-    //   .attr("y", 20)
-    //   .style("text-anchor", "end")
-    //   .text("male");
-
-  // svg.append("g")
-  //     .attr("class", "y axis")
-  //     .attr("id", "yAxis_genName")
-  //     .call(yAxis)
-  //   .append("text")
-  //     .attr("class", "label")
-  //     .attr("transform", "rotate(-90)")
-  //     .attr("y", 6)
-  //     .attr("dy", ".71em")
-  //     .style("text-anchor", "end")
-  //     .text("categories")
-
   svg.selectAll(".genDot")
       .data(data)
     .enter().append("circle")
@@ -103,8 +71,7 @@ ascendingFemaleNames(data);
       })
       .on('mouseover', function (d) {
           var section = d3.select(this);
-          section.style("stroke", 'black')
-      .style("stroke-width", 1.5)
+              section.style("opacity", 0.6)
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
@@ -115,21 +82,15 @@ ascendingFemaleNames(data);
       .on("click",  function(d){
           $(".genNames").html(d.char_list);
           $("#genTitle").html(d.gen_name);
-          var section = d3.select(this);
-          section.style("fill", 'red');
+          d3.selectAll(".genDot").style("fill", function(d){
+              if (d.gender == 1) {return "rgb(39,123,191)"}
+              else {return "rgb(243,185,47)"}
+          }).style("stroke", 'white').style("stroke-width", 0.5)
+          d3.select(this).style("fill", 'white').style("stroke", "black").style("stroke-width", 1.5);
           }) 
       .on('mouseout', function () {
           var section = d3.select(this);
-          section.style("stroke", 'white')
-          .style("stroke-width", 0.5)
-              //   .style("stroke", function(d){
-              //     if (d.gen_name == "lady"){return "black"}
-              //     else {return "white"}
-              //  })
-              //   .style("stroke-width", function(d){
-              //     if (d.gen_name == "lady") {return 4}
-              //       else {return 0.5}
-              // })
+              section.style("opacity", '1')
           d3.select('#tooltip').classed('hidden', true);
         });
 
