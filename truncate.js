@@ -1,4 +1,4 @@
-var showChar = 200;
+var showChar = 1000;
 var ellipsestext = "...";
 var moretext = "See More";
 var lesstext = "See Less";
