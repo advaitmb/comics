@@ -10,6 +10,14 @@ var y = d3.scaleBand()
 var x = d3.scaleLinear()
     .range([width, 0]);
 
+// Functions for offsetting annotations    
+function dy(t) {
+  return y(t)-y(0);
+}
+function dx(t) {
+  return x(t)-x(0);
+}
+
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
 var svg = d3.select("#genNames_graph").append("svg")
@@ -38,6 +46,88 @@ ascendingFemaleNames(data);
 
   x.domain([30,-30]);
   y.domain(data.map(function(d) { return d.gen_cat; }));
+
+
+
+ //Circle annotation examples
+  const circleAnnotations_girl = [
+    // Two annotations in this example array
+    {
+      note: {
+        title: "Girls, not women",
+        label: "'Girl' is the third-most common gendered name for a female character. 'Boy' only shows up sixth for males."
+      },
+      // x,y are the point that the annotation points too
+      // (by using the functions x() and y() this is done in graph units rather than pixels)
+      x: x(-13),         //Give x() the percent difference you want
+      y: y('girl'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
+      // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
+      dx: dx(-7),
+      dy: 0,
+      subject: {
+        radius: 2,         //Size of the the circling
+        radiusPadding: 40    //A little gap between the annotation line and the circle
+      }
+    }
+  ]
+  const makeCircleAnnotations_girl = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCalloutCircle)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+    .annotations(circleAnnotations_girl)
+  svg.append("g")
+      .attr("id", "girl_anno")
+      .attr("class", "annotation-group")
+      .call(makeCircleAnnotations_girl)      //This needs to call the object made above
+
+
+
+
+
+//Circle annotation examples
+  const circleAnnotations_man = [
+    // Two annotations in this example array
+    {
+      note: {
+        title: "Men, not boys",
+        label: "A full 30% of male characters with gendered names get 'man' in their name. That number is only 6% for 'woman'."
+      },
+      // x,y are the point that the annotation points too
+      // (by using the functions x() and y() this is done in graph units rather than pixels)
+      x: x(30),         //Give x() the percent difference you want
+      y: y('woman'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
+      // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
+      dx: dx(-2),
+      dy: 50
+    }
+  ]
+  const makeCircleAnnotations_man = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCallout)   //This needs to be set to the correct type (see http://d3-annotation.susielu.com/#types)
+    .annotations(circleAnnotations_man)
+  svg.append("g")
+      .attr("id", "man_anno")
+      .attr("class", "annotation-group")
+      .call(makeCircleAnnotations_man)      //This needs to call the object made above
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   svg.append("g")
@@ -292,10 +382,14 @@ d3.selectAll(".between")
 
 $( "#descendingFemale" ).click(function() {
  femaleOrder();
+ $("#man_anno").delay(500).show(500);
+ $("#girl_anno").delay(500).show(500);
 });
 
 $( "#descendingMale" ).click(function() {
  maleOrder();
+ $("#man_anno").delay(500).hide(500);
+ $("#girl_anno").delay(500).hide(500);
 });
 
 

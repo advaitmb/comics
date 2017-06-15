@@ -45,7 +45,6 @@ d3.csv("powerGender.csv", function(error, data) {
   return d3.interpolateYlOrRd(t);
 }
 
-
   x.domain([150,-150]);
   y.domain(data.map(function(d) { return d.category_wiki; }));
 
@@ -138,8 +137,8 @@ d3.csv("powerGender.csv", function(error, data) {
         label: "Powers of the mind are possesed disproportionately by female characters"
       },
       // x,y are the upper left hand side of the box
-      x: x(-200),
-      y: y("Mentality-based powers")+10,
+      x: x(-210),
+      y: y("Mentality-based powers")+20,
       // dx,dy are how FAR the ***annotation*** text is from the point x,y
       dx: dx(75),
       dy: 0,
