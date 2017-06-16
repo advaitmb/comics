@@ -401,6 +401,19 @@ d3.csv("teams.csv", function(error, data) {
   x.domain(d3.extent(data, firstXDomain)).nice();
   y.domain(d3.extent(data, firstYDomain)).nice();
 
+    $("#fiftyLine").show();
+
+  d3.select("#noOfTeams")
+  .transition().duration(1000)
+  .text("2862")
+
+  d3.select("#perOfTeams")
+    .transition().duration(1000)
+    .text("100%")
+
+  $("#onePercent").hide();
+
+
   d3.select("#yAxis_team")
       .transition().duration(1000)
       .call(d3.axisLeft(y)
@@ -438,17 +451,6 @@ d3.csv("teams.csv", function(error, data) {
           d3.select('#tooltip').classed('hidden', true);
         });
 
-  $("#fiftyLine").show();
-
-  d3.select("#noOfTeams")
-  .transition().duration(1000)
-  .text("2000")
-
-  d3.select("#perOfTeams")
-    .transition().duration(1000)
-    .text("100%")
-
-  $("#onePercent").hide();
 });
 } //end function allTeams()
 
@@ -507,11 +509,11 @@ function tokenWomen(firstXDomain, firstYDomain) {
 
   d3.select("#noOfTeams")
     .transition().duration(1000)
-    .text("255")
+    .text("762")
 
   d3.select("#perOfTeams")
     .transition().duration(1000)
-    .text("8.9%")
+    .text("26.6%")
 
   $("#onePercent").hide()
 });
@@ -549,7 +551,7 @@ function fiftyWomen(thisXDomain, thisYDomain) {
 
     //Hide the dots that we aren't interested in
     d3.selectAll('.dotTeams') // move the circles
-       .filter(function(d) { return d.percent < 0.5 })
+       .filter(function(d) { return d.percent <= 0.5 })
        .transition().duration(1)
        .attr("cx", function(d) { return x(-40); })
        .attr("cy", function(d) { return y(0.4); })
@@ -558,7 +560,7 @@ function fiftyWomen(thisXDomain, thisYDomain) {
 
     //Show the dots that we are interested in
     d3.selectAll('.dotTeams') // move the circles
-      .filter(function(d) { return d.percent >= 0.5 })
+      .filter(function(d) { return d.percent > 0.5 })
       .transition().duration(1000)
       .delay(function (d,i) { return i})
       .attr("cx", function(d) { return x_jitter(d.members); })
@@ -575,14 +577,14 @@ function fiftyWomen(thisXDomain, thisYDomain) {
 
     d3.select("#noOfTeams")
     .transition().duration(1000)
-    .text("255")
+    .text("342")
 
     d3.select("#perOfTeams")
     .transition().duration(1000)
-    .text("8.9%")
+    .text("12%")
 
     $("#onePercent").show();
-    $("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<br>This means that <span style='background-color:rgb(234,70,46);color:white;'>only 10% of these teams are both mixed-gender<br> and have more women than men.</span> That's only 1% of all teams in the DC and Marvel universes.");
+    $("#onePercent").html("Of these 12% of teams that have more women than men, 33% have ONLY female characters.<br>This means that <span style='background-color:rgb(234,70,46);color:white;'>only 8% of all teams in the DC and Marvel universes are both mixed-gender<br> and have more women than men.</span>");
 
   });
 } //end function fiftyWomen()
