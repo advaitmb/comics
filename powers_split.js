@@ -272,7 +272,7 @@ function customYAxis(g) {
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
           // .html("<span class='tk-atlas small'>" + d.power + "</span>" + "<br><hr>Percent difference: " + Math.round(d.perdiffMF).toFixed(1) + "%<br>Female: " + Math.round(d.per_females).toFixed(3) + "%<br>Male: " + Math.round(d.per_males).toFixed(3) + "%" );
-          .html("<span class='tk-atlas small'>" + d.power + "</span>" + "<br><hr>Percent difference: " + Math.round(d.perdiffMF*100).toFixed(1) + "%<br>Total Characters: " + d.total);
+          .html("<span class='tk-atlas small'>" + d.power + "</span>" + "<br><hr>Percent difference: " + Math.abs(d.perdiffMF*100).toFixed(1) + "%<br>Total Characters: " + d.total);
            d3.select('#tooltip').classed('hidden', false);
           })
       .on('mouseout', function () {
