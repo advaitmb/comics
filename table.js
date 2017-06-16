@@ -4,17 +4,22 @@ const table = d3.select('#career_chart').append('table');
 table.append('thead');
 table.append('tbody');
 
-function numColor(t) {
-  var cutoff=440.0;
+function numColor(t,cellType) {
+  var cutoff=999999999.0;
+  if(cellType=='num_males') cutoff=440.0
+  else if(cellType=='num_females') cutoff=82.0
+  else if(cellType=='percent_diff') cutoff=2554.79
   t=Math.abs(t)/cutoff;
   if(t>1.0) t=1.0;
   return d3.interpolateYlOrRd(t);
 }
 function cellColor(t) {
+  console.log("Hello world")
   if(t.cl=='title') return 'white'
   else{
     var val=t.html.split("<span class='title'>")[1].split("</span>")[0];
-    return numColor(parseInt(val,10))
+    // return numColor(parseInt(val,10),t.cl)
+    return numColor(parseFloat(val),t.cl)
   }
 }
 
@@ -31,7 +36,7 @@ d3.csv("titles_big2.csv", function(error, titles) {
         return text;
       },
     },
-      {
+    {
       head: 'Male',
       cl: 'num_males',
       html(row) {
@@ -40,12 +45,21 @@ d3.csv("titles_big2.csv", function(error, titles) {
         return text;
       },
     },
-      {
+    {
       head: 'Female',
       cl: 'num_females',
       html(row) {
         const sffemales = titles[row.num_females];
         const text = `<span class='title'>${row.num_females}</span>`;
+        return text;
+      },
+    },
+    {
+      head: '% Difference',
+      cl: 'percent_diff',
+      html(row) {
+        const sfmales = titles[row.percent_diff];
+        const text = `<span class='title'>${row.percent_diff}</span>`;
         return text;
       },
     }
@@ -90,16 +104,16 @@ d3.csv("titles_big2.csv", function(error, titles) {
         return cell;
       }));
 
-    const tdEnter = tdUpdate.enter().append('td');
-
+    var tdEnter = tdUpdate.enter().append('td');
     tdEnter
       .attr('class', d => d.cl)
-      // .style('background-color', 'yellow')
-      .style("background-color", function(d) { return cellColor(d); })
+      // .style("background-color", function(d) { return cellColor(d); })
       .style('border-bottom', '.5px solid white')
       .style('padding-right', '20px')
       .style('padding', '5px');
 
-    tdEnter.merge(tdUpdate).html(d => d.html);
+    tdEnter.merge(tdUpdate).html(d => d.html)
+      .style("background-color", function(d) { return cellColor(d); })
+
   }
 })

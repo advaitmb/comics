@@ -10,7 +10,7 @@ var y = d3.scaleBand()
 var x = d3.scaleLinear()
     .range([width, 0]);
 
-// Functions for offsetting annotations    
+// Functions for offsetting annotations
 function dy(t) {
   return y(t)-y(0);
 }
@@ -31,9 +31,9 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
-    d.gen_per = +d.gen_per;
+    d.gen_per = +d.gen_per/100.0;
     d.count = +d.count;
-    d.per_fake = +d.per_fake;
+    d.per_fake = +d.per_fake/100.0;
   });
 
   function ascendingFemaleNames(data) {data.sort(function(x, y){
@@ -44,7 +44,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 ascendingFemaleNames(data);
 
 
-  x.domain([30,-30]);
+  x.domain([0.30,-0.30]);
   y.domain(data.map(function(d) { return d.gen_cat; }));
 
 
@@ -134,7 +134,9 @@ ascendingFemaleNames(data);
       .attr("class", "x axis")
       .attr("id", "xAxis")
       .attr("transform", "translate(0, -50)")
-      .call(d3.axisTop(x));
+      // .call(d3.axisTop(x));
+      .call(d3.axisTop(x)
+        .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
 
   svg.selectAll(".genDot")
       .data(data)
@@ -167,7 +169,7 @@ ascendingFemaleNames(data);
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .text( Math.abs(d.gen_per).toFixed(2) + "%" );
+          .text( Math.round(d.gen_per).toFixed(2) + "%" );
            d3.select('#tooltip').classed('hidden', false);
           })
       .on("click",  function(d){
@@ -178,7 +180,7 @@ ascendingFemaleNames(data);
               else {return "rgb(243,185,47)"}
           }).style("stroke", 'white').style("stroke-width", 0.5)
           d3.select(this).style("fill", 'white').style("stroke", "rgb(105,174,68)").style("stroke-width", 2);
-          }) 
+          })
       .on('mouseout', function () {
           var section = d3.select(this);
               section.style("opacity", '1')
@@ -262,9 +264,9 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
-    d.gen_per = +d.gen_per;
+    d.gen_per = +d.gen_per/100.0;
     d.count = +d.count;
-    d.per_fake = +d.per_fake;
+    d.per_fake = +d.per_fake/100.0;
   });
 
 
@@ -275,7 +277,6 @@ function descendingMaleNames(data) {data.sort(function(x, y){
 
 descendingMaleNames(data);
 
-  x.domain([30,-30]);
   y.domain(data.map(function(d) { return d.gen_cat; }));
 
  d3.selectAll('.genDot') // move the circles
@@ -325,9 +326,9 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
-    d.gen_per = +d.gen_per;
+    d.gen_per = +d.gen_per/100.0;
     d.count = +d.count;
-    d.per_fake = +d.per_fake;
+    d.per_fake = +d.per_fake/100.0;
   });
 
 
@@ -338,7 +339,6 @@ function ascendingFemaleNames(data) {data.sort(function(x, y){
 
 ascendingFemaleNames(data);
 
-  x.domain([30,-30]);
   y.domain(data.map(function(d) { return d.gen_cat; }));
 
  d3.selectAll('.genDot') // move the circles

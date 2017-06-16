@@ -10,7 +10,7 @@ var y = d3.scaleBand()
 var x = d3.scaleLinear()
     .range([width, 0]);
 
-// Functions for offsetting annotations    
+// Functions for offsetting annotations
 function dy(t) {
   return y(t)-y(0);
 }
@@ -32,20 +32,20 @@ d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
   data.forEach(function(d) {
-    d.per_males = +d.per_males;
-    d.per_females = +d.per_females;
-    d.perdiffMF = +d.perdiffMF;
-    d.per_fake = +d.per_fake;
+    d.per_males = +d.per_males/100.0;
+    d.per_females = +d.per_females/100.0;
+    d.perdiffMF = +d.perdiffMF/100.0;
+    d.per_fake = +d.per_fake/100.0;
   });
 
   function powersColor(t) {
-  var cutoff=100.0;
+  var cutoff=1.0;
   t=Math.abs(t)/cutoff;
   if(t>1.0) t=1.0;
   return d3.interpolateYlOrRd(t);
 }
 
-  x.domain([150,-150]);
+  x.domain([1.50,-1.50]);
   y.domain(data.map(function(d) { return d.category_wiki; }));
 
 
@@ -71,7 +71,7 @@ d3.csv("powerGender.csv", function(error, data) {
   //     y: y(0.5),
   //     // dx,dy are how FAR the annotation text is from the point x,y
   //     // (since svg measures the positions from top to bottom [or something], I made a new little routine to make the conversion everytime)
-  //     dx: dx(15),
+  //     dx: dx(0.15),
   //     dy: dy(0.05),
   //     subject: {
   //       x1: x(0),
@@ -98,10 +98,10 @@ d3.csv("powerGender.csv", function(error, data) {
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(47),         //Give x() the percent difference you want
+      x: x(0.47),         //Give x() the percent difference you want (in fractions [from 0 to 1] not percent [0 to 100])
       y: y('Objects'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
       // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
-      dx: dx(35),
+      dx: dx(0.35),
       dy: 0,
       subject: {
         radius: 15,         //Size of the the circling
@@ -137,10 +137,10 @@ d3.csv("powerGender.csv", function(error, data) {
         label: "Powers of the mind are possesed disproportionately by female characters"
       },
       // x,y are the upper left hand side of the box
-      x: x(-210),
+      x: x(-2.10),
       y: y("Mentality-based powers")+20,
       // dx,dy are how FAR the ***annotation*** text is from the point x,y
-      dx: dx(75),
+      dx: dx(0.75),
       dy: 0,
     }
   ]
@@ -238,7 +238,7 @@ svg.append("g")
   .attr("id", "xAxis")
   .attr("transform", "translate(0, -50)")
   .call(d3.axisTop(x)
-    .tickFormat(d3.format("%")));
+    .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
 
 svg.append("g")
   .attr("class", "powerYAxis")
@@ -279,7 +279,7 @@ function customYAxis(g) {
           var section = d3.select(this);
           section.style("stroke", "white")
                  .style("stroke-width", 0.5);
-          d3.select('#tooltip').classed('hidden', true); 
+          d3.select('#tooltip').classed('hidden', true);
         });
 
   // d3.selectAll(".tick")
@@ -296,7 +296,7 @@ function customYAxis(g) {
       .attr('height', bBox.height + 6)
       .attr('width', bBox.width + 6)
       .style('fill', "white");
-      // .style('fill', "#182a37");      
+      // .style('fill', "#182a37");
   });
 
 
@@ -308,13 +308,15 @@ function outlier_back(){
 d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
-x.domain([150,-150]);
+x.domain([1.50,-1.50]);
 y.domain(data.map(function(d) { return d.category_wiki; }));
 
 
 d3.select("#xAxis")
   .transition().duration(500)
-  .call(d3.axisTop(x))
+  .call(d3.axisTop(x)
+    .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
+
 
  d3.selectAll('.dot2') // move the circles
       .transition().duration(500)
@@ -335,12 +337,13 @@ function outlier(){
 d3.csv("powerGender.csv", function(error, data) {
   if (error) throw error;
 
-x.domain([700,-700]).nice();
+x.domain([7.00,-7.00]).nice();
 
 
 d3.select("#xAxis")
   .transition().duration(500)
-  .call(d3.axisTop(x))
+  .call(d3.axisTop(x)
+    .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
 
  d3.selectAll('.dot2') // move the circles
       .transition().duration(500)
