@@ -2,11 +2,6 @@ main {
 	overflow: hidden;
 }
 
-.intro__dek {
-	width:400px;
-	text-align: center;
-}
-
 .axis path,
 .axis line {
   fill: none;
@@ -14,14 +9,56 @@ main {
   shape-rendering: crispEdges;
 }
 
-.dot {
-  stroke: #ffffff;
+
+
+/*BUTTONS*/
+.btn {
+    background-color: #182a37;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    transition: background-color 250ms;
+    }
+
+.btn:hover {
+	background-color: rgb(234,70,46);
+}
+
+
+
+
+/*INTRO*/
+.intro__dek {
+	width:400px;
+	text-align: center;
+}
+
+#introGifs {
+	max-width: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100px;
 }
 
 .legend {
   display: none;
 }
 
+
+
+/*TOOLTIPS*/
 #tooltip {
     position: absolute;
     text-align: left;
@@ -44,22 +81,10 @@ main {
     line-height: 15px;
 }
 
-.between {
-  stroke: "black";
-  stroke-width: 1px;
-}
 
 
-#yAxis_genName {
-	display: none;
-	}
 
-
-.tick {
-	font-size: 12px;
-}
-
-	/* GRAPHIC CODE */
+/* GRAPHICS */
 .graphic {
 	width: 100%;
 	position: relative;
@@ -74,13 +99,6 @@ main {
 .graphic__prose p{
 	font-size: 15px;
 }
-
-.graphic__prose .trigger {
-	padding: 0;
-	margin: 0;
-	min-height: 240px;
-}
-
 
 .dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis, .career_chart__vis {
 	position:relative;
@@ -127,20 +145,15 @@ main {
 	margin-right: auto;
 }
 
-#introGifs {
-	max-width: 200px;
-	margin-right: auto;
-	margin-left: auto;
+.chartBody {
+	position:relative;
 }
 
 
-IMG.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width:100px;
-}
 
+
+
+/* TITLES, CHART TEXT, BODY TEXT */
 .midTitle {
 	text-align: center;
 }
@@ -153,14 +166,6 @@ IMG.displayed {
 	text-align: left;
 }
 
-.chartHed {
-	position:relative;
-	margin-left: auto;
-	margin-right: auto;
-	width:60%;
-	padding-top: 50px;
-}
-
 .paddedBody {
 	position:relative;
 	margin-left: auto;
@@ -168,6 +173,41 @@ IMG.displayed {
 	width:60%;
 	padding-top: 50px;
 }
+
+.chartHed {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top: 10px;
+}
+
+.chartTitle {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	font-weight: 700;
+}
+
+.chartText {
+	padding-top:0px;
+	margin-top:0px;
+}
+
+.graphicWrapper {
+	margin-right: auto;
+	margin-left: auto;
+	position:relative;
+	width:100%;
+	max-width: 1000px;
+}
+
+
+
+
+
+
+
+/* EXPERT OPINION */
 .expertOpinion {
 	position:relative;
 	margin-left: auto;
@@ -180,194 +220,6 @@ IMG.displayed {
 	padding-top: 0px;
 	margin-top: 0px;
 }
-
-
-
-.chartHed {
-	position:relative;
-	margin-left: auto;
-	margin-right: auto;
-	width:60%;
-	padding-top: 10px;
-}
-
-.listNames {
-	position:absolute;
-	width: 25%;
-	margin-left:70%;
-}
-
-.chartBody {
-	position:relative;
-}
-
-.note {
-	position:relative;
-	margin-left: auto;
-	margin-right: auto;
-	width:60%;
-	padding-top:0px;
-	margin-top:0px;
-	padding-top: 0px;
-	font-size: 10px;
-	font-weight:500;
-	padding-left:20px;
-	padding-right: 20px;
-}
-
-
-.graphicWrapper {
-	margin-right: auto;
-	margin-left: auto;
-	position:relative;
-	width:100%;
-	max-width: 1000px;
-}
-
-
-.graphicLeft {
-	width:70%;
-	position:relative;
-}
-
-
-#genTitle {
-	position:absolute;
-  	text-transform: uppercase;
-  	text-align: left;
-	left:65%;
-	color:rgb(105,174,68);
-	font-weight: 500;
-}
-
-
-.genNames {
-	position: absolute;
-	width: 30%;
-	float: right;
-	left: 65%;
-	top: 40px;
-	font-size: 10px;
-	padding-right: 2rem;
-}
-
-
-.chartTitle {
-	margin-bottom: 0px;
-	padding-bottom: 0px;
-	font-weight: 700;
-}
-
-.chartText {
-padding-top:0px;
-margin-top:0px;
-}
-
-
-#onePercent {
-	position:absolute;
-	left:68%;
-	top:40%;
-	width: 200px;
-	font-size: 12px;
-}
-
-#outliers_back {
-	display:none;
-}
-
-#powers_radius, #norm_radius {
-	float:right;
-}
-
-#sizeBy {
-    border: 1px solid #fff;
-    border-radius: 3px;
-    color: #182a37;
-    padding: .25em .5em;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: .05em;
-    font-size: 12px;
-    float:right;
-}
-
-.label, .dodo {
-    font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-}
-
-.dodo {
-    font-weight: 500;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-}
-
-.btn {
-    background-color: #182a37;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    color: #fff;
-    padding: .25em .5em;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: .05em;
-    font-size: 12px;
-    transition: background-color 250ms;
-    }
-
-.btn:hover {
-	background-color: rgb(234,70,46);
-}
-
-.tick {
-	color: red;
-}
-
-.domain {
-	display:none;
-}
-
-.tick {
-	font-weight: 300;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-    z-index: 100;
-}
-
-table {
-	margin-right: auto;
-	margin-left: auto;
-	width:100%;
-	max-width: 600px;
-}
-
-td {
-	font-weight: 700;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-     border: 1px solid #fff;
-    border-radius: 3px;
-}
-
-
-th {
-	background-color: #182a37;
-    border: 1px solid #fff;
-    border-radius: 3px;
-    color: #fff;
-    padding: .25em .5em;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: .05em;
-    font-size: 12px;
-}
-
 
 .expert {
 	background-color: rgb(234,70,46);
@@ -388,53 +240,34 @@ th {
 
 
 
-.remaining-content span {
-    display:none;
+
+
+/* DATA NOTES */
+.note {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:60%;
+	padding-top:0px;
+	margin-top:0px;
+	padding-top: 0px;
+	font-size: 10px;
+	font-weight:500;
+	padding-left:20px;
+	padding-right: 20px;
 }
 
-/*DOT STYLING*/
 
-.genDot:hover {
-	cursor: pointer;
+
+
+/* POWERS CHART */
+#outliers_back {
+	display:none;
 }
 
-
-/*ANNOTATION STYLING
-*/
-
-.annotation-group {
-	font-size: 12px;
+#powers_radius, #norm_radius {
+	float:right;
 }
-
-
-
-/*TEAMS STYLING*/
-
-/*#teamNumber {
-	position:absolute;
-	left:800px;
-	top:50px;
-}
-
-#noOfTeams {
-	position:absolute;
-	left:830px;
-	top:70px;
-}
-
-#teamPercentNumber {
-	position:absolute;
-	left:800px;
-	top:110px;
-}
-
-#perOfTeams {
-	position:absolute;
-	left:830px;
-	top:130px;
-}
-*/
-
 
 #sizeBy {
     border: 1px solid #fff;
@@ -448,6 +281,83 @@ th {
     float:right;
 }
 
+
+
+
+/*GENDERED NAMES CHART*/
+.between {
+  stroke: "black";
+  stroke-width: 1px;
+}
+
+#yAxis_genName {
+	display: none;
+	}
+
+
+.listNames {
+	position:absolute;
+	width: 25%;
+	margin-left:70%;
+}
+
+.graphicLeft {
+	width:70%;
+	position:relative;
+}
+
+#genTitle {
+	position:absolute;
+  	text-transform: uppercase;
+  	text-align: left;
+	left:65%;
+	color:rgb(105,174,68);
+	font-weight: 500;
+}
+
+.genNames {
+	position: absolute;
+	width: 30%;
+	float: right;
+	left: 65%;
+	top: 40px;
+	font-size: 10px;
+	padding-right: 2rem;
+}
+
+.label, .dodo {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.dodo {
+    font-weight: 500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.tick {
+	font-size: 12px;
+}
+
+
+
+
+
+
+
+
+/* TEAMS CHART */
+#onePercent {
+	position:absolute;
+	left:68%;
+	top:40%;
+	width: 200px;
+	font-size: 12px;
+}
 
 .num {
 	border: 1px solid #fff;
@@ -473,24 +383,89 @@ th {
     float:left;
 }
 
-
-/*#noOfTeams {
-	position:absolute;
-	left:830px;
-	top:70px;
+.domain {
+	display:none;
 }
 
-#teamPercentNumber {
-	position:absolute;
-	left:800px;
-	top:110px;
+.tick {
+	font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    z-index: 100;
 }
 
-#perOfTeams {
-	position:absolute;
-	left:830px;
-	top:130px;
+
+
+
+
+
+
+
+/* PROFESSIONAL TITLES TABLE */
+table {
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+	max-width: 600px;
 }
+
+td {
+	font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+     border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+th {
+	background-color: #182a37;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+}
+
+
+
+
+
+/*DOT STYLING*/
+
+.genDot:hover {
+	cursor: pointer;
+}
+
+.dot {
+  stroke: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+/*ANNOTATION STYLING
 */
+
+.annotation-group {
+	font-size: 12px;
+}
+
+.remaining-content span {
+    display:none;
+}
+
+
+
+
 
 
