@@ -1,6 +1,6 @@
 (function() {
 
-var margin = {top: 60, right: 20, bottom: 50, left: 40},
+var margin = {top: 60, right: 20, bottom: 50, left: 50},
     width = 900 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -306,12 +306,30 @@ d3.csv("teams.csv", function(error, data) {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
+  svg.append("text")  
+      .attr("class", "tk-atlas") 
+      .attr("class", "small")           
+      .attr("transform", "translate(400," + (height+35) + ")")
+      .style("text-anchor", "middle")
+      .text("Team members");
+
 
  svg.append("g")
       .attr("class", "y axis")
       .attr("id", "yAxis_team")
       .call(d3.axisLeft(y)
         .tickFormat(d3.format(".0%")));
+
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("class", "tk-atlas") 
+      .attr("class", "small") 
+      .attr("y", -50 )
+      .attr("x",0 - (height / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Percent female");      
+
 
 
 
