@@ -238,7 +238,7 @@ svg.append("g")
   .attr("id", "xAxis")
   .attr("transform", "translate(0, -50)")
   .call(d3.axisTop(x)
-    .tickFormat(d3.format("0.0%")));
+    .tickFormat(d3.format("%")));
 
 svg.append("g")
   .attr("class", "powerYAxis")

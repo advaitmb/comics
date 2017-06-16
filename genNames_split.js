@@ -167,7 +167,7 @@ ascendingFemaleNames(data);
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .text( Math.round(d.gen_per).toFixed(2) + "%" );
+          .text( Math.abs(d.gen_per).toFixed(2) + "%" );
            d3.select('#tooltip').classed('hidden', false);
           })
       .on("click",  function(d){
