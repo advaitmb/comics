@@ -99,8 +99,8 @@ d3.csv("teams.csv", function(error, data) {
       y: y(0.5),
       // dx,dy are how FAR the annotation text is from the point x,y
       // (since svg measures the positions from top to bottom [or something], I made a new little routine to make the conversion everytime)
-      dx: dx(15),
-      dy: dy(0.05),
+      dx: dx(220),
+      dy: dy(0),
       subject: {
         x1: x(0),
         x2: x(400)
@@ -408,14 +408,16 @@ d3.csv("teams.csv", function(error, data) {
     d3.select("#xAxis_team")
       .transition().duration(1000)
       .call(d3.axisBottom(x));
-
-    d3.selectAll('.dotTeams') // move the circles
+      
+    d3.selectAll('.dotTeams')
+        .data(data)
        .enter().append("circle")
        .transition().duration(1)
        .style("opacity", 0.6)
        .style("fill", "grey");
 
-    d3.selectAll('.dotTeams') // move the circles
+    d3.selectAll('.dotTeams')
+     // move the circles
       .transition().duration(1000)
       .delay(function (d,i) { return i})
       .attr("cx", function(d) { return x_jitter(d.members); })
