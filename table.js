@@ -6,8 +6,8 @@ table.append('tbody');
 
 function numColor(t,cellType) {
   var cutoff=999999999.0;
-  if(cellType=='num_males') cutoff=440.0
-  else if(cellType=='num_females') cutoff=82.0
+  if(cellType=='percent_males') cutoff=30.0
+  else if(cellType=='percent_females') cutoff=43.0
   else if(cellType=='percent_diff') cutoff=2554.79
   t=Math.abs(t)/cutoff;
   if(t>1.0) t=1.0;
@@ -37,20 +37,20 @@ d3.csv("titles_big2.csv", function(error, titles) {
       },
     },
     {
-      head: 'Male',
+      head: 'Percent Male',
       cl: 'num_males',
       html(row) {
-        const sfmales = titles[row.num_males];
-        const text = `<span class='title'>${row.num_males}</span>`;
+        const sfmales = titles[row.percent];
+        const text = `<span class='title'>${row.percent_males}</span>`;
         return text;
       },
     },
     {
-      head: 'Female',
+      head: 'Percent Female',
       cl: 'num_females',
       html(row) {
-        const sffemales = titles[row.num_females];
-        const text = `<span class='title'>${row.num_females}</span>`;
+        const sffemales = titles[row.percent_females];
+        const text = `<span class='title'>${row.percent_females}</span>`;
         return text;
       },
     },
