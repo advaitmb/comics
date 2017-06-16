@@ -9,7 +9,7 @@ var x = d3.scaleLinear()
 var y = d3.scaleLinear()
     .range([height, 0]);
 
-// Functions for offsetting annotations    
+// Functions for offsetting annotations
 function dy(t) {
   return y(t)-y(0);
 }
@@ -48,7 +48,7 @@ var svg = d3.select("#teams_graph").append("svg")
 var firstXDomain = function(d) { return d.members }
 var firstYDomain = function(d) { return d.percent }
 
-var tokenXDomain = function(d) { if (d.members<=400) return d.members }
+var tokenXDomain = function(d) { if (d.members<=25) return d.members }
 
 var fiftyXDomain = function(d) { if (d.members<160) return d.members }
 var fiftyYDomain = function(d) { if (d.percent >= 0.5) return d.percent }
@@ -391,36 +391,29 @@ function allTeams(firstXDomain, firstYDomain){
 d3.csv("teams.csv", function(error, data) {
   if (error) throw error;
 
-   data.forEach(function(d) {
+  data.forEach(function(d) {
     d.percent = +d.percent;
     d.members = +d.members;
     d.female = +d.female;
     d.male = +d.male;
   });
 
-
   x.domain(d3.extent(data, firstXDomain)).nice();
   y.domain(d3.extent(data, firstYDomain)).nice();
 
-    d3.select("#yAxis_team")
+  d3.select("#yAxis_team")
       .transition().duration(1000)
       .call(d3.axisLeft(y)
         .tickFormat(d3.format(".0%")));
 
-    d3.select("#xAxis_team")
+  d3.select("#xAxis_team")
       .transition().duration(1000)
       .call(d3.axisBottom(x));
 
-    var teamsCircles = svg.selectAll('.dotTeams')
-      .data(data);
-
-      teamsCircles.exit().remove();
-
-
-teamsCircles.enter().append("circle")
-      .attr("class", "dotTeams")
+  d3.selectAll('.dotTeams') // move the circles
+      // .delay(function (d,i) { return i})
       .attr("r", 4)
-      .merge(teamsCircles)
+      .transition().duration(10)
       .attr("cx", function(d) { return x_jitter(d.members); })
       .attr("cy", function(d) { return y_jitter(d.percent); })
       .style("opacity", 0.6)
@@ -445,121 +438,19 @@ teamsCircles.enter().append("circle")
           d3.select('#tooltip').classed('hidden', true);
         });
 
-$("#fiftyLine").show();
+  $("#fiftyLine").show();
 
-d3.select("#noOfTeams")
-.transition().duration(1000)
-.text("2000")
+  d3.select("#noOfTeams")
+  .transition().duration(1000)
+  .text("2000")
 
-d3.select("#perOfTeams")
-.transition().duration(1000)
-.text("100%")
+  d3.select("#perOfTeams")
+    .transition().duration(1000)
+    .text("100%")
 
-$("#onePercent").hide();
-
-
-
-
+  $("#onePercent").hide();
 });
 } //end function allTeams()
-
-
-
-
-
-
-
-// function tokenWomen(firstXDomain, firstYDomain){
-
-// d3.csv("teams.csv", function(error, data) {
-//   if (error) throw error;
-
-//    data.forEach(function(d) {
-//     d.percent = +d.percent;
-//     d.members = +d.members;
-//     d.female = +d.female;
-//     d.male = +d.male;
-//   });
-
-
-//   x.domain(d3.extent(data, firstXDomain)).nice();
-//   y.domain(d3.extent(data, firstYDomain)).nice();
-
-//     d3.select("#yAxis_team")
-//       .transition().duration(1000)
-//       .call(d3.axisLeft(y)
-//         .tickFormat(d3.format(".0%")));
-
-//     d3.select("#xAxis_team")
-//       .transition().duration(1000)
-//       .call(d3.axisBottom(x));
-
-//     var womenCircles = d3.selectAll('.dotTeams')
-//       .data(data);
-
-//       womenCircles.exit().remove();
-
-//   womenCircles.enter().append("circle")
-//       .attr("class", "dotTeams")
-//       .attr("r", 4)
-//       .merge(womenCircles)
-//       .filter(function(d) { return d.female == 1 })
-
-//       .attr("cx", function(d) { return x_jitter(d.members); })
-//       .attr("cy", function(d) { return y_jitter(d.percent); })
-//       .style("opacity", 0.6)
-//       .style("stroke-width", 0.5)
-//       .style("stroke", "white")
-//       .style("fill", "grey")
-//       .on('mouseover', function (d) {
-//           var section = d3.select(this);
-//           section.style("opacity", 0.5)
-//                  .style("stroke-width", 1.5);
-//           d3.select('#tooltip')
-//           .style("left", (d3.event.pageX + 5) + "px")
-//           .style("top", (d3.event.pageY - 28) + "px")
-//           .select('#value')
-//           .text(d.name);
-//            d3.select('#tooltip').classed('hidden', false);
-//           })
-//       .on('mouseout', function () {
-//           var section = d3.select(this);
-//           section.style("opacity", 0.6)
-//                  .style("stroke-width", 0.5);
-//           d3.select('#tooltip').classed('hidden', true);
-//         });
-
-
-// $("#fiftyLine").show();
-
-// d3.select("#noOfTeams")
-// .transition().duration(1000)
-// .text("2000")
-
-// d3.select("#perOfTeams")
-// .transition().duration(1000)
-// .text("100%")
-
-// $("#onePercent").hide();
-
-
-
-
-// });
-// } //end function tokenWomen()
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -569,62 +460,62 @@ function tokenWomen(firstXDomain, firstYDomain) {
   d3.csv("teams.csv", function(error, data) {
     if (error) throw error;
 
+  data.forEach(function(d) {
+      d.percent = +d.percent;
+      d.members = +d.members;
+      d.female = +d.female;
+      d.male = +d.male;
+  });
+
   x.domain(d3.extent(data, firstXDomain)).nice();
   y.domain(d3.extent(data, firstYDomain)).nice();
 
-    d3.select("#yAxis_team")
+  d3.select("#yAxis_team")
       .transition().duration(1000)
       .call(d3.axisLeft(y)
         .tickFormat(d3.format(".0%")));
 
-    d3.select("#xAxis_team")
+  d3.select("#xAxis_team")
       .transition().duration(1000)
       .call(d3.axisBottom(x));
 
-    d3.selectAll('.dotTeams') // move the circles
+  //Hide the dots that we aren't interested in
+  d3.selectAll('.dotTeams') // move the circles
        .filter(function(d) { return d.female > 1 })
        .transition().duration(1)
-       .style("opacity", 0)
-       .remove();
+       .attr("cx", function(d) { return x(-5); })
+       .attr("cy", function(d) { return y(-0.2); })
+       .attr("r", 0.0)
+       .style("opacity", 0.0);
 
-    d3.selectAll('.dotTeams') // move the circles
+  //Show the dots that we are interested in
+  d3.selectAll('.dotTeams') // move the circles
       .filter(function(d) { return d.female == 1 })
       .transition().duration(1000)
       .delay(function (d,i) { return i})
       .attr("cx", function(d) { return x_jitter(d.members); })
       .attr("cy", function(d) { return y_jitter(d.percent); })
+      .attr("r", 4)
+      .style("opacity", 0.6)
       .style("fill", function(d){
         if (d.female>d.male && d.male != 0){return "rgb(234,70,46)"}
           else {return "grey"}
       });
 
-$("#firstTeamAnno").hide();
-$("#fiftyLine").hide();
+  $("#firstTeamAnno").hide();
+  $("#fiftyLine").hide();
 
-d3.select("#noOfTeams")
-.transition().duration(1000)
-.text("255")
+  d3.select("#noOfTeams")
+    .transition().duration(1000)
+    .text("255")
 
-d3.select("#perOfTeams")
-.transition().duration(1000)
-.text("8.9%")
+  d3.select("#perOfTeams")
+    .transition().duration(1000)
+    .text("8.9%")
 
-$("#onePercent").hide()
-  });
-
+  $("#onePercent").hide()
+});
 } //end function tokenWomen()
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -636,6 +527,13 @@ function fiftyWomen(thisXDomain, thisYDomain) {
 
   d3.csv("teams.csv", function(error, data) {
     if (error) throw error;
+
+     data.forEach(function(d) {
+      d.percent = +d.percent;
+      d.members = +d.members;
+      d.female = +d.female;
+      d.male = +d.male;
+    });
 
     x.domain(d3.extent(data, thisXDomain)).nice();
     y.domain(d3.extent(data, thisYDomain)).nice();
@@ -649,40 +547,60 @@ function fiftyWomen(thisXDomain, thisYDomain) {
       .transition().duration(1000)
       .call(d3.axisBottom(x));
 
+    //Hide the dots that we aren't interested in
     d3.selectAll('.dotTeams') // move the circles
        .filter(function(d) { return d.percent < 0.5 })
        .transition().duration(1)
-       .style("opacity", 0)
-       .remove();
+       .attr("cx", function(d) { return x(-40); })
+       .attr("cy", function(d) { return y(0.4); })
+       .attr("r", 0.0)
+       .style("opacity", 0.01);
 
+    //Show the dots that we are interested in
     d3.selectAll('.dotTeams') // move the circles
       .filter(function(d) { return d.percent >= 0.5 })
       .transition().duration(1000)
       .delay(function (d,i) { return i})
       .attr("cx", function(d) { return x_jitter(d.members); })
       .attr("cy", function(d) { return y_jitter(d.percent); })
+      .attr("r", 4)
+      .style("opacity", 0.6)
       .style("fill", function(d){
         if (d.female>d.male && d.male != 0){return "rgb(234,70,46)"}
           else {return "grey"}
       });
 
-$("#firstTeamAnno").hide();
-$("#fiftyLine").hide();
+    $("#firstTeamAnno").hide();
+    $("#fiftyLine").hide();
 
-d3.select("#noOfTeams")
-.transition().duration(1000)
-.text("255")
+    d3.select("#noOfTeams")
+    .transition().duration(1000)
+    .text("255")
 
-d3.select("#perOfTeams")
-.transition().duration(1000)
-.text("8.9%")
+    d3.select("#perOfTeams")
+    .transition().duration(1000)
+    .text("8.9%")
 
-$("#onePercent").show();
-$("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<br>This means that <span style='background-color:rgb(234,70,46);color:white;'>only 10% of these teams are both mixed-gender<br> and have more women than men.</span> That's only 1% of all teams in the DC and Marvel universes.");
+    $("#onePercent").show();
+    $("#onePercent").html("Of these 8.9% of teams, 90% have ONLY female characters.<br>This means that <span style='background-color:rgb(234,70,46);color:white;'>only 10% of these teams are both mixed-gender<br> and have more women than men.</span> That's only 1% of all teams in the DC and Marvel universes.");
 
   });
-
 } //end function fiftyWomen()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -701,7 +619,7 @@ $("#tokenWoman").click(function() {
 })
 
 $("#onlyWomen").click(function() {
- 
+
 })
 
 
