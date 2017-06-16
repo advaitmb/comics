@@ -59,10 +59,10 @@ ascendingFemaleNames(data);
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(-13),         //Give x() the percent difference you want
+      x: x(-.13),         //Give x() the percent difference you want
       y: y('girl'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
       // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
-      dx: dx(-7),
+      dx: dx(-.07),
       dy: 0,
       subject: {
         radius: 2,         //Size of the the circling
@@ -93,10 +93,10 @@ ascendingFemaleNames(data);
       },
       // x,y are the point that the annotation points too
       // (by using the functions x() and y() this is done in graph units rather than pixels)
-      x: x(30),         //Give x() the percent difference you want
+      x: x(.30),         //Give x() the percent difference you want
       y: y('woman'),    //Give y() the name of the power ie 'Divine', 'Elemental and environmental powers', 'Energy manipulation', 'Enhanced physical abilities', 'Enhanced skills', 'Mentality-based powers', 'Objects', 'Physics or reality manipulation', 'Shapeshifting', 'Supernatural physical abilities', 'Energy manipulation', 'Shapeshifting'
       // dx is how FAR the annotation text is from the point x (leave dy=0 for this graph)
-      dx: dx(-2),
+      dx: dx(-.02),
       dy: 50
     }
   ]
@@ -255,6 +255,19 @@ svg.append("line")
 });
 
 
+$( "#descendingFemale" ).click(function() {
+ femaleOrder();
+ $("#man_anno").delay(500).show(500);
+ $("#girl_anno").delay(500).show(500);
+});
+
+$( "#descendingMale" ).click(function() {
+ maleOrder();
+ $("#man_anno").delay(500).hide(500);
+ $("#girl_anno").delay(500).hide(500);
+});
+
+
 
 
 
@@ -379,18 +392,6 @@ d3.selectAll(".between")
 
 }; //end femaleOrder();
 
-
-$( "#descendingFemale" ).click(function() {
- femaleOrder();
- $("#man_anno").delay(500).show(500);
- $("#girl_anno").delay(500).show(500);
-});
-
-$( "#descendingMale" ).click(function() {
- maleOrder();
- $("#man_anno").delay(500).hide(500);
- $("#girl_anno").delay(500).hide(500);
-});
 
 
 
