@@ -48,7 +48,7 @@ var svg = d3.select("#teams_graph").append("svg")
 var firstXDomain = function(d) { return d.members }
 var firstYDomain = function(d) { return d.percent }
 
-var tokenXDomain = function(d) { if (d.members<=60) return d.members }
+var tokenXDomain = function(d) { if (d.members<=400) return d.members }
 
 var fiftyXDomain = function(d) { if (d.members<160) return d.members }
 var fiftyYDomain = function(d) { if (d.percent >= 0.5) return d.percent }

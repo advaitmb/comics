@@ -412,7 +412,7 @@ th {
 
 /*TEAMS STYLING*/
 
-#teamNumber {
+/*#teamNumber {
 	position:absolute;
 	left:800px;
 	top:50px;
@@ -435,6 +435,63 @@ th {
 	left:830px;
 	top:130px;
 }
+*/
 
+
+#sizeBy {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #182a37;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    float:right;
+}
+
+
+.num {
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: white;
+    padding: .25em .5em;
+    margin-right: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .05em;
+    float:left;
+    background-color: rgb(234,70,46);
+}
+
+.numWords {
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: #182a37;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .05em;
+    float:left;
+}
+
+/*#noOfTeams {
+	position:absolute;
+	left:830px;
+	top:70px;
+}
+
+#teamPercentNumber {
+	position:absolute;
+	left:800px;
+	top:110px;
+}
+
+#perOfTeams {
+	position:absolute;
+	left:830px;
+	top:130px;
+}
+*/
 
 
