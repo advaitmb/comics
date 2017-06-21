@@ -156,6 +156,10 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       .data(data)
     .enter().append("text")
       .attr("class", "dodo")
+      // .attr("class", function(d) {
+      //   if (d.dim == 1) {return "dodo_girl"}
+      //     else {return "dodo_woman"}
+      //   })
       .attr("font-size", 12)
       .attr("x", function(d) {
         if (d.gen_per <=0){return x(d.gen_per)-15}
@@ -169,8 +173,11 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         if (d.gen_per <= 0) {return 'end'}
           else {return 'start'}
         })
+      .style("fill", function(d) {
+        if (d.dim == 1) {return "rgb(234,70,46)"}
+          else {return "black"}
+        })
       .text(function(d) { return d.gen_name;});
-
 
   svg.append("text")
     .attr("class", "small")
@@ -278,7 +285,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   d3.selectAll(".between")
     .data(data)
     .transition().duration(500)
-    .delay(function (d,i) { return i*10})
+    // .delay(function (d,i) { return i*10})
     .attr("x1", function(d){return x(d.gen_per)})
     .attr("y1", function(d){return y(d.gen_cat)})
     .attr("x2", function(d){return x(d.per_fake)})
@@ -337,7 +344,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   d3.selectAll(".between")
     .data(data)
     .transition().duration(500)
-    .delay(function (d,i) { return i*10})
+    // .delay(function (d,i) { return i*10})
     .attr("x1", function(d){return x(d.gen_per)})
     .attr("y1", function(d){return y(d.gen_cat)})
     .attr("x2", function(d){return x(d.per_fake)})
