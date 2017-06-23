@@ -200,7 +200,7 @@ var annotation_hair = [{
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .html("Difference: " + Math.abs(d.diff).toFixed(2) + "%<br> Percent male: " + Math.abs(d.per_males).toFixed(2) + "<br/>Percent female: " + Math.abs(d.per_females).toFixed(2));
+          .html("Difference: " + Math.abs(d.diff).toFixed(2) + "%<br> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2));
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
