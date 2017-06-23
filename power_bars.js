@@ -3,7 +3,7 @@
     var m = {
         top: 90,
         right: 10,
-        bottom: 450,
+        bottom: 500,
         left: 50
       },
       w = 800 - m.left - m.right,
@@ -38,6 +38,8 @@
 
       data.forEach(function(d) {
         d.diff = +d.diff;
+        d.per_males = +d.per_males;
+        d.per_females = +d.per_females;
       });
 
       var barHeight = h / (data.length);
@@ -155,7 +157,8 @@ var annotation_hair = [{
       svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0, -50)")
-        .call(d3.axisTop(x))
+        .call(d3.axisTop(x)
+           .tickFormat( function(d){ return (Math.abs(d)) + "%"; } ))
         .selectAll("text")
         .style("text-anchor", "middle");
 
@@ -197,8 +200,17 @@ var annotation_hair = [{
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .text(Math.abs(d.diff).toFixed(2) + "%" );
+          .html("Difference: " + Math.abs(d.diff).toFixed(2) + "%<br> Percent male: " + Math.abs(d.per_males).toFixed(2) + "<br/>Percent female: " + Math.abs(d.per_females).toFixed(2));
            d3.select('#tooltip').classed('hidden', false);
+        })
+        .on("click",  function(d){
+          $("#powerTextInsert").html(d.definition)
+          $("#powerTitleInsert").html(d.power);
+          // d3.selectAll(".genDot").style("fill", function(d){
+          //     if (d.gender == 1) {return "rgb(39,123,191)"}
+          //     else {return "rgb(243,185,47)"}
+          // }).style("stroke", 'white').style("stroke-width", 0.5)
+          // d3.select(this).style("fill", 'white').style("stroke", "rgb(105,174,68)").style("stroke-width", 2);
         })
         .on('mouseout', function () {
           var section = d3.select(this);
@@ -234,17 +246,17 @@ var annotation_hair = [{
 
     svg.append("text")
       .attr("class", "small")
-      .attr("x", x(-4))
+      .attr("x", x(-3))
       .attr("y", -30)
       .attr("class", "label")
-      .text("<--- Female percents");
+      .text("<--- Female");
 
     svg.append("text")
       .attr("class", "small")
       .attr("x", x(2))
       .attr("y", -30)
       .attr("class", "label")
-      .text("Male percents --->");
+      .text("Male --->");
 
 
 

@@ -451,7 +451,11 @@ th {
 }
 
 
-
+#swarm {
+	max-width:800px;
+	margin-right: auto;
+	margin-left: auto;
+}
 
 
 
@@ -466,7 +470,7 @@ th {
 
 }
 
-#powerInsert {
+#powerTitleInsert {
 	color:rgb(234,70,46);
 	font-weight: 700;
 }
