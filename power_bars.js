@@ -1,14 +1,14 @@
 (function() {
 
     var m = {
-        top: 50,
+        top: 90,
         right: 10,
         bottom: 450,
         left: 50
       },
       w = 800 - m.left - m.right,
-      h = 2300 - m.top - m.bottom,
-      pad = 0.15
+      h = 2700 - m.top - m.bottom,
+      pad = 0.2
 
     // Functions for offsetting annotations
       function dy(t) {
@@ -53,7 +53,7 @@
 
 var annotation_hair = [{
       note: {
-        title: "Object-ified",
+        title: "Object—-ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male character that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
         wrap:180
       },
@@ -154,7 +154,7 @@ var annotation_hair = [{
 
       svg.append("g")
         .attr("class", "x axis")
-        // .attr("transform", "translate(0," + h + ")")
+        .attr("transform", "translate(0, -50)")
         .call(d3.axisTop(x))
         .selectAll("text")
         .style("text-anchor", "middle");
@@ -169,8 +169,8 @@ var annotation_hair = [{
         function customYAxis(g) {
         g.call(d3.axisLeft(y0));
         g.select(".domain").remove();
-        g.selectAll(".tick:not(:first-of-type) line").attr("stroke", "#777").attr("stroke-dasharray", "2,2");
-        g.selectAll(".tick text").attr("x", 60).attr("dy", -4).style("text-align","center");
+        g.selectAll(".tick line").attr("stroke", "#777").attr("opacity", "0");
+        g.selectAll(".tick text").attr("x", 60).attr("dy", -4).attr("class", "label");
         }
 
 
@@ -178,8 +178,8 @@ var annotation_hair = [{
         .data(data)
         .enter().append("rect")
         .style("fill", function(d, i) {
-          if(d.diff>=0) {return "black"}
-          else return "green"; })
+          if(d.diff>=0) {return "rgb(39,123,191)"}
+          else return "rgb(243,185,47)"; })
         .attr("x", function(d) { 
           if(d.diff>=0) {return x(0)}
           else return x(d.diff); })
@@ -227,9 +227,27 @@ var annotation_hair = [{
           return y0(d.category) + categoryD[d.category](d.power) + 0.6*barHeight;
 
         })
-        .attr("class", "label")
          .style("alignment-baseline", "middle")
-        .attr("class", "label");
+         .attr("class", "power_bar_bars")
+         .attr("font-size", 12);
+
+
+    // svg.append("text")
+    //   .attr("class", "small")
+    //   .attr("x", 70)
+    //   .attr("y", -30)
+    //   .attr("class", "label")
+    //   .text("<--- Female percents");
+
+    // svg.append("text")
+    //   .attr("class", "small")
+    //   .attr("x", width-200)
+    //   .attr("y", -30)
+    //   .attr("class", "label")
+    //   .text("Male percents --->");
+
+
+
 
     });
 

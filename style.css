@@ -343,7 +343,12 @@ IMG.displayed {
 	font-size: 12px;
 }
 
-
+.power_bar_bars {
+	font-weight:500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
 
 
 
