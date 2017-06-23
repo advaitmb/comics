@@ -455,6 +455,49 @@ th {
 
 
 
+#stick {
+	position:fixed;
+	top:10%;
+	right:2%;
+	z-index: 100;
+	background-color: white;
+	max-width: 200px;
+	font-size: 12px;
+
+}
+
+#powerInsert {
+	color:rgb(234,70,46);
+	font-weight: 700;
+}
+
+.sticky_parent {
+  background: #ccc;
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+  font-size: 30px;
+  padding-left: 10px;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0px;
+}
+
+
+.sidebar {
+    position: -webkit-sticky;  // required for Safari
+    position: sticky;
+    top: 0; // required as well.
+}   
+
+
+
+
+
+
 
 
 

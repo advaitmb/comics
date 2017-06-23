@@ -41,7 +41,7 @@
       });
 
       var barHeight = h / (data.length);
-      var padBetween = 40;
+      var padBetween = 50;
 
       y0.domain(data.map(function(d) {
         return d.category;
@@ -55,9 +55,9 @@ var annotation_hair = [{
       note: {
         title: "Object—-ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male character that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
-        wrap:180
+        wrap:200
       },
-          y: y('Gadgets')+padBetween*1.5,
+          y: y('Gadgets')+padBetween*1.7,
           x: x(.2),
           dy: dy(130),
           dx: dx(.1)    
@@ -232,19 +232,19 @@ var annotation_hair = [{
          .attr("font-size", 12);
 
 
-    // svg.append("text")
-    //   .attr("class", "small")
-    //   .attr("x", 70)
-    //   .attr("y", -30)
-    //   .attr("class", "label")
-    //   .text("<--- Female percents");
+    svg.append("text")
+      .attr("class", "small")
+      .attr("x", x(-4))
+      .attr("y", -30)
+      .attr("class", "label")
+      .text("<--- Female percents");
 
-    // svg.append("text")
-    //   .attr("class", "small")
-    //   .attr("x", width-200)
-    //   .attr("y", -30)
-    //   .attr("class", "label")
-    //   .text("Male percents --->");
+    svg.append("text")
+      .attr("class", "small")
+      .attr("x", x(2))
+      .attr("y", -30)
+      .attr("class", "label")
+      .text("Male percents --->");
 
 
 
