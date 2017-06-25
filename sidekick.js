@@ -1,5 +1,5 @@
 $(document).ready( function() {
-    $("#stick").hide(); //hide your div initially
+    // $("#stick").hide(); //hide your div initially
     var topOfOthDiv = $("#othdiv").offset().top;
     $(window).scroll(function() {
         if($(window).scrollTop() > topOfOthDiv) { //scrolled past the other div?
@@ -7,4 +7,9 @@ $(document).ready( function() {
         }
         // $("#bubble_content").html("hello! This is a practice with my sidekick character! so cuuuuuute!");
     });
+
+
+
+
+
 });

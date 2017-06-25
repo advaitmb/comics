@@ -36,10 +36,11 @@ main {
 .intro__dek {
 	width:400px;
 	text-align: center;
+
 }
 
 #introGifs {
-	max-width: 200px;
+	max-width: 300px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -49,7 +50,14 @@ IMG.displayed {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width:100px;
+    width:125px;
+}
+
+IMG.displayed_still {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:125px;
 }
 
 .legend {
@@ -473,6 +481,7 @@ th {
 	z-index: 100;
 	max-width: 250px;
 	font-size: 12px;
+	display:none;
 
 }
 
@@ -591,3 +600,7 @@ th {
 .bubble.little > .content {
   border-radius: 12px;
 }
+
+
+
+
