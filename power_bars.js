@@ -34,7 +34,7 @@
 
     // var groupSpacing = 6;
 
-    d3.csv("gender_bars.csv", function(error, data) {
+    d3.csv("gender_bars_sig.csv", function(error, data) {
 
       data.forEach(function(d) {
         d.diff = +d.diff;
@@ -217,6 +217,10 @@ var annotation_hair = [{
           d3.select('#tooltip').classed('hidden', true);
         });
 
+
+
+
+
       var ls = svg.selectAll(".labels")
         .data(data)
         .enter().append("g");
@@ -240,6 +244,10 @@ var annotation_hair = [{
         })
          .style("alignment-baseline", "middle")
          .attr("class", "power_bar_bars")
+         .style("fill", function(d){
+            if (d.sig == "y" ) {return "black"}
+              else {return "#696969"}
+            })
          .attr("font-size", 12);
 
 
