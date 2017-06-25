@@ -56,13 +56,12 @@
 var annotation_hair = [{
       note: {
         title: "Object—-ified",
-        label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male character that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
-        wrap:200
+        label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
+        wrap:210
       },
-          y: y('Gadgets')+padBetween*1.7,
-          x: x(.2),
-          dy: dy(130),
-          dx: dx(.1)    
+          y: y('Gadgets')-25,
+          x: x(.15),
+          
     }
   ]
 
