@@ -1,7 +1,7 @@
 (function() {
 
 var margin = {top: 100, right: 50, bottom: 50, left: 40},
-    width = 800 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
 var y = d3.scaleBand()
