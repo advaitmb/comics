@@ -70,7 +70,7 @@ const makeAnnotation_object = d3.annotation()
     .type(d3.annotationCallout)   
     .annotations(annotation_object)
   svg.append("g")
-      .attr("id", "man_anno")
+      .attr("id", "object_anno")
       .attr("class", "annotation-group")
       .call(makeAnnotation_object)   
 
