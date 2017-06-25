@@ -2,8 +2,8 @@
 
     var m = {
         top: 90,
-        right: 10,
-        bottom: 500,
+        right: 60,
+        bottom: -150,
         left: 50
       },
       w = 800 - m.left - m.right,
@@ -152,7 +152,7 @@ var annotation_hair = [{
       var d3Max = d3.max(data, function(d) { return d.diff });
       var d3Min = d3.min(data, function(d) { return d.diff });
 
-      x.domain([-5,5]);
+      x.domain([-8,8]);
 
       svg.append("g")
         .attr("class", "x axis")
