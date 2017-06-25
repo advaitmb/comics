@@ -3,7 +3,7 @@
     var m = {
         top: 90,
         right: 60,
-        bottom: -150,
+        bottom: 550,
         left: 50
       },
       w = 900 - m.left - m.right,
@@ -59,7 +59,7 @@ const annotation_object = [{
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
         wrap:210
       },
-          y: y('Gadgets')-25,
+          y: y('Gadgets')+padBetween,
           
     }
   ]
@@ -81,7 +81,7 @@ const annotation_mind = [{
         label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
         wrap:210
       },
-          y: y('Empathy')-padBetween*2.5,
+          y: y('Empathy')+padBetween*5,
           
     }
   ]
