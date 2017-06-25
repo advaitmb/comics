@@ -157,7 +157,7 @@ var annotation_hair = [{
         .attr("class", "x axis")
         .attr("transform", "translate(0, -50)")
         .call(d3.axisTop(x)
-           .tickFormat( function(d){ return (Math.abs(d)) + "%"; } ))
+           .tickFormat( function(d){ return (Math.abs(d)); } ))
         .selectAll("text")
         .style("text-anchor", "middle");
 
@@ -199,7 +199,7 @@ var annotation_hair = [{
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .html("Difference: " + Math.abs(d.diff).toFixed(2) + "%<br> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2));
+          .html("<span class='bTooltip'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
