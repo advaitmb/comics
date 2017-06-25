@@ -116,6 +116,8 @@ IMG.displayed {
 .genNames__vis svg {
 	position: relative;
 	display: block;
+		margin-left: auto;
+	margin-right: auto;
 }
 
 .career_chart__vis svg {
@@ -303,27 +305,24 @@ IMG.displayed {
 	}
 
 
-.listNames {
+/*.listNames {
 	position:absolute;
 	width: 25%;
 	margin-left:70%;
 }
+*/
 
-.graphicLeft {
-	width:70%;
-	position:relative;
-}
 
-#genTitle {
+/*#genTitle {
 	position:absolute;
   	text-transform: uppercase;
   	text-align: left;
 	left:65%;
 	color:rgb(105,174,68);
 	font-weight: 500;
-}
+}*/
 
-.genNames {
+/*.genNames {
 	position: absolute;
 	width: 30%;
 	float: right;
@@ -331,7 +330,7 @@ IMG.displayed {
 	top: 40px;
 	font-size: 10px;
 	padding-right: 2rem;
-}
+}*/
 
 .label {
     font-weight: 700;
@@ -472,19 +471,17 @@ th {
 	top:10%;
 	right:2%;
 	z-index: 100;
-	background-color: white;
 	max-width: 250px;
 	font-size: 12px;
 
 }
 
-#powerTitleInsert {
+#titleInsert {
 	color:rgb(234,70,46);
 	font-weight: 700;
 }
 
 .sticky_parent {
-  background: #ccc;
   height: 50px;
   line-height: 50px;
   margin-top: 10px;

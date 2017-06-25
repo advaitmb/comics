@@ -1,7 +1,7 @@
 (function() {
 
 var margin = {top: 100, right: 50, bottom: 50, left: 40},
-    width = 600 - margin.left - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
 var y = d3.scaleBand()
@@ -137,8 +137,8 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
            d3.select('#tooltip').classed('hidden', false);
         })
       .on("click",  function(d){
-          $(".genNames").html(d.char_list);
-          $("#genTitle").html(d.gen_name);
+          $("#textInsert").html(d.char_list);
+          $("#titleInsert").html(d.gen_name);
           d3.selectAll(".genDot").style("fill", function(d){
               if (d.gender == 1) {return "rgb(39,123,191)"}
               else {return "rgb(243,185,47)"}

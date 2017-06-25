@@ -6,7 +6,7 @@
         bottom: -150,
         left: 50
       },
-      w = 800 - m.left - m.right,
+      w = 900 - m.left - m.right,
       h = 2700 - m.top - m.bottom,
       pad = 0.2
 
@@ -60,7 +60,6 @@ const annotation_object = [{
         wrap:210
       },
           y: y('Gadgets')-25,
-          x: x(.15),
           
     }
   ]
@@ -83,7 +82,6 @@ const annotation_mind = [{
         wrap:210
       },
           y: y('Empathy')-padBetween*2.5,
-          x: x(.65),
           
     }
   ]
@@ -226,8 +224,8 @@ const makeAnnotation_mind = d3.annotation()
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
-          $("#powerTextInsert").html(d.definition)
-          $("#powerTitleInsert").html(d.power);
+          $("#textInsert").html(d.definition)
+          $("#titleInsert").html(d.power);
           // d3.selectAll(".genDot").style("fill", function(d){
           //     if (d.gender == 1) {return "rgb(39,123,191)"}
           //     else {return "rgb(243,185,47)"}
