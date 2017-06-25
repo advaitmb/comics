@@ -53,7 +53,7 @@
       y.domain(data.map(function(d) { return d.power; }));
 
 
-var annotation_object = [{
+const annotation_object = [{
       note: {
         title: "Object—-ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
@@ -65,7 +65,7 @@ var annotation_object = [{
     }
   ]
 
-  var makeAnnotation_object = d3.annotation()
+const makeAnnotation_object = d3.annotation()
     .editMode(false)
     .type(d3.annotationCallout)   
     .annotations(annotation_object)
@@ -76,7 +76,7 @@ var annotation_object = [{
 
 
 
-var annotation_mind = [{
+const annotation_mind = [{
       note: {
         title: "Mind your powers",
         label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
@@ -88,7 +88,7 @@ var annotation_mind = [{
     }
   ]
 
-  var makeAnnotation_mind = d3.annotation()
+const makeAnnotation_mind = d3.annotation()
     .editMode(false)
     .type(d3.annotationCallout)   
     .annotations(annotation_mind)
