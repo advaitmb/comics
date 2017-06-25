@@ -53,7 +53,7 @@
       y.domain(data.map(function(d) { return d.power; }));
 
 
-var annotation_hair = [{
+var annotation_object = [{
       note: {
         title: "Object—-ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
@@ -65,14 +65,37 @@ var annotation_hair = [{
     }
   ]
 
-  var makeAnnotation_hair = d3.annotation()
+  var makeAnnotation_object = d3.annotation()
     .editMode(false)
     .type(d3.annotationCallout)   
-    .annotations(annotation_hair)
+    .annotations(annotation_object)
   svg.append("g")
       .attr("id", "man_anno")
       .attr("class", "annotation-group")
-      .call(makeAnnotation_hair)   
+      .call(makeAnnotation_object)   
+
+
+
+var annotation_mind = [{
+      note: {
+        title: "Mind your powers",
+        label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
+        wrap:210
+      },
+          y: y('Empathy')-padBetween*2.5,
+          x: x(.65),
+          
+    }
+  ]
+
+  var makeAnnotation_mind = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCallout)   
+    .annotations(annotation_mind)
+  svg.append("g")
+      .attr("id", "mind_anno")
+      .attr("class", "annotation-group")
+      .call(makeAnnotation_mind)   
 
 
   // const circleAnnotations_man = [
