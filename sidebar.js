@@ -9,7 +9,6 @@ $(document).ready( function() {
          if($(window).scrollTop() > topOfNames) { //scrolled past the other div?
             $("#bubble_content").html("<span id='titleInsert'>Taking names?</span><br><span id='textInsert'>Click on a circle and I'll list gender-titled characters!</span>"); //reached the desired point -- show div
         }
-        // $("#bubble_content").html("hello! This is a practice with my sidekick character! so cuuuuuute!");
     });
 
 

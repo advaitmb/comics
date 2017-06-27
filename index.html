@@ -36,7 +36,6 @@
 	<link rel="stylesheet" href="critical.css" />
 	<link rel="stylesheet" href="bundle.css" />
 	<link rel="stylesheet" href="style.css" />
-	<link rel="stylesheet" href="comic.css" />
 	<link rel="stylesheet" href="annotate.css" />
 
 
@@ -165,7 +164,7 @@
 	<div class='intro'>
 		<h1 class='intro__hed tk-canela'>Here's what analyzing 34,476 characters reveals about gender in comics</h1>
 		<p class='intro__byline tk-atlas'>By <a href='https://twitter.com/puddingviz' target='_blank'><strong>Amanda Shendruk</strong></a></p>
-		<p class='intro__dek tk-atlas medium'>We know female characters are underrepresented in superhero comics — but when they <i>are</i> included, how are they depicted? </p>
+		<p class='intro__dek tk-atlas medium'>Female characters appear in superhero comics less often than males — but when they <i>are</i> included, how are they depicted? </p>
 	</div>
 
 		<div id="introGifs" style="padding-bottom:100px;">
@@ -183,7 +182,8 @@
 	<div class="paddedIntro small">
 		<p>The recent theatrical release of Wonder Woman briefly catapulted the question of female representation into the mainstream. TKTKTK <!-- By most measures, the movie was a success — it exceeded attendence records, it made a lot of <a href="http://www.vanityfair.com/hollywood/2017/06/wonder-woman-highest-worldwide-gross-female-director">money</a> and, for many, it was a . But, for some it was just a small advance in a  -->
 		<p>Why all the fuss? Well, the truth is that the superhero industry has had a complicated relationship with female characters. Unlike their male counterparts, they are often <a href="https://www.scientificamerican.com/article/the-problem-with-female-superheroes/">hyper-sexualized</a>, <a href="https://en.wikipedia.org/wiki/Women_in_Refrigerators">unnecessarily-brutalized</a>, weak, infantilized, <a href="https://en.wikipedia.org/wiki/Smurfette_principle">token</a> and, frankly, just rare. Only 26.7% of all DC and Marvel characters are female, and only <a href="https://www.amazon.com/Superwomen-Gender-Representation-Carolyn-Cocca/dp/1501316575">12% of mainstream superhero comics</a> star female characters. Much has been written on the gender imbalances in superhero comics, though very little exploration has been done of the data. What can we say about female comic book characters just looking at the numbers? </p> 
-		<p>By analyzing the gender data behind character naming conventions, the allocation of super powers, and the make-up of teams, we see significant differences in representation between males and females in DC and Marvel.</p>
+
+		<p>Using the <a href="https://comicvine.gamespot.com/api/">ComicVine database</a>, and looking only at DC and Marvel, we analyzed the gender data behind character naming conventions, the allocation of super powers, and the make-up of teams. Doing so, we saw significant differences in representation between males and females.</p>
 
 
 		<!-- <p>“Wonder Woman of the forties was not the same as Wonder Woman of the fifties ... When you're asking different populations about what wonder woman was like, you can get different answers. There are certain things about these long-standing characters, like a Superman or a Wonder Woman, that remain the same, but then there are other things that change over time depending on the writer, the artist, the editor, the company, what medium comics are being delivered in, how they're being sold ... so there are a lot of reasons why they change over time.”
@@ -318,21 +318,18 @@
 
 
 <!-- GENDERED NAMES SECTION-->
-	<div class="paddedBody small">
-		<h3 class="midTitle">Little Miss Lassgirl</h3>
-		<p>Not all gendered names are equal. Some names fit a 'diminutive' category. These are monikers that are the younger, or infantilized version of another name. For example, girl is the diminutive version of woman. If we compare the use of diminutive names for male and female characters, we see that 33% of female characters and 16% of male characters fit in the category. Females are almost twice as likely to be given a name that makes her seem weak, infantilized, less aggressive and not on equal footing with male characters.
+	<div class="paddedBody small" id="sidebar_text_names">
+		<h3 class="midTitle">Men are men; women are girls</h3>
+		<p>Not all gendered names are equal. Some names fit a 'diminutive' category. These are monikers that are the younger, or infantilized version of another name. For example, girl is the diminutive version of woman. If we compare the use of diminutive names for male and female characters, we see that 33% of female characters and 16% of male characters fit in the category. Females are almost twice as likely to be given a name that may make her seem weak, infantilized, less aggressive and not on equal footing with male characters.
 		</p>
 	</div>
-
-	<hr class="note tk-atlas small">
-	<p class="note tk-atlas small" id="sidebar_text_names"><strong>DIMINUTIVE NAMES:</strong> When I say 'diminutive names' these are the ones I considered. Female: girl, daughter, miss, princess, lass, damsel, mademoiselle, chick, doll, gal. Male: boy, son, prince, lad, bro, junior. There are good arguments for both keeping and removing many of these terms — but the point remains: Even if you only look at 'girl' and 'boy' there's a significant difference: 13% for females, 5% for males.</p>
 
 
 	<!-- GENDERED NAMES SECTION-->
 
 	<div class="chartHed">
 		<p class="chartTitle tk-atlas medium">Not all gendered names are equal</p>
-		<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names. <span style="color:rgb(234,70,46);">Diminutive names</span> — those that infantilize or TKTK — are highlighted.</p>
+		<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names. <span style="color:rgb(234,70,46);">Diminutive names</span> — those that may infantilize or denote the younger version of a title  — are highlighted.</p>
 		<button id="descendingMale" class="btn">Order by male</button>
 		<button id="descendingFemale" class="btn">Order by female</button>	
 	</div>
@@ -347,7 +344,7 @@
 	</div>
 
 	<hr class="note tk-atlas small">
-	<p class="note tk-atlas small">DATA NOTES: Percentages are determined only from characters with gendered names. (ie. 13% of women with gendered names have 'girl' in their name). In the DC and Marvel universes, 12% of all male characters have gendered names, and 8.7% of female characters have gendered names.<br><br>In some cases a character with a gendered name will be listed in the Comic Vine database under their secret identity. For example, you will find no Ms. Marvel or Batgirl in the chart above. They are listed in the data as Carol Danvers (and Kahala Khan and others) and Barbara Gordon.</p>
+	<p class="note tk-atlas small">DATA NOTES: Percentages are determined only from characters with gendered names. (ie. 13% of women with gendered names have 'girl' in their name). In the DC and Marvel universes, 12% of all male characters have gendered names, and 8.7% of female characters have gendered names.<br><br> When I say 'diminutive names' these are the ones considered. Female: girl, daughter, miss, princess, lass, damsel, mademoiselle, chick, doll, gal. Male: boy, son, prince, lad, bro, junior. There are good arguments for both keeping and removing many of these terms — but the point remains: Even if you only look at 'girl' and 'boy' there's a significant difference: 13% for females, 5% for males.<br><br>In some cases a character with a gendered name will be listed in the Comic Vine database under their secret identity. For example, you will find no Ms. Marvel or Batgirl in the chart above. They are listed in the data as Carol Danvers (and Kahala Khan and others) and Barbara Gordon.</p>
 
 		<!-- EXPERT OPINION-->
 	<div class="expertOpinion">
@@ -419,13 +416,10 @@
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>	
 	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
-	<script src='truncate.js'></script>
 	<script src='power_bars.js'></script>
 	<script src='genNames_split.js'></script>
-	<script src='table.js'></script>
 	<script src='teams_anno.js'></script>
-	<script src='powers.js'></script>
-	<script src='sidekick.js'></script>
+	<script src='sidebar.js'></script>
 
 	
 
