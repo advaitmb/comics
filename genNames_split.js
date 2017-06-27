@@ -133,7 +133,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .text(Math.abs(d.gen_per*100).toFixed(2) + "%" );
+          .html(Math.abs(d.gen_per*100).toFixed(1) + "%");
            d3.select('#tooltip').classed('hidden', false);
         })
       .on("click",  function(d){
