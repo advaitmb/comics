@@ -467,7 +467,8 @@ th {
 
 
 #swarm {
-	max-width:800px;
+	max-width:1000px;
+	width:100%;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -480,9 +481,9 @@ th {
 	right:2%;
 	z-index: 100;
 	max-width: 250px;
+	max-height: 300px
 	font-size: 12px;
 	display:none;
-
 }
 
 #titleInsert {
@@ -509,6 +510,7 @@ th {
     position: -webkit-sticky;  // required for Safari
     position: sticky;
     top: 0; // required as well.
+
 }   
 
 
@@ -582,6 +584,10 @@ th {
   border-radius: 10px;
   z-index: 1;
   padding: 10px 16px;
+  overflow:auto;
+  max-height:300px;
+  width:100%;
+
 }
 
 .bubble.br::before,
