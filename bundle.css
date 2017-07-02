@@ -212,7 +212,7 @@ IMG.displayed_still {
 .paddedIntro {
   margin-left: auto;
   margin-right: auto;
-  width:50%;
+  width:40rem;
   padding-top: 100px;
   text-align: left;
 }
@@ -221,7 +221,7 @@ IMG.displayed_still {
   position:relative;
   margin-left: auto;
   margin-right: auto;
-  width:50%;
+  width:40rem;
   padding-top: 50px;
 }
 
@@ -229,7 +229,7 @@ IMG.displayed_still {
   position:relative;
   margin-left: auto;
   margin-right: auto;
-  width:50%;
+  width:40rem;
   padding-top: 10px;
 }
 
@@ -259,7 +259,7 @@ IMG.displayed_still {
 
 
 /* EXPERT OPINION */
-.expertOpinion {
+/*.expertOpinion {
   position:relative;
   margin-left: auto;
   margin-right: auto;
@@ -288,7 +288,7 @@ IMG.displayed_still {
     margin-bottom: 0px;
 
 }
-
+*/
 
 
 
@@ -298,7 +298,7 @@ IMG.displayed_still {
   position:relative;
   margin-left: auto;
   margin-right: auto;
-  width:50%;
+  width:40rem;
   padding-top:0px;
   margin-top:0px;
   padding-top: 0px;
