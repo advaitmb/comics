@@ -3,11 +3,11 @@
     var m = {
         top: 90,
         right: 60,
-        bottom: 550,
+        bottom: 500,
         left: 50
       },
       w = 900 - m.left - m.right,
-      h = 2700 - m.top - m.bottom,
+      h = 1600 - m.top - m.bottom,
       pad = 0.2
 
     // Functions for offsetting annotations
@@ -34,7 +34,7 @@
 
     // var groupSpacing = 6;
 
-    d3.csv("gender_bars_sig.csv", function(error, data) {
+    d3.csv("gender_bars_sig_less.csv", function(error, data) {
 
       data.forEach(function(d) {
         d.diff = +d.diff;
