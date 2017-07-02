@@ -316,11 +316,17 @@ IMG.displayed_still {
 #female_label {
   float:left;
   color:rgb(243,185,47);
+  margin-top: 5px;
 }
 
 #male_label {
   float: right;
   color:rgb(39,123,191);
+   margin-top: 5px;
+}
+
+#pts_label {
+  margin-bottom: 0px;
 }
 
 #outliers_back {
