@@ -357,10 +357,6 @@ IMG.displayed_still {
 
 
 /*GENDERED NAMES CHART*/
-.between {
-  stroke: "black";
-  stroke-width: 1px;
-}
 
 #yAxis_genName {
   display: none;
