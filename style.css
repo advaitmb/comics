@@ -1,0 +1,612 @@
+main {
+	overflow: hidden;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+
+/*BUTTONS*/
+.btn {
+    background-color: #182a37;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    transition: background-color 250ms;
+    }
+
+.btn:hover {
+	background-color: rgb(234,70,46);
+}
+
+
+
+
+/*INTRO*/
+.intro__dek {
+	width:400px;
+	text-align: center;
+
+}
+
+#introGifs {
+	max-width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:125px;
+}
+
+IMG.displayed_still {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:125px;
+}
+
+.legend {
+  display: none;
+}
+
+
+
+/*TOOLTIPS*/
+#tooltip {
+    position: absolute;
+    text-align: left;
+    height: auto;
+    padding: 10px;
+    background: #182a37;
+    pointer-events: none;
+    z-index: 100;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+#tooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 11px;
+    color: white;
+    line-height: 15px;
+}
+
+.bTooltip {
+	margin: 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    color: white;
+    line-height: 15px;
+}
+
+
+
+
+/* GRAPHICS */
+.graphic {
+	width: 100%;
+	position: relative;
+}
+
+.graphic__prose {
+	width: 25%;
+	margin-left:70%;
+	padding-top: 50px;
+}
+
+.graphic__prose p{
+	font-size: 15px;
+}
+
+.dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis, .career_chart__vis {
+	position:relative;
+	z-index: 1;
+}
+
+.genNames__vis svg {
+	position: relative;
+	display: block;
+		margin-left: auto;
+	margin-right: auto;
+}
+
+.career_chart__vis svg {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.powerSplit__vis svg {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.dimChart__vis svg {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.graphic__vis svg {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.teams__vis svg {
+	position: relative;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.chartBody {
+	position:relative;
+}
+
+
+
+
+
+/* TITLES, CHART TEXT, BODY TEXT */
+.midTitle {
+	text-align: center;
+}
+
+.paddedIntro {
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	padding-top: 100px;
+	text-align: left;
+}
+
+.paddedBody {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	padding-top: 50px;
+}
+
+.chartHed {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	padding-top: 10px;
+}
+
+.chartTitle {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	font-weight: 700;
+}
+
+.chartText {
+	padding-top:0px;
+	margin-top:0px;
+}
+
+.graphicWrapper {
+	margin-right: auto;
+	margin-left: auto;
+	position:relative;
+	width:100%;
+	max-width: 1000px;
+}
+
+
+
+
+
+
+
+/* EXPERT OPINION */
+.expertOpinion {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+	width:50%;
+}
+
+.expertText {
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+.expert {
+	background-color: rgb(234,70,46);
+	color:white;
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    float:left;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+
+}
+
+
+
+
+
+/* DATA NOTES */
+.note {
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	width:50%;
+	padding-top:0px;
+	margin-top:0px;
+	padding-top: 0px;
+	font-size: 10px;
+	font-weight:500;
+	padding-left:20px;
+	padding-right: 20px;
+}
+
+
+
+
+/* POWERS CHART */
+#outliers_back {
+	display:none;
+}
+
+#powers_radius, #norm_radius {
+	float:right;
+}
+
+#sizeBy {
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #182a37;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+    float:right;
+}
+
+
+
+
+/*GENDERED NAMES CHART*/
+.between {
+  stroke: "black";
+  stroke-width: 1px;
+}
+
+#yAxis_genName {
+	display: none;
+	}
+
+
+/*.listNames {
+	position:absolute;
+	width: 25%;
+	margin-left:70%;
+}
+*/
+
+
+/*#genTitle {
+	position:absolute;
+  	text-transform: uppercase;
+  	text-align: left;
+	left:65%;
+	color:rgb(105,174,68);
+	font-weight: 500;
+}*/
+
+/*.genNames {
+	position: absolute;
+	width: 30%;
+	float: right;
+	left: 65%;
+	top: 40px;
+	font-size: 10px;
+	padding-right: 2rem;
+}*/
+
+.label {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.dodo {
+	font-weight:700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.tick {
+	font-size: 12px;
+}
+
+.power_bar_bars {
+	font-weight:500;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+
+
+
+
+
+/* TEAMS CHART */
+#onePercent {
+	position:absolute;
+	left:68%;
+	top:40%;
+	width: 200px;
+	font-size: 12px;
+}
+
+.num {
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: white;
+    padding: .25em .5em;
+    margin-right: 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .05em;
+    float:left;
+    background-color: rgb(234,70,46);
+}
+
+.numWords {
+	border: 1px solid #fff;
+    border-radius: 3px;
+    color: #182a37;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .05em;
+    float:left;
+}
+
+.domain {
+	display:none;
+}
+
+.tick {
+	font-weight: 300;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+/* PROFESSIONAL TITLES TABLE */
+table {
+	margin-right: auto;
+	margin-left: auto;
+	width:100%;
+	max-width: 600px;
+}
+
+td {
+	font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+     border: 1px solid #fff;
+    border-radius: 3px;
+}
+
+th {
+	background-color: #182a37;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    color: #fff;
+    padding: .25em .5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+}
+
+
+
+
+
+/*DOT STYLING*/
+
+.genDot:hover {
+	cursor: pointer;
+}
+
+.dot {
+  stroke: #ffffff;
+}
+
+
+#swarm {
+	max-width:1000px;
+	width:100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+
+#stick {
+	position:fixed;
+	top:10%;
+	right:2%;
+	z-index: 100;
+	max-width: 250px;
+	max-height: 300px
+	font-size: 12px;
+	display:none;
+}
+
+#titleInsert {
+	color:rgb(234,70,46);
+	font-weight: 700;
+}
+
+.sticky_parent {
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+  font-size: 30px;
+  padding-left: 10px;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -o-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0px;
+}
+
+
+.sidebar {
+    position: -webkit-sticky;  // required for Safari
+    position: sticky;
+    top: 0; // required as well.
+
+}   
+
+
+
+
+
+
+
+
+
+/*ANNOTATION STYLING
+*/
+
+.annotation-group {
+	font-size: 12px;
+}
+
+.remaining-content span {
+    display:none;
+}
+
+
+
+
+
+
+
+
+/*SPEECHBUBBLE STYLING*/
+
+.bubbles {
+  width: 100%;
+  margin-right: 1%;
+}
+.bubble {
+  position: relative;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.3);
+  display: inline-block;
+  vertical-align: top;
+  border: 2px solid #000;
+  margin: 20px 20px;
+}
+.bubble.arrow::before,
+.bubble.arrow::after {
+  position: absolute;
+  background-color: #fff;
+  content:"\00a0";
+  display: block;
+  height: 18px;
+  width: 24px;
+  left: 20px;
+  bottom: -10px;
+  transform: rotate(-45deg) skew(-45deg);
+}
+.bubble.arrow::before { 
+  background-color: transparent;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.3);
+  width: 30px;
+}
+.bubble.arrow::after {
+  bottom: -8px;
+  border: 2px solid #000;
+  border-width: 0 4px 3px 4px;
+}
+
+.bubble > .content {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 1;
+  padding: 10px 16px;
+  overflow:auto;
+  max-height:300px;
+  width:100%;
+
+}
+
+.bubble.br::before,
+.bubble.br::after {
+  left: auto;
+  right: 120px;
+  transform: rotate(45deg) skew(45deg);
+}
+.bubble.br::before { 
+  bottom: -10px;
+  width: 24px;
+  right: 120px;
+}
+
+.bubble.little,
+.bubble.little > .content {
+  border-radius: 12px;
+}
+
+
+
+
