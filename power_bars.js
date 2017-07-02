@@ -1,7 +1,7 @@
 (function() {
 
     var m = {
-        top: 90,
+        top: 70,
         right: 60,
         bottom: 500,
         left: 50
@@ -32,7 +32,6 @@
       .attr("transform",
         "translate(" + m.left + "," + m.top + ")");
 
-    // var groupSpacing = 6;
 
     d3.csv("gender_bars_sig_less.csv", function(error, data) {
 
@@ -43,7 +42,7 @@
       });
 
       var barHeight = h / (data.length);
-      var padBetween = 50;
+      var padBetween = 60;
 
       y0.domain(data.map(function(d) {
         return d.category;
@@ -59,7 +58,7 @@ const annotation_object = [{
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
         wrap:210
       },
-          y: y('Gadgets')+padBetween,
+          y: y('Gadgets')+padBetween-15,
           
     }
   ]
@@ -71,6 +70,8 @@ const makeAnnotation_object = d3.annotation()
   svg.append("g")
       .attr("id", "object_anno")
       .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
       .call(makeAnnotation_object)   
 
 
@@ -93,52 +94,9 @@ const makeAnnotation_mind = d3.annotation()
   svg.append("g")
       .attr("id", "mind_anno")
       .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
       .call(makeAnnotation_mind)   
-
-
-  // const circleAnnotations_man = [
-  //   {
-  //     note: {
-  //       title: "Men, not boys",
-  //       label: "A full 30% of male characters with gendered names get 'man' in their name. That number is only 6% for 'woman'."
-  //     },
-  //     x: x(.30),        
-  //     y: y0('woman'), 
-  //     dx: dx(-.02),
-  //     dy: 50
-  //   }
-  // ]
-  // const makeCircleAnnotations_man = d3.annotation()
-  //   .editMode(false)
-  //   .type(d3.annotationCallout)   
-  //   .annotations(circleAnnotations_man)
-  // svg.append("g")
-  //     .attr("id", "man_anno")
-  //     .attr("class", "annotation-group")
-  //     .call(makeCircleAnnotations_man) 
-
-// END ANNOTATIONS
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -164,10 +122,7 @@ const makeAnnotation_mind = d3.annotation()
 
       console.log(y0Range)
       y0.range(y0Range);
-      // console.log(y0.range(y0Range))
-      // console.log(categoryD)
-      // console.log(categoryD["Objects"])
-      // console.log(categoryD["Objects"]("yWord"))
+
       
       var d3Max = d3.max(data, function(d) { return d.diff });
       var d3Min = d3.min(data, function(d) { return d.diff });
@@ -176,6 +131,7 @@ const makeAnnotation_mind = d3.annotation()
 
       svg.append("g")
         .attr("class", "x axis")
+        .attr("class", "tk-atlas")
         .attr("transform", "translate(0, -50)")
         .call(d3.axisTop(x)
            .tickFormat( function(d){ return (Math.abs(d)); } ))
@@ -184,16 +140,16 @@ const makeAnnotation_mind = d3.annotation()
 
       svg.append("g")
         .attr("class", "y axis")
+        .attr("class", "tk-atlas")
+        .style("text-anchor", "middle")
         .attr("transform", "translate(" + x(0) + ",0)")
         .call(customYAxis)
-        // .append("text")
-        // .attr("transform", "translate(0," + 200 + ")");
 
         function customYAxis(g) {
         g.call(d3.axisLeft(y0));
         g.select(".domain").remove();
         g.selectAll(".tick line").attr("stroke", "#777").attr("opacity", "0");
-        g.selectAll(".tick text").attr("x", 60).attr("dy", -4).attr("class", "label");
+        g.selectAll(".tick text").attr("dy", -8).attr("class", "label");
         }
 
 
@@ -227,11 +183,6 @@ const makeAnnotation_mind = d3.annotation()
         .on("click",  function(d){
           $("#textInsert").html(d.definition)
           $("#titleInsert").html(d.power);
-          // d3.selectAll(".genDot").style("fill", function(d){
-          //     if (d.gender == 1) {return "rgb(39,123,191)"}
-          //     else {return "rgb(243,185,47)"}
-          // }).style("stroke", 'white').style("stroke-width", 0.5)
-          // d3.select(this).style("fill", 'white').style("stroke", "rgb(105,174,68)").style("stroke-width", 2);
         })
         .on('mouseout', function () {
           var section = d3.select(this);
@@ -250,7 +201,6 @@ const makeAnnotation_mind = d3.annotation()
       ls.append("text")
         .text(function(d) {
           return (d.power);
-          // return Math.abs(d.diff).toFixed(2);
         })
         .attr('text-anchor', function(d) {
         if (d.diff <= 0) {return 'end'}
@@ -264,30 +214,14 @@ const makeAnnotation_mind = d3.annotation()
           return y0(d.category) + categoryD[d.category](d.power) + 0.6*barHeight;
 
         })
-         .style("alignment-baseline", "middle")
+         .style("vertical-align", "center")
          .attr("class", "power_bar_bars")
+         .attr("class", "tk-atlas")
          .style("fill", function(d){
             if (d.sig == "y" ) {return "black"}
               else {return "#696969"}
             })
-         .attr("font-size", 12);
-
-
-    svg.append("text")
-      .attr("class", "small")
-      .attr("x", x(-3))
-      .attr("y", -30)
-      .attr("class", "label")
-      .text("<--- Female");
-
-    svg.append("text")
-      .attr("class", "small")
-      .attr("x", x(2))
-      .attr("y", -30)
-      .attr("class", "label")
-      .text("Male --->");
-
-
+         .attr("font-size", 10);
 
 
     });

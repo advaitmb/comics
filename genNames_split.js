@@ -1,6 +1,6 @@
 (function() {
 
-var margin = {top: 100, right: 50, bottom: 50, left: 40},
+var margin = {top: 70, right: 50, bottom: 50, left: 40},
     width = 900 - margin.left - margin.right,
     height = 700 - margin.top - margin.bottom;
 
@@ -71,6 +71,8 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   svg.append("g")
       .attr("id", "girl_anno")
       .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
       .call(makeCircleAnnotations_girl)   
 
 
@@ -93,6 +95,8 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   svg.append("g")
       .attr("id", "man_anno")
       .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
       .call(makeCircleAnnotations_man) 
 
 // END ANNOTATIONS
@@ -100,6 +104,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 
   svg.append("g")
       .attr("class", "x axis")
+      .attr("class", "tk-atlas")
       .attr("id", "xAxis")
       .attr("transform", "translate(0, -50)")
       .call(d3.axisTop(x)
@@ -156,11 +161,8 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       .data(data)
     .enter().append("text")
       .attr("class", "dodo")
-      // .attr("class", function(d) {
-      //   if (d.dim == 1) {return "dodo_girl"}
-      //     else {return "dodo_woman"}
-      //   })
-      .attr("font-size", 12)
+      .attr("class", "tk-atlas")
+      .attr("font-size", 10)
       .attr("x", function(d) {
         if (d.gen_per <=0){return x(d.gen_per)-15}
           else {return x(d.gen_per)+15}
@@ -179,21 +181,6 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         })
       .text(function(d) { return d.gen_name;});
 
-  svg.append("text")
-    .attr("class", "small")
-    .attr("x", 70)
-    .attr("y", -30)
-    .attr("class", "label")
-    .text("<--- Female percents");
-
-  svg.append("text")
-    .attr("class", "small")
-    .attr("x", width-200)
-    .attr("y", -30)
-    .attr("class", "label")
-    .text("Male percents --->");
-
-
   var lineEnd = 0;
 
   svg.append("line")
@@ -206,7 +193,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   .style("fill", "none");
 
 
-      // Make the dotted lines between the dots
+  // Make the dotted lines between the dots
 
   var linesBetween = svg.selectAll("lines.between")
     .data(data)

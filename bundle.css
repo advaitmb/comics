@@ -303,7 +303,7 @@ IMG.displayed_still {
   margin-top:0px;
   padding-top: 0px;
   font-size: 12px;
-  font-weight:500;
+  font-weight:300;
   padding-left:20px;
   padding-right: 20px;
 }
@@ -312,6 +312,17 @@ IMG.displayed_still {
 
 
 /* POWERS CHART */
+
+#female_label {
+  float:left;
+  color:rgb(243,185,47);
+}
+
+#male_label {
+  float: right;
+  color:rgb(39,123,191);
+}
+
 #outliers_back {
   display:none;
 }
@@ -374,7 +385,7 @@ IMG.displayed_still {
 }*/
 
 .label {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .05em;
