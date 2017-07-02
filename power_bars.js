@@ -200,6 +200,7 @@ const makeAnnotation_mind = d3.annotation()
       svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
+        .attr("class", "power_bar")
         .style("fill", function(d, i) {
           if(d.diff>=0) {return "rgb(39,123,191)"}
           else return "rgb(243,185,47)"; })

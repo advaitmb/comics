@@ -302,7 +302,7 @@ IMG.displayed_still {
   padding-top:0px;
   margin-top:0px;
   padding-top: 0px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight:500;
   padding-left:20px;
   padding-right: 20px;
@@ -389,6 +389,10 @@ IMG.displayed_still {
 
 .tick {
   font-size: 12px;
+}
+
+.power_bar {
+    cursor:pointer;
 }
 
 .power_bar_bars {
