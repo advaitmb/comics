@@ -1,33 +1,42 @@
 (function() {
 
+    var chartDiv = document.getElementById("powerSplit_graph");
+    var svg = d3.select(chartDiv).append("svg");
+
+    function redraw() {
+
+    document.querySelector( '#powerSplit_graph' ).innerHTML = '';
+
     var m = {
         top: 70,
         right: 60,
         bottom: 500,
-        left: 50
+        left: 60
       },
-      w = 900 - m.left - m.right,
-      h = 1600 - m.top - m.bottom,
-      pad = 0.2
+    width_power = chartDiv.clientWidth - m.left - m.right;
+    height_power = 1600 - m.top - m.bottom;
+      // width_power = 900 - m.left - m.right,
+      // height_power = 1600 - m.top - m.bottom,
+      pad = 0.2;
 
     // Functions for offsetting annotations
-      function dy(t) {
-        return y(t)-y(0);
-      }
-      function dx(t) {
-        return x(t)-x(0);
-      }
+      // function dy(t) {
+      //   return y(t)-y(0);
+      // }
+      // function dx(t) {
+      //   return x(t)-x(0);
+      // }
 
-    var y = d3.scaleBand().range([10, h]);
+    var y = d3.scaleBand().range([10, height_power]);
 
-    var x = d3.scaleLinear().rangeRound([0, w]);
+    var x = d3.scaleLinear().rangeRound([0, width_power]);
     var y0 = d3.scaleOrdinal();
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
     var svg = d3.select("#powerSplit_graph").append("svg")
-      .attr("width", w + m.right + m.left + 100)
-      .attr("height", h + m.top + m.bottom)
+      .attr("width", width_power + m.right + m.left + 100)
+      .attr("height", height_power + m.top + m.bottom)
       .append("g")
       .attr("transform",
         "translate(" + m.left + "," + m.top + ")");
@@ -41,7 +50,7 @@
         d.per_females = +d.per_females;
       });
 
-      var barHeight = h / (data.length);
+      var barHeight = height_power / (data.length);
       var padBetween = 60;
 
       y0.domain(data.map(function(d) {
@@ -54,7 +63,7 @@
 
 const annotation_object = [{
       note: {
-        title: "Object—-ified",
+        title: "Object—ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
         wrap:210
       },
@@ -221,10 +230,31 @@ const makeAnnotation_mind = d3.annotation()
             if (d.sig == "y" ) {return "black"}
               else {return "#696969"}
             })
-         .attr("font-size", 10);
+         .attr("font-size", 10)
+         .on('mouseover', function (d) {
+          d3.select('#tooltip')
+          .style("left", (d3.event.pageX + 5) + "px")
+          .style("top", (d3.event.pageY - 28) + "px")
+          .select('#value')
+          .html("<span class='bTooltip'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
+           d3.select('#tooltip').classed('hidden', false);
+        })
+          .on("click",  function(d){
+          $("#textInsert").html(d.definition)
+          $("#titleInsert").html(d.power);
+        })
+        .on('mouseout', function () {
+          d3.select('#tooltip').classed('hidden', true);
+        });
 
 
     });
+
+ } // End of redraw function
+
+ redraw();
+
+ window.addEventListener("resize", redraw);
 
 // init()
 })()

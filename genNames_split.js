@@ -1,14 +1,22 @@
 (function() {
 
-var margin = {top: 70, right: 50, bottom: 50, left: 40},
-    width = 900 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    var chartDiv_names = document.getElementById("genNames_graph");
+    var svg_names = d3.select(chartDiv_names).append("svg");
+
+    function redraw_names() {
+
+    document.querySelector( '#genNames_graph' ).innerHTML = '';
+
+
+var margin = {top: 70, right: 60, bottom: 50, left: 60},
+    width_names = chartDiv_names.clientWidth - margin.left - margin.right;
+    height_names = 700 - margin.top - margin.bottom;
 
 var y = d3.scaleBand()
-    .range([10, height], 1);
+    .range([10, height_names], 1);
 
 var x = d3.scaleLinear()
-    .range([width, 0]);
+    .range([width_names, 0]);
 
 // Functions for offsetting annotations
 function dy(t) {
@@ -20,9 +28,9 @@ function dx(t) {
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var svg = d3.select("#genNames_graph").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+var svg_names = d3.select("#genNames_graph").append("svg")
+    .attr("width", width_names + margin.left + margin.right)
+    .attr("height", height_names + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -68,7 +76,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
     .editMode(false)
     .type(d3.annotationCalloutCircle)   
     .annotations(circleAnnotations_girl)
-  svg.append("g")
+  svg_names.append("g")
       .attr("id", "girl_anno")
       .attr("class", "annotation-group")
       .attr("class", "tk-atlas")
@@ -92,7 +100,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
     .editMode(false)
     .type(d3.annotationCallout)   
     .annotations(circleAnnotations_man)
-  svg.append("g")
+  svg_names.append("g")
       .attr("id", "man_anno")
       .attr("class", "annotation-group")
       .attr("class", "tk-atlas")
@@ -102,7 +110,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 // END ANNOTATIONS
 
 
-  svg.append("g")
+  svg_names.append("g")
       .attr("class", "x axis")
       .attr("class", "tk-atlas")
       .attr("id", "xAxis")
@@ -110,7 +118,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       .call(d3.axisTop(x)
         .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
 
-  svg.selectAll(".genDot")
+  svg_names.selectAll(".genDot")
       .data(data)
     .enter().append("circle")
       .attr("class", "genDot")
@@ -157,7 +165,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         });
 
 
-  svg.selectAll(".dodo")
+  svg_names.selectAll(".dodo")
       .data(data)
     .enter().append("text")
       .attr("class", "dodo")
@@ -183,11 +191,11 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 
   var lineEnd = 0;
 
-  svg.append("line")
+  svg_names.append("line")
   .attr("x1", function(){return x(lineEnd)})
   .attr("y1", -40)
   .attr("x2", function(){return x(lineEnd)})
-  .attr("y2", height+50)
+  .attr("y2", height_names+50)
   .style("stroke-width", 0.3)
   .style("stroke", "black")
   .style("fill", "none");
@@ -195,7 +203,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 
   // Make the dotted lines between the dots
 
-  var linesBetween = svg.selectAll("lines.between")
+  var linesBetween = svg_names.selectAll("lines.between")
     .data(data)
     .enter()
     .append("line");
@@ -341,6 +349,11 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
 
 }; //end femaleOrder();
 
+} // end redraw function
 
-// init()
+ redraw_names();
+
+ window.addEventListener("resize", redraw_names);
+
+
 })()
