@@ -116,7 +116,26 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
       .attr("id", "xAxis")
       .attr("transform", "translate(0, -50)")
       .call(d3.axisTop(x)
-        .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } ));
+        .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } )
+        .ticks(5));
+
+
+  // Make the lines between the dots
+
+  var linesBetween = svg_names.selectAll("lines.between")
+    .data(data)
+    .enter()
+    .append("line");
+
+  linesBetween.attr("class", "between")
+    .style("stroke-width", 0.5)
+    .style("stroke", "black")
+    .style("fill", "none")
+    .attr("x1", function(d){return x(d.gen_per)})
+    .attr("y1", function(d){return y(d.gen_cat)})
+    .attr("x2", function(d){return x(d.per_fake)})
+    .attr("y2", function(d){return y(d.gen_cat)})
+
 
   svg_names.selectAll(".genDot")
       .data(data)
@@ -150,7 +169,8 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
            d3.select('#tooltip').classed('hidden', false);
         })
       .on("click",  function(d){
-          $("#textInsert").html(d.char_list);
+          $("#textInsert").html("");
+          $("#textInsert_names").html(d.char_list);
           $("#titleInsert").html(d.gen_name);
           d3.selectAll(".genDot").style("fill", function(d){
               if (d.gender == 1) {return "rgb(39,123,191)"}
@@ -200,22 +220,6 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
   .style("stroke", "black")
   .style("fill", "none");
 
-
-  // Make the dotted lines between the dots
-
-  var linesBetween = svg_names.selectAll("lines.between")
-    .data(data)
-    .enter()
-    .append("line");
-
-  linesBetween.attr("class", "between")
-    .style("stroke-width", 0.5)
-    .style("stroke", "black")
-    .style("fill", "none")
-    .attr("x1", function(d){return x(d.gen_per)})
-    .attr("y1", function(d){return y(d.gen_cat)})
-    .attr("x2", function(d){return x(d.per_fake)})
-    .attr("y2", function(d){return y(d.gen_cat)})
 });
 
 
