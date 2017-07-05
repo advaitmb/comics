@@ -11,7 +11,7 @@
         top: 70,
         right: 60,
         bottom: 630,
-        left: 60
+        left: 30
       },
     width_power = chartDiv.clientWidth - m.left - m.right;
     height_power = 2000 - m.top - m.bottom;

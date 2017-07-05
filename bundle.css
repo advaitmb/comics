@@ -140,6 +140,9 @@ IMG.displayed_still {
 .dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis, .career_chart__vis {
   position:relative;
   z-index: 1;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .genNames__vis svg {
@@ -678,6 +681,13 @@ th {
   visibility:hidden;
  }
 
+ #girl_anno {
+  visibility:hidden;
+ }
+
+ #man_anno {
+  visibility:hidden;
+ }
 
 }
 

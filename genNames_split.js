@@ -8,7 +8,7 @@
     document.querySelector( '#genNames_graph' ).innerHTML = '';
 
 
-var margin = {top: 70, right: 60, bottom: 50, left: 60},
+var margin = {top: 70, right: 60, bottom: 50, left: 50},
     width_names = chartDiv_names.clientWidth - margin.left - margin.right;
     height_names = 700 - margin.top - margin.bottom;
 
