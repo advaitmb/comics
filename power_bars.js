@@ -10,11 +10,11 @@
     var m = {
         top: 70,
         right: 60,
-        bottom: 500,
+        bottom: 630,
         left: 60
       },
     width_power = chartDiv.clientWidth - m.left - m.right;
-    height_power = 1600 - m.top - m.bottom;
+    height_power = 2000 - m.top - m.bottom;
       // width_power = 900 - m.left - m.right,
       // height_power = 1600 - m.top - m.bottom,
       pad = 0.2;
@@ -65,7 +65,7 @@ const annotation_object = [{
       note: {
         title: "Object—ified",
         label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
-        wrap:210
+        wrap:180
       },
           y: y('Gadgets')+padBetween-15,
           
@@ -89,7 +89,7 @@ const annotation_mind = [{
       note: {
         title: "Mind your powers",
         label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
-        wrap:210
+        wrap:180
       },
           y: y('Empathy')+padBetween*5,
           

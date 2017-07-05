@@ -25,10 +25,12 @@ a {
 
 .intro__dek {
   max-width: 25rem;
-  margin: 0 auto;
+  width:100%;
+  margin: 0 auto 4rem auto;
   padding: 0 1rem;
   font-size: 17px;
   line-height: 1.7;
+  text-align: center;
 }
 
 
@@ -70,14 +72,10 @@ main {
 
 
 /*INTRO*/
-.intro__dek {
-  width:400px;
-  text-align: center;
-
-}
 
 #introGifs {
-  width: 300px;
+  width:100%;
+  max-width: 300px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -138,19 +136,6 @@ IMG.displayed_still {
 
 
 /* GRAPHICS */
-.graphic {
-  position: relative;
-}
-
-.graphic__prose {
-  width: 25%;
-  margin-left:70%;
-  padding-top: 50px;
-}
-
-.graphic__prose p{
-  font-size: 15px;
-}
 
 .dimChart__vis, .graphic__vis, .powerSplit__vis, .genNames__vis, .teams__vis, .career_chart__vis {
   position:relative;
@@ -208,31 +193,38 @@ IMG.displayed_still {
 
 
 /* TITLES, CHART TEXT, BODY TEXT */
-.midTitle {
-  text-align: center;
-}
 
 .paddedIntro {
-  margin-left: auto;
-  margin-right: auto;
-  width:40rem;
+  margin: 0 auto 4rem auto;
+  width:90%;
+  max-width:40rem;
   padding-top: 100px;
   text-align: left;
 }
 
 .paddedBody {
+  margin: 0 auto 0 auto;
+  width:90%;
+  max-width:40rem;
+  padding-top: 50px;
+  text-align: left;
+}
+
+/*.paddedBody {
   position:relative;
   margin-left: auto;
   margin-right: auto;
+  width:90%;
   width:40rem;
   padding-top: 50px;
-}
+  text-align: left;
+}*/
 
 .chartHed {
   position:relative;
-  margin-left: auto;
-  margin-right: auto;
-  width:40rem;
+  margin: 0 auto 0 auto;
+  width:90%;
+  max-width:40rem;
   padding-top: 10px;
 }
 
@@ -301,7 +293,8 @@ IMG.displayed_still {
   position:relative;
   margin-left: auto;
   margin-right: auto;
-  width:40rem;
+  width:100%;
+  max-width:40rem;
   padding-top:0px;
   margin-top:0px;
   padding-top: 0px;
@@ -675,10 +668,18 @@ th {
 
 
 
+@media only screen and (max-width: 40em) {
+ 
+ #object_anno {
+  visibility:hidden;
+ }
+
+ #mind_anno {
+  visibility:hidden;
+ }
 
 
-
-
+}
 
 
 
