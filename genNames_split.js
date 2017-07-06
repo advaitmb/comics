@@ -279,6 +279,7 @@ d3.csv("gender_dumbbell_shortened.csv", function(error, data) {
         else {return 'start'}
         })
       .text(function(d) { return d.gen_name;});
+    
 
 
   d3.selectAll(".between")

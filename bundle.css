@@ -668,6 +668,21 @@ th {
 
 
 
+@media screen and (max-width: 410px) {
+  #swarm {
+    content:url("images/swarm_mobile.jpg");
+  }
+}
+
+@media screen and (min-width: 410px) {
+  #swarm {
+    content:url("images/swarm.jpg");
+  }
+}
+
+
+
+
 
 
 
@@ -712,8 +727,6 @@ th {
   #sideBarHero {
     display:none;
   }
-
-
 
 }
 
