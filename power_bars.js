@@ -56,8 +56,6 @@
       y0.domain(data.map(function(d) {
         return d.category;
       }));
-
-
       y.domain(data.map(function(d) { return d.power; }));
 
 
@@ -129,7 +127,6 @@ const makeAnnotation_mind = d3.annotation()
             .object(data);
 
 
-      console.log(y0Range)
       y0.range(y0Range);
 
       
@@ -223,7 +220,6 @@ const makeAnnotation_mind = d3.annotation()
           return y0(d.category) + categoryD[d.category](d.power) + 0.6*barHeight;
 
         })
-         .style("vertical-align", "center")
          .attr("class", "power_bar_bars")
          .attr("class", "tk-atlas")
          .style("fill", function(d){

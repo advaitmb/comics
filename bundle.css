@@ -531,7 +531,7 @@ th {
   right:2%;
   z-index: 100;
   max-width: 250px;
-  max-height: 300px
+  max-height: 300px;
   font-size: 12px;
   display:none;
 }
@@ -557,9 +557,9 @@ th {
 
 
 .sidebar {
-    position: -webkit-sticky;  // required for Safari
+    position: -webkit-sticky;
     position: sticky;
-    top: 0; // required as well.
+    top: 0;
 
 }   
 

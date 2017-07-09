@@ -42,9 +42,8 @@ function redraw_names() {
             d.per_fake = +d.per_fake/100.0;
           });
 
-
-          data_sorted.sort(function(a,b) {
-            return a.gen_per - b.gen_per;
+          data.sort(function(b,a) {
+            return b.gen_per - a.gen_per;
           });
 
           // function ascendingFemaleNames(data) {data.sort(function(x, y){
