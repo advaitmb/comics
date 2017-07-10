@@ -187,8 +187,8 @@ const makeAnnotation_mind = d3.annotation()
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
-          $("#textInsert").html(d.definition)
-          $("#titleInsert").html(d.power);
+          $("#textInsert_powers").html(d.definition)
+          $("#titleInsert_powers").html(d.power);
         })
         .on('mouseout', function () {
           var section = d3.select(this);
@@ -236,8 +236,8 @@ const makeAnnotation_mind = d3.annotation()
            d3.select('#tooltip').classed('hidden', false);
         })
           .on("click",  function(d){
-          $("#textInsert").html(d.definition)
-          $("#titleInsert").html(d.power);
+          $("#textInsert_powers").html(d.definition)
+          $("#titleInsert_powers").html(d.power);
         })
         .on('mouseout', function () {
           d3.select('#tooltip').classed('hidden', true);

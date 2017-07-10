@@ -535,7 +535,23 @@ th {
   display:none;
 }
 
+#stick2 {
+  position:fixed;
+  top:10%;
+  right:2%;
+  z-index: 100;
+  max-width: 250px;
+  max-height: 300px;
+  font-size: 12px;
+  display:none;
+}
+
 #titleInsert {
+  color:rgb(234,70,46);
+  font-weight: 700;
+}
+
+#titleInsert_powers {
   color:rgb(234,70,46);
   font-weight: 700;
 }
