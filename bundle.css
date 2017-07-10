@@ -524,7 +524,6 @@ th {
 }
 
 
-
 #stick {
   position:fixed;
   top:10%;
@@ -666,19 +665,26 @@ th {
 
 
 
-
-
-@media screen and (max-width: 410px) {
-  #swarm {
-    content:url("images/swarm_mobile.jpg");
+@media only screen and (max-width: 700px) {
+  .desktop {
+    display:none;
   }
+  .mobile {
+    display:block;
+  }
+
 }
 
-@media screen and (min-width: 410px) {
-  #swarm {
-    content:url("images/swarm.jpg");
+@media only screen and (min-width: 700px) {
+  .desktop {
+    display:block;
   }
+  .mobile {
+    display:none;
+  }
+
 }
+
 
 
 

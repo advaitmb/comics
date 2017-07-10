@@ -161,7 +161,7 @@
 <main id='content'>
 
 	<div class='intro' >
-		<h1 class='intro__hed tk-canela'>Marvel, DC and gender: A look at the representation of 34,476 characters</h1>
+		<h1 class='intro__hed tk-canela'>Marvel, DC and gender: Analyzing the representation of 34,476 characters</h1>
 		<p class='intro__byline tk-atlas'>By <a href='https://twitter.com/puddingviz' target='_blank'><strong>Amanda Shendruk</strong></a></p>
 		<p class='intro__dek tk-atlas medium'>Female characters appear in superhero comics less often than males — but when they <i>are</i> included, how are they depicted? </p>
 	</div>
@@ -182,7 +182,7 @@
 		<p>The recent theatrical release of Wonder Woman briefly catapulted the question of female superhero representation into the mainstream. For some, the character is a feminist icon — even <a href="https://www.amazon.com/Wonder-Woman-Gloria-Steinem/dp/051718687X" target="_blank">Gloria Steinem wrote about her</a> — and <a href="https://www.theguardian.com/lifeandstyle/2017/jun/05/why-wonder-woman-is-a-masterpiece-of-subversive-feminism" target="_blank">many fans</a> <a href="http://www.slate.com/blogs/xx_factor/2017/06/02/i_wish_wonder_woman_were_as_feminist_as_it_thinks_it_is.html" target="_blank">(though not all)</a> felt this wasn't just another superhero movie, but rather a pivotal moment in the portrayal of women in popular culture. <!-- By most measures, the movie was a success — it exceeded attendence records, it made a lot of <a href="http://www.vanityfair.com/hollywood/2017/06/wonder-woman-highest-worldwide-gross-female-director">money</a> and, for many, it was a . But, for some it was just a small advance in a  -->
 		<p>Why all the fuss? Well, the truth is that the comics industry has had a complicated relationship with female characters. They are often <a href="https://www.scientificamerican.com/article/the-problem-with-female-superheroes/" target="_blank">hyper-sexualized</a>, <a href="http://journal.transformativeworks.org/index.php/twc/article/view/460/384" target="_blank">unnecessarily brutalized</a>, <a href="http://www.newstatesman.com/culture/2013/08/i-hate-strong-female-characters" target="_blank">stereotyped</a>, and used as <a href="https://en.wikipedia.org/wiki/Smurfette_principle" target="_blank">tokens.</a> They're also rare. Only 26.7 percent of all DC and Marvel characters are female, and only <a href="https://www.amazon.com/Superwomen-Gender-Representation-Carolyn-Cocca/dp/1501316575" target="_blank">12 percent of mainstream superhero comics</a> have female protagonists.</p> 
 
-		<p>I decided to look beyond the gender ratio to see if we could learn more about how females are represented. Using characters from DC and Marvel in the <a href="https://comicvine.gamespot.com/api/" target="_blank"> ComicVine database</a>, I analyzed naming conventions, types of superpowers, and the composition of teams to see how male and female genders are portrayed.</p>
+		<p>I decided to look beyond the <a href="https://fivethirtyeight.com/features/women-in-comic-books/" target="blank">gender ratio</a> to see if we could learn more about how females are represented. Using characters from DC and Marvel in the <a href="https://comicvine.gamespot.com/api/" target="_blank"> ComicVine database</a>, I analyzed naming conventions, types of superpowers, and the composition of teams to see how male and female genders are portrayed.</p>
 
 	</div>
 
@@ -266,12 +266,13 @@
 	<!-- TEAMS CHART -->
 
 	<div class="chartHed">
-		<p class="chartTitle tk-atlas medium">Every team in DC and Marvel</p>
-		<p class="chartText tk-atlas small">Each dot represents one of over 2,500 teams in the DC and Marvel universes. If every team maintained the male/female ratio of the entire dataset, all would cluster at 27 percent female. The mean of all teams happens to be 28 percent female.</p>
+		<p class="chartTitle tk-atlas medium">Female percentage of every team</p>
+		<p class="chartText tk-atlas small">Each dot represents one of over 2,500 teams in the DC and Marvel universes. If every team maintained the male/female ratio of the entire dataset, all would cluster at 27 percent female. The average (mean) of all teams happens to be 28 percent female.</p>
 	</div>
 
 	<div class="graphic">
-		<img src="images/swarm.png" id="swarm">
+		<img src="images/swarm.png" id="swarm" class="desktop">
+		<img src="images/swarm_mobile.png" id="swarm" class="mobile">
 	</div>
 
 
@@ -310,7 +311,7 @@
 	</div>
 
 	<hr class="note tk-atlas small">
-	<p class="note tk-atlas small">DATA NOTES: Percentages are determined only from characters with gendered names. (ie. 13 percent of women with gendered names have 'girl' in their name). In DC and Marvel, 12 percent of all male characters have gendered names, and 8.7 percent of female characters have gendered names.<br><br> When I say 'diminutive names' these are the ones considered. Female: girl, daughter, miss, princess, lass, damsel, mademoiselle, chick, doll, gal. Male: boy, son, prince, lad, bro, junior. There are good arguments for both keeping and removing many of these terms — but the point remains: Even if we only consider 'girl' and 'boy' there's a significant difference: 13 percent for females, 5 percent for males.<br><br>In some cases a character with a gendered name will be listed in the Comic Vine database under their secret identity. For example, you will find no Ms. Marvel or Batgirl in the chart above. They are listed in the data as Carol Danvers (and Kahala Khan and others) and Barbara Gordon.</p>
+	<p class="note tk-atlas small">DATA NOTES: Percentages are determined only from characters with gendered names. (ie. 13 percent of women with gendered names have 'girl' in their name). In DC and Marvel, 12 percent of all male characters have gendered names, and 8.7 percent of female characters have gendered names.<br><br> When I say 'diminutive names' these are the ones considered. Female: girl, daughter, miss, princess, lass, damsel, mademoiselle, chick, doll, gal. Male: boy, son, prince, lad, bro, junior. There are good arguments for both keeping and removing many of these terms — but the point remains: Even if we only consider 'girl' and 'boy' there's a significant difference: 13 percent for females, 5 percent for males.<br><br>In some cases a character with a gendered name will be listed in the Comic Vine database under their secret identity. For example, you will find no Ms. Marvel or Batgirl in the chart above. They are listed in the data as Carol Danvers (and Kamala Khan, etc.) and Barbara Gordon.</p>
 
 	<div class="paddedBody small" id="sidebar_text_names">
 		<p>If we compare the use of diminutive names for male and female characters, we see that 33 percent of female characters and 16 percent of male characters fit in the category. Females are almost twice as likely to be given a name that may make her seem weak, less dangerous, less aggressive and not on equal footing with male characters.
@@ -329,7 +330,7 @@
 		<p><a href="https://www.oldwestbury.edu/people/coccac" target="_blank">Carolyn Cocca</a>, academic and author of the Eisner-nominated book <a href="https://www.amazon.com/Superwomen-Gender-Representation-Carolyn-Cocca/dp/1501316575" target="_blank">"Superwomen: Gender, Power, and Representation"</a>, expresses clearly why this is such an important concern. She writes: "If the constantly repeated story is that women and girls are not leaders, are not working in professional settings, are not agents of their own lives but merely adjuncts to others, and are sometimes not even present at all, it can reinforce or foster societal undervaluing of women and girls... As there are fewer female characters to begin with, each is overburdened with representing women as a group."</p>
 
 
-		<p>To be fair, this problem does not affect comics alone: media in general — including<a href="https://www.theguardian.com/books/2011/may/06/gender-imbalance-children-s-literature" target="_blank"> children's books</a> and <a href="http://theconversation.com/sexist-screen-representations-of-women-start-in-the-script-55022" target="_blank">scripts</a> — have a history of poor female representation and gender imbalance. The good news is that things may be changing. Both DC and Marvel have slowly begun to <a href="https://fivethirtyeight.com/features/women-in-comic-books/#fn-2" target="_blank">increase the number of female characters</a> in their output. Our analysis didn't consider time-series data (we didn't have it), and characters change over time — Wonder Woman herself has been a feminist activist, a house-wife, a sexualized pin-up, and a kick-ass hero in her eighty years. However, while some features may be altered, established and traditional characters tend to maintain their names and powers. They continue to carry the representative baggage of their past.</p>
+		<p>To be fair, this problem does not affect comics alone: media in general — including<a href="https://www.theguardian.com/books/2011/may/06/gender-imbalance-children-s-literature" target="_blank"> children's literature</a>, <a href="https://link.springer.com/article/10.1007/BF01544217" target="blank">cartoons</a>, <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1083-6101.2006.00301.x/full" target="blank">computer games</a> and even <a href="https://link.springer.com/article/10.1007/s11199-009-9703-8" target="_blank">coloring books</a> — have a history of poor female representation and gender imbalance. The good news is that things may be changing. Both DC and Marvel have slowly begun to <a href="https://fivethirtyeight.com/features/women-in-comic-books/#fn-2" target="_blank">increase the number of female characters</a> in their output. Our analysis didn't consider time-series data (we didn't have it), and characters change over time — Wonder Woman herself has been a feminist activist, a house-wife, a sexualized pin-up, and a kick-ass hero in her eighty years. However, while some features may be altered, established and traditional characters tend to maintain their names and powers. They continue to carry the representative baggage of their past.</p>
 	</div>
 
 	<div id="introGifs">
@@ -341,7 +342,7 @@
 
 	<p class="note tk-atlas small">Using the <a href="https://comicvine.gamespot.com/api/" target="_blank">ComicVine database</a>, which is fan-edited, information was downloaded for all 34,476 characters in the Marvel and DC universes. The choice of the 'big two' was made to cover the greatest breadth and history of characters; these companies have both been around since the 1930's and together they are responsible for approximately 70 percent of the <a href="http://www.diamondcomics.com/Home/1/1/3/237?articleID=100122" target="_blank">retail market</a> (depending on the month). Data were gathered at the end of April, 2017.</p>
 
-	<p class="note tk-atlas small"> This piece is unfortunately only focused on male and female gender. In the database there are designations for 'female', 'male' and 'other'. The decision was made to remove characters that appeared in the 'other' category. I had hoped this data would provide some insight into non-binary or gender fluid characters in the Marvel and DC universes. Once I took a closer look, however, it was clear that the category is not often used in a gender-inclusive way. Instead, it is mostly used as a way to label non-human characters like robots, auras and spirits. </p>
+	<p class="note tk-atlas small"> This piece is unfortunately only focused on male and female gender. In the database there are designations for 'female', 'male' and 'other'. The decision was made to remove characters that appeared in the 'other' category. I had hoped this data would provide some insight into non-binary or gender fluid characters in the Marvel and DC universes. Once I took a closer look, however, it was clear that the category is not often used in a gender-inclusive way. Instead, it is mostly used as a way to label non-human characters like robots, auras and spirits. <a href="http://www.open.edu/openlearn/history-the-arts/culture/media-studies/superqueeroes-gender-and-superheroes" target="blank">Here's a brief</a>, interesting read about battling this binary model in superhero comics.</p>
 	<p class="note tk-atlas small">Because I gathered every single character from both publishers, there are occasionally duplicates of characters. There’s a good argument for removing them: They over-weight some of the big characters, because it’s usually only the more common, popular characters that are replaced, or reborn, etc. However, there’s a good argument for keeping them as well. They can be considered different characters (Batman-X is not the same as Batman, for example), and as such, they have distinct genders. Removing duplicates would mean missing out if the character changes gender. For example: There are at least six iterations of Robin, but only four of them are male.</p>
 
 	<p class="note tk-atlas small">Thank you to <a href="https://tnshendruk.com/" target="_blank"> Tyler Shendruk</a>, who provided invaluable assitance during the data analysis stage, and to <a href="https://www.artstation.com/artist/trickynicky" target="blank">Nicole Derksen</a>, who created the illustrations and gifs used in this article.</p>
@@ -356,6 +357,7 @@
 	<script src='genNames_split.js'></script>
 	<script src='teams_anno.js'></script>
 	<script src='sidebar.js'></script>
+	
 
 
 
