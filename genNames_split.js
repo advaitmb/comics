@@ -254,11 +254,10 @@ function redraw_names() {
       d3.selectAll('.dodo')
           .transition().duration(500)
           .delay(function (d,i) { return i*10})
-          .attr("y", 5);
-          // .attr("y", function(d) {
-          //   if (d.gen_per <=0){return y(d.gen_cat)+4}
-          //   else {return y(d.gen_cat)+4}
-          //  });
+          .attr("y", function(d) {
+            if (d.gen_per <=0){return y(d.gen_cat)+4}
+            else {return y(d.gen_cat)+4}
+           });
 
       d3.selectAll(".between")
         .transition().duration(500)

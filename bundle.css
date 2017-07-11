@@ -362,34 +362,6 @@ IMG.displayed_still {
   display: none;
   }
 
-
-/*.listNames {
-  position:absolute;
-  width: 25%;
-  margin-left:70%;
-}
-*/
-
-
-/*#genTitle {
-  position:absolute;
-    text-transform: uppercase;
-    text-align: left;
-  left:65%;
-  color:rgb(105,174,68);
-  font-weight: 500;
-}*/
-
-/*.genNames {
-  position: absolute;
-  width: 30%;
-  float: right;
-  left: 65%;
-  top: 40px;
-  font-size: 10px;
-  padding-right: 2rem;
-}*/
-
 .label {
     font-weight: 500;
     font-size: 12px;
