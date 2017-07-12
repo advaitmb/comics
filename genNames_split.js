@@ -46,6 +46,7 @@ function redraw_names() {
             return d3.ascending(a.gen_per,b.gen_per);
           });
 
+
           x.domain([d3.max(data, function(d) { return d.gen_per; }), -0.3]);
           y.domain(data.map(function(d) { return d.gen_cat; }));
 
@@ -114,6 +115,7 @@ function redraw_names() {
               .tickFormat( function(d){ return d3.format("0.0%")(Math.abs(d)); } )
               .ticks(5));
 
+
           // Make the lines between the dots
 
           var linesBetween = svg_names.selectAll("lines.between")
@@ -131,9 +133,12 @@ function redraw_names() {
             .attr("y2", function(d){return y(d.gen_cat)})
 
 
-          svg_names.selectAll(".genDot")
-            .data(data)
-            .enter().append("circle")
+          // Dots for each gendered name
+
+          var genDots = svg_names.selectAll(".genDot")
+            .data(data);
+
+          genDots.enter().append("circle")
               .attr("class", "genDot")
               .attr("r", 10)
               .attr("cx", function(d) { return x(d.gen_per); })
@@ -179,11 +184,13 @@ function redraw_names() {
                 });
 
 
-          svg_names.selectAll(".dodo")
-            .data(data)
-            .enter().append("text")
-              .attr("class", "dodo")
-              .attr("class", "tk-atlas")
+
+              // Text for gender names
+          var texts = svg_names.selectAll(".dodo")
+            .data(data);
+
+          texts.enter().append("text")
+              .attr("class", "dodo tk-atlas")
               .attr("font-size", 10)
               .attr("x", function(d) {
                 if (d.gen_per <=0){return x(d.gen_per)-15}
@@ -205,6 +212,7 @@ function redraw_names() {
 
           var lineEnd = 0;
 
+          // Line at 0
           svg_names.append("line")
             .attr("x1", function(){return x(lineEnd)})
             .attr("y1", -40)
@@ -247,13 +255,12 @@ function redraw_names() {
 
       d3.selectAll('.genDot') // move the circles
           .transition().duration(500)
-          .delay(function (d,i) { return i*10})
           .attr("cx", function(d) { return x(d.gen_per); })
           .attr("cy", function(d) { return y(d.gen_cat); });
 
+
       d3.selectAll('.dodo')
           .transition().duration(500)
-          .delay(function (d,i) { return i*10})
           .attr("y", function(d) {
             if (d.gen_per <=0){return y(d.gen_cat)+4}
             else {return y(d.gen_cat)+4}
@@ -281,13 +288,11 @@ function redraw_names() {
 
      d3.selectAll('.genDot') // move the circles
         .transition().duration(500)
-        .delay(function (d,i) { return i*10})
         .attr("cx", function(d) { return x(d.gen_per); })
         .attr("cy", function(d) { return y(d.gen_cat); });
 
       d3.selectAll('.dodo')
           .transition().duration(500)
-          .delay(function (d,i) { return i*10})
           .attr("y", function(d) {
             if (d.gen_per <=0){return y(d.gen_cat)+4}
             else {return y(d.gen_cat)+4}
