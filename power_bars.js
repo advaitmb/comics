@@ -183,7 +183,7 @@ const makeAnnotation_mind = d3.annotation()
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
           .select('#value')
-          .html("<span class='bTooltip'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
+          .html("<span class='bTooltip tk-atlas'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
