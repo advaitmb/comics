@@ -161,23 +161,23 @@
 <main id='content'>
 
 	<div class='intro' >
-		<h1 class='intro__hed tk-canela'>Marvel, DC and gender: Analyzing the representation of 34,476 characters</h1>
-		<p class='intro__byline tk-atlas'>By <a href='https://twitter.com/puddingviz' target='_blank'><strong>Amanda Shendruk</strong></a></p>
-		<p class='intro__dek tk-atlas medium'>Female characters appear in superhero comics less often than males — but when they <i>are</i> included, how are they depicted? </p>
-	</div>
-
-		<div id="introGifs" style="padding-bottom:100px;">
-		<img src="images/ww.gif" class="displayed" style="float:left"/>
-		<img src="images/mystique.gif" class="displayed" style="float:right"/>
+		<div class="gifs">
+			<img src="images/ww.gif" class="displayed"/>
+		</div>
+		<h1 class='intro__hed tk-canela'>Analyzing the Gender Representation of 34,476 Comic Book Characters</h1>
+		<p class='intro__byline tk-atlas'>By <a href='https://twitter.com/ashendruk' target='_blank'><strong>Amanda Shendruk</strong></a></p>
+		<p class='intro__dek tk-atlas medium'>Female characters appear in superhero comics less often than males — but when they <em>are</em> included, how are they depicted? </p>
 	</div>
 
 	<div id="tooltip" class="hidden">
-    	<p><span id="value"></span></p>
+    	<p class='tk-atlas'><span id="value"></span></p>
 	</div>
 
 
 <!-- INTRODUCTION -->
-
+	<!-- <div class='gifs'>
+		<img src="images/mystique.gif" class="displayed"/>
+	</div> -->
 	<div class="paddedIntro small">
 		<p>The recent theatrical release of Wonder Woman briefly catapulted the question of female superhero representation into the mainstream. For some, the character is a feminist icon — even <a href="https://www.amazon.com/Wonder-Woman-Gloria-Steinem/dp/051718687X" target="_blank">Gloria Steinem wrote about her</a> — and <a href="https://www.theguardian.com/lifeandstyle/2017/jun/05/why-wonder-woman-is-a-masterpiece-of-subversive-feminism" target="_blank">many fans</a> <a href="http://www.slate.com/blogs/xx_factor/2017/06/02/i_wish_wonder_woman_were_as_feminist_as_it_thinks_it_is.html" target="_blank">(though not all)</a> felt this wasn't just another superhero movie, but rather a pivotal moment in the portrayal of women in popular culture. <!-- By most measures, the movie was a success — it exceeded attendence records, it made a lot of <a href="http://www.vanityfair.com/hollywood/2017/06/wonder-woman-highest-worldwide-gross-female-director">money</a> and, for many, it was a . But, for some it was just a small advance in a  -->
 		<p>Why all the fuss? Well, the truth is that the comics industry has had a complicated relationship with female characters. They are often <a href="https://www.scientificamerican.com/article/the-problem-with-female-superheroes/" target="_blank">hyper-sexualized</a>, <a href="http://journal.transformativeworks.org/index.php/twc/article/view/460/384" target="_blank">unnecessarily brutalized</a>, <a href="http://www.newstatesman.com/culture/2013/08/i-hate-strong-female-characters" target="_blank">stereotyped</a>, and used as <a href="https://en.wikipedia.org/wiki/Smurfette_principle" target="_blank">tokens.</a> They're also rare. Only 26.7 percent of all DC and Marvel characters are female, and only <a href="https://www.amazon.com/Superwomen-Gender-Representation-Carolyn-Cocca/dp/1501316575" target="_blank">12 percent of mainstream superhero comics</a> have female protagonists.</p> 
@@ -187,26 +187,27 @@
 	</div>
 
 
-	<div id="introGifs">
-		<img src="images/catwoman.gif" class="displayed"/>
+	<div class="gifs">
+		<img src="images/mystique.gif" class="displayed"/>
+		<!-- <img src="images/catwoman.gif" class="displayed"/> -->
 	</div>
 
 <!-- POWERS SECTION -->
 	<div id="othdiv" class="paddedBody small">
-		<h3 class="midTitle">Strong men; thoughtful women</h3>
+		<h2 class="midTitle tk-canela">Strong men; thoughtful women</h2>
 		<p>Three in five comic book characters have at least one superpower, regardless of gender. When we dive into the allocation of specific abilities, we find categories in which one gender dominates.</p>
 	</div>
 
 	<!-- POWERS CHART -->
 
 	<div class="chartHed">
-		<p class="chartTitle tk-atlas medium">The difference in male and female powers</p>
+		<p class="chartTitle tk-atlas large">The difference in male and female powers</p>
 		<p class="chartText tk-atlas small">When we chart the difference between the percentages of males and females with a power, we see groups that lean toward one gender or the other</p>
 
 		<p id="pts_label" class="label tk-atlas">Change in % pts</p>
 
-		<p id="female_label" class="label tk-atlas">More female</p>
-		<p id="male_label" class="label tk-atlas">More male</p>
+		<p id="female_label" class="label tk-atlas">&larr; More female</p>
+		<p id="male_label" class="label tk-atlas">More male &rarr;</p>
 	</div>
 
 	<div class="graphicWrapper">
@@ -257,13 +258,13 @@
 	</div>
 
 
-	<div id="introGifs">
+	<div class="gifs">
 		<img src="images/shehulk.gif" class="displayed"/>
 	</div>
 
 		<!-- TEAMS SECTION -->
 	<div class="paddedBody small" >
-		<h3 class="midTitle">Token teams and team members</h3>
+		<h2 class="midTitle tk-canela">Token teams and team members</h2>
 		<p> Combined, there are over 2,500 teams in DC and Marvel. Roughly half of all characters — male and female — are members of at least one team. Female prevalence on teams is what you would expect given the relatively low number of female characters. That doesn't mean, though, that female characters are evenly distributed. In fact, 30 percent of all teams have no women, and only 8 percent have more female team members than male.
 </p> 
 
@@ -280,7 +281,7 @@
 	<!-- TEAMS CHART -->
 
 	<div class="chartHed">
-		<p class="chartTitle tk-atlas medium">Female percentage of every team</p>
+		<p class="chartTitle tk-atlas large">Female percentage of every team</p>
 		<p class="chartText tk-atlas small">Each dot represents one of over 2,500 teams in the DC and Marvel universes. If every team maintained the male/female ratio of the entire dataset, all would cluster at 27 percent female. The average (mean) of all teams happens to be 28 percent female.</p>
 	</div>
 
@@ -295,14 +296,14 @@
 		<!-- <p>Again, Cocca is not surprised: "[Historically, Women] would basically be a token on the team, and very often that token would be the weakest member of the team, the weak link, the one that got captured, the one de-powered, the one that messed up and had to be rescued. And when you're just 'the girl' on the team, then that just reinforces, “well, why have female characters, because they're always like that? They're always the one that needs to be rescued."</p> -->
 	</div>
 
-	<div id="introGifs">
+	<div class="gifs">
 		<img src="images/starfire.gif" class="displayed"/>
 	</div>
 
 
 <!-- GENDERED NAMES SECTION-->
 	<div class="paddedBody small" id="sidebar_text_names">
-		<h3 class="midTitle">Men will be men; women will be girls</h3>
+		<h2 class="midTitle tk-canela">Men will be men; women will be girls</h2>
 		<p>Character monikers follow a similar pattern to team names. Consider some of the most popular comic characters of all time: Bat<i>man</i>, Wonder <i>Woman</i>, <i>Ms.</i> Marvel and Spider-<i>Man</i>. However, not all gendered names are equal; some fit a "diminutive" category. These are titles that are the younger, or infantilized versions of another name. For example, "girl" is the diminutive version of woman.
 		</p>
 	</div>
@@ -311,13 +312,18 @@
 	<!-- GENDERED NAMES CHART-->
 
 	<div class="chartHed">
-		<p class="chartTitle tk-atlas medium">Not all gendered names are equal</p>
+		<p class="chartTitle tk-atlas large">Not all gendered names are equal</p>
 		<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names. <span style="color:rgb(234,70,46);">Diminutive names</span> — those that may infantilize or denote the younger version of a title  — are highlighted.</p>
-		<button id="descendingMale" class="btn">Order by male</button>
-		<button id="descendingFemale" class="active btn">Order by female</button>	
+		<div class='options tk-atlas'>
+			<p>Sort by</p>
+			<button id="descendingFemale" class="active btn">female</button>
+		<button id="descendingMale" class="btn">male</button>
+		</div>
+		
+			
 		<br><br>
-		<p id="female_label" class="label tk-atlas">Female percents</p>
-		<p id="male_label" class="label tk-atlas">Male percents</p>
+		<p id="female_label" class="label tk-atlas">Percent Female</p>
+		<p id="male_label" class="label tk-atlas">Percent Male</p>
 	</div>
 
 	<div class="graphicWrapper">
@@ -335,7 +341,7 @@
 
 	<!-- CONCLUSION-->
 
-	<div id="introGifs">
+	<div class="gifs">
 		<img src="images/poison.gif" class="displayed"/>
 	</div>
 
@@ -348,7 +354,7 @@
 		<p>The good news is that things may be changing. Both DC and Marvel have slowly begun to <a href="https://fivethirtyeight.com/features/women-in-comic-books/#fn-2" target="_blank">increase the number of female characters</a> in their output. Our analysis didn't consider time-series data (we didn't have it), and characters change over time — Wonder Woman herself has been a feminist activist, a house-wife, a sexualized pin-up, and a kick-ass hero in her eighty years. However, while some features may be altered, established and traditional characters tend to maintain their names and powers. They continue to carry the representative baggage of their past.</p>
 	</div>
 
-	<div id="introGifs">
+	<div class="gifs">
 		<img src="images/raven.gif" class="displayed"/>
 	</div>
 
@@ -365,19 +371,11 @@
 </main>
 
 	<script src='d3.v4.min.js'></script>
-	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>	
 	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
 	<script src='power_bars.js'></script>
 	<script src='genNames_split.js'></script>
-	<script src='teams_anno.js'></script>
 	<script src='sidebar.js'></script>
-	
-
-
-
-
-	<script src='bundle.js?version=1495145297027'></script>
 <!-- <script src='https://pudding.cool/assets/scripts/pudding-footer.js' async></script> -->
 </body>
 </html>

@@ -3,39 +3,44 @@ a {
 }
 
 .intro {
-  margin: 5rem auto;
+  margin: 0 auto;
+  padding: 4rem 1rem 1.5rem 1rem;
 }
 
 .intro__hed {
-  max-width: 55rem;
-  margin: 0 auto 4rem auto;
-  padding: 0 1rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  /*padding-top: 5rem;*/
   text-align: center;
-  font-size: 32px;
+  font-size: 40px;
   line-height: 1.2;
 }
 
 .intro__byline {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-top: 5rem;
+  padding-bottom: 1.5rem;
+  text-align: center;
   font-size: 14px;
   line-height: 1.5;
-  text-align: center;
-  margin-bottom: 1rem;
-  padding: 0 1rem;
 }
 
 .intro__dek {
-  max-width: 25rem;
-  width:100%;
-  margin: 0 auto 4rem auto;
-  padding: 0 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  text-align: center;
   font-size: 17px;
   line-height: 1.7;
-  text-align: center;
 }
 
 
 
-
+.midTitle {
+  margin-top: 0;
+  font-weight: 700;
+}
 
 main {
   overflow: hidden;
@@ -50,11 +55,23 @@ main {
 
 
 
+.options {
+  text-align: center;
+}
+.options p {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .05em;
+    font-size: 12px;
+}
+
 /*BUTTONS*/
 .btn {
-    background-color: #182a37;
+    background-color: #ccc;
+    /*background-color: #182a37;*/
     border: 1px solid #fff;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
     color: #fff;
     padding: .25em .5em;
     text-transform: uppercase;
@@ -78,22 +95,23 @@ main {
 
 /*INTRO*/
 
-#introGifs {
+.gifs {
   width:100%;
-  max-width: 300px;
-  margin-right: auto;
-  margin-left: auto;
+  padding: 1rem;
+  margin: 0 auto;
+  width: 10rem;
 }
 
-
-IMG.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width:125px;
+.gifs img {
+  width: 100%;
+  display: block;
 }
 
-IMG.displayed_still {
+.intro .gifs img {
+  margin-left: 1rem;
+}
+
+img.displayed_still {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -123,7 +141,7 @@ IMG.displayed_still {
 
 #tooltip p {
     margin: 0;
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
     font-size: 11px;
     color: white;
     line-height: 15px;
@@ -131,7 +149,7 @@ IMG.displayed_still {
 
 .bTooltip {
   margin: 0;
-    font-family: sans-serif;
+    /*font-family: sans-serif;*/
     font-size: 15px;
     color: white;
     line-height: 15px;
@@ -203,10 +221,10 @@ IMG.displayed_still {
 /* TITLES, CHART TEXT, BODY TEXT */
 
 .paddedIntro {
-  margin: 0 auto 4rem auto;
+  margin: 0 auto;
   width:100%;
   max-width:40rem;
-  padding-top: 100px;
+/*  padding-top: 100px;*/
   text-align: left;
 }
 
@@ -214,7 +232,7 @@ IMG.displayed_still {
   margin: 0 auto 0 auto;
   width:100%;
   max-width:40rem;
-  padding-top: 50px;
+  /*padding-top: 50px;*/
   text-align: left;
 }
 
@@ -239,7 +257,7 @@ IMG.displayed_still {
 .chartTitle {
   margin-bottom: 0px;
   padding-bottom: 0px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .chartText {
