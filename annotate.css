@@ -19,7 +19,7 @@
 }
 
 .annotation-note-bg {
-  fill: rgba(0, 0, 0, 0);;
+  fill: white;
 }
 
 .annotation.callout.rect path.subject{

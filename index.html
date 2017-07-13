@@ -169,8 +169,8 @@
 		<p class='intro__dek tk-atlas medium'>Female characters appear in superhero comics less often than males — but when they <em>are</em> included, how are they depicted? </p>
 	</div>
 
-	<div id="tooltip" class="hidden">
-    	<p class='tk-atlas'><span id="value"></span></p>
+	<div id="tooltip" class="tk-atlas hidden">
+    	
 	</div>
 
 
@@ -205,9 +205,11 @@
 		<p class="chartText tk-atlas small">When we chart the difference between the percentages of males and females with a power, we see groups that lean toward one gender or the other</p>
 
 		<p id="pts_label" class="label tk-atlas">Change in % pts</p>
+	</div>
 
-		<p id="female_label" class="label tk-atlas">&larr; More female</p>
-		<p id="male_label" class="label tk-atlas">More male &rarr;</p>
+	<div class='chart__labels'>
+		<p class="label color--female tk-atlas">&larr; More female</p>
+		<p class="label color--male tk-atlas">More male &rarr;</p>
 	</div>
 
 	<div class="graphicWrapper">
@@ -313,17 +315,16 @@
 
 	<div class="chartHed">
 		<p class="chartTitle tk-atlas large">Not all gendered names are equal</p>
-		<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names. <span style="color:rgb(234,70,46);">Diminutive names</span> — those that may infantilize or denote the younger version of a title  — are highlighted.</p>
+		<p class="chartText tk-atlas small">A comparison of the percent of male and female characters with gendered names. <span class='color--accent'>Diminutive names</span> — those that may infantilize or denote the younger version of a title  — are highlighted.</p>
 		<div class='options tk-atlas'>
 			<p>Sort by</p>
 			<button id="descendingFemale" class="active btn">female</button>
-		<button id="descendingMale" class="btn">male</button>
+			<button id="descendingMale" class="btn">male</button>
 		</div>
-		
-			
-		<br><br>
-		<p id="female_label" class="label tk-atlas">Percent Female</p>
-		<p id="male_label" class="label tk-atlas">Percent Male</p>
+		<div class='chart__labels'>
+			<p class="label color--female tk-atlas">Percent female</p>
+			<p class="label color--male tk-atlas">Percent male</p>
+		</div>
 	</div>
 
 	<div class="graphicWrapper">
@@ -373,9 +374,16 @@
 	<script src='d3.v4.min.js'></script>
 	<script src="d3.annotate.min.js"></script>
 	<script src='jquery-3.1.1.min.js'></script>
+	<script src='colors.js'></script>
 	<script src='power_bars.js'></script>
 	<script src='genNames_split.js'></script>
 	<script src='sidebar.js'></script>
 <!-- <script src='https://pudding.cool/assets/scripts/pudding-footer.js' async></script> -->
 </body>
 </html>
+#0067A9
+#005994
+
+#B90805
+#EEB635
+#132531
