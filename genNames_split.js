@@ -1,5 +1,5 @@
 (function() {
-
+var radius = 8
 var chartDiv_names = document.getElementById("genNames_graph");
 var svg_names = d3.select(chartDiv_names).append("svg");
 
@@ -137,15 +137,16 @@ function redraw_names() {
 
           genDots.enter().append("circle")
               .attr("class", "genDot")
-              .attr("r", 10)
+              .attr("r", function(d) {return d.gen_name === 'lady' ? radius * 1.35 : radius})
               .attr("cx", function(d) { return x(d.gen_per); })
               .attr("cy", function(d) { return y(d.gen_cat); })
               .style("opacity", 1)
               .style("fill", function(d){
-                if (d.gen_name == "lord" ) {return colors.accent}
+                  if (d.gen_name === "lady" ) { return colors.female }
                   else if (d.gender == 1) {return colors.male}
                   else {return colors.female}
                 })
+              .classed("is-active", function(d) {return d.gen_name === 'lady'})
               .on('mouseover', function (d) {
                   var section = d3.select(this);
                       // section.style("opacity", 0.6)
@@ -159,11 +160,18 @@ function redraw_names() {
                   $("#textInsert").html("");
                   $("#textInsert_names").html(d.char_list);
                   $("#titleInsert").html(d.gen_name);
-                  d3.selectAll(".genDot").style("fill", function(d){
-                      if (d.gender == 1) {return colors.male}
-                      else {return colors.female}
-                  })
-                  d3.select(this).style("fill", colors.accent)
+                  d3.selectAll(".genDot")
+                    .style("fill", function(d){
+                        if (d.gender == 1) {return colors.male}
+                        else {return colors.female}
+                    })
+                    .classed('is-active', false)
+                    .attr('r', radius)
+
+                  d3.select(this)
+                    .classed('is-active', true)
+                    .transition()
+                    .attr('r', radius * 1.35)
                 })
               .on('mouseout', function () {
                   var section = d3.select(this);
