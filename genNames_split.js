@@ -124,9 +124,6 @@ function redraw_names() {
             .append("line");
 
           linesBetween.attr("class", "between")
-            .style("stroke-width", 0.5)
-            .style("stroke", "black")
-            .style("fill", "none")
             .attr("x1", function(d){return x(d.gen_per)})
             .attr("y1", function(d){return y(d.gen_cat)})
             .attr("x2", function(d){return x(d.per_fake)})
@@ -144,27 +141,18 @@ function redraw_names() {
               .attr("cx", function(d) { return x(d.gen_per); })
               .attr("cy", function(d) { return y(d.gen_cat); })
               .style("opacity", 1)
-              .style("stroke", function(d){
-                if (d.gen_name == "lord"){return "rgb(105,174,68)"}
-                  else {return "white"}
-                })
-              .style("stroke-width", function(d){
-                if (d.gen_name == "lord") {return 2}
-                  else {return 0.5}
-                })
               .style("fill", function(d){
-                if (d.gen_name == "lord" ) {return "white"}
-                  else if (d.gender == 1) {return "rgb(39,123,191)"}
-                  else {return "rgb(243,185,47)"}
+                if (d.gen_name == "lord" ) {return colors.accent}
+                  else if (d.gender == 1) {return colors.male}
+                  else {return colors.female}
                 })
               .on('mouseover', function (d) {
                   var section = d3.select(this);
-                      section.style("opacity", 0.6)
+                      // section.style("opacity", 0.6)
                   d3.select('#tooltip')
                   .style("left", (d3.event.pageX + 5) + "px")
                   .style("top", (d3.event.pageY - 28) + "px")
-                  .select('#value')
-                  .html(Math.abs(d.gen_per*100).toFixed(1) + "%");
+                  .html("<p class='difference'>" + Math.abs(d.gen_per*100).toFixed(1) + "%</p>");
                    d3.select('#tooltip').classed('hidden', false);
                 })
               .on("click",  function(d){
@@ -172,10 +160,10 @@ function redraw_names() {
                   $("#textInsert_names").html(d.char_list);
                   $("#titleInsert").html(d.gen_name);
                   d3.selectAll(".genDot").style("fill", function(d){
-                      if (d.gender == 1) {return "rgb(39,123,191)"}
-                      else {return "rgb(243,185,47)"}
-                  }).style("stroke", 'white').style("stroke-width", 0.5)
-                  d3.select(this).style("fill", 'white').style("stroke", "rgb(105,174,68)").style("stroke-width", 2);
+                      if (d.gender == 1) {return colors.male}
+                      else {return colors.female}
+                  })
+                  d3.select(this).style("fill", colors.accent)
                 })
               .on('mouseout', function () {
                   var section = d3.select(this);
@@ -190,7 +178,7 @@ function redraw_names() {
             .data(data);
 
           texts.enter().append("text")
-              .attr("class", "dodo tk-atlas")
+              .attr("class", "bar__label dodo tk-atlas")
               .attr("font-size", 10)
               .attr("x", function(d) {
                 if (d.gen_per <=0){return x(d.gen_per)-15}
@@ -205,8 +193,8 @@ function redraw_names() {
                   else {return 'start'}
                 })
               .style("fill", function(d) {
-                if (d.dim == 1) {return "rgb(234,70,46)"}
-                  else {return "black"}
+                if (d.dim == 1) {return colors.accent}
+                  // else {return "black"}
                 })
               .text(function(d) { return d.gen_name;});
 

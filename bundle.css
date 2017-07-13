@@ -1,5 +1,18 @@
 a {
   border-width: 1px;
+  border-color: #B90805;
+}
+
+.color--accent {
+  color: #B90805;
+}
+
+.color--female {
+  color: #EEB635;
+}
+
+.color--male {
+  color: #265473;
 }
 
 .intro {
@@ -53,10 +66,14 @@ main {
   shape-rendering: crispEdges;
 }
 
-
+#powerSplit_graph .axis line {
+  stroke-dasharray: 4px 4px;
+  stroke: #ccc;
+}
 
 .options {
   text-align: center;
+  margin-bottom: 1rem;
 }
 .options p {
     margin: 0;
@@ -69,9 +86,7 @@ main {
 /*BUTTONS*/
 .btn {
     background-color: #ccc;
-    /*background-color: #182a37;*/
     border: 1px solid #fff;
-    /*border-radius: 3px;*/
     color: #fff;
     padding: .25em .5em;
     text-transform: uppercase;
@@ -82,11 +97,11 @@ main {
     }
 
 .btn:hover {
-  background-color: rgb(234,70,46);
+  background-color:  #B90805;
 }
 
 .active {
-   background-color: rgb(234,70,46);
+   background-color:  #B90805;
 }
 
 
@@ -98,8 +113,12 @@ main {
 .gifs {
   width:100%;
   padding: 1rem;
-  margin: 0 auto;
+  margin: 5rem auto 0 auto;
   width: 10rem;
+}
+
+.gifs:first-child {
+  margin-top: 0;
 }
 
 .gifs img {
@@ -130,9 +149,11 @@ img.displayed_still {
     text-align: left;
     height: auto;
     padding: 10px;
-    background: #182a37;
+    background: white;
     pointer-events: none;
     z-index: 100;
+    /*border: 1px solid #B90805;*/
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.3)
 }
 
 #tooltip.hidden {
@@ -140,21 +161,30 @@ img.displayed_still {
 }
 
 #tooltip p {
-    margin: 0;
-    /*font-family: sans-serif;*/
-    font-size: 11px;
-    color: white;
-    line-height: 15px;
-}
-
-.bTooltip {
+  display: block;
   margin: 0;
-    /*font-family: sans-serif;*/
-    font-size: 15px;
-    color: white;
-    line-height: 15px;
+  padding: 0;
+  font-size: 11px;
 }
 
+#tooltip .difference {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+#tooltip .gender {
+  height: 100%;
+  overflow: hidden;
+}
+
+#tooltip span {
+  width: 50%;
+  float: left;
+}
+
+#tooltip .number {
+  text-align: right;
+}
 
 
 
@@ -294,7 +324,7 @@ img.displayed_still {
 }
 
 .expert {
-  background-color: rgb(234,70,46);
+  background-color:  #B90805;
   color:white;
   border: 1px solid #fff;
     border-radius: 3px;
@@ -334,22 +364,28 @@ img.displayed_still {
 
 
 /* POWERS CHART */
-
-#female_label {
-  float:left;
-  color:rgb(243,185,47);
-  margin-top: 5px;
+.chart__labels {
+  height: 100%;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto 0.5rem auto;
 }
 
-#male_label {
-  float: right;
-  color:rgb(39,123,191);
-   margin-top: 5px;
+.chart__labels .label {
+  font-weight: bold;
+  width: 50%;
+  float: left;
+  margin: 0;
+  text-align: center;
 }
+
+
 
 #pts_label {
   margin-bottom: 0px;
   text-align: center;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 #outliers_back {
@@ -388,27 +424,29 @@ img.displayed_still {
     letter-spacing: .05em;
 }
 
-.dodo {
-  font-weight:500;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: .05em;
-}
-
 .tick {
   font-size: 12px;
 }
 
 .power_bar {
     cursor:pointer;
+    stroke: rgba(0,0,0,0.65);
+    stroke-width: 0.5px;
 }
 
-.power_bar_bars {
-  font-weight:500;
+.bar__label {
+  font-weight: 500;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: .05em;
-  cursor:pointer;
+  letter-spacing: 0.05em;
+  fill: #888;
+  cursor: pointer;
+}
+
+.bar__label--bg {
+  fill: none;
+  stroke: white;
+  stroke-width: 3px;
 }
 
 
@@ -435,7 +473,7 @@ img.displayed_still {
     font-weight: 500;
     letter-spacing: .05em;
     float:left;
-    background-color: rgb(234,70,46);
+    background-color:  #B90805;
 }
 
 .numWords {
@@ -500,17 +538,19 @@ th {
 
 
 
+line.between {
+  stroke: #888;
+  stroke-dasharray: 4px 4px;
+  stroke-width: 0.5px;
+}
 
 /*DOT STYLING*/
 
-.genDot:hover {
+.genDot {
   cursor: pointer;
+  stroke-width: 0.5px;
+  stroke: rgba(0,0,0,0.65);
 }
-
-.dot {
-  stroke: #ffffff;
-}
-
 
 #swarm {
   max-width:1000px;
@@ -543,12 +583,12 @@ th {
 }
 
 #titleInsert {
-  color:rgb(234,70,46);
+  color: #B90805;
   font-weight: 700;
 }
 
 #titleInsert_powers {
-  color:rgb(234,70,46);
+  color: #B90805;
   font-weight: 700;
 }
 

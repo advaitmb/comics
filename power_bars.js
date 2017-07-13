@@ -66,44 +66,12 @@ const annotation_object = [{
         wrap:180
       },
           y: y('Gadgets')+padBetween-15,
+          x: 10,
           
     }
   ]
 
-const makeAnnotation_object = d3.annotation()
-    .editMode(false)
-    .type(d3.annotationCallout)   
-    .annotations(annotation_object)
-  svg.append("g")
-      .attr("id", "object_anno")
-      .attr("class", "annotation-group")
-      .attr("class", "tk-atlas")
-      .attr("font-size", 12)
-      .call(makeAnnotation_object)   
-
-
-
-const annotation_mind = [{
-      note: {
-        title: "Mind your powers",
-        label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
-        wrap:180
-      },
-          y: y('Empathy')+padBetween*5,
-          
-    }
-  ]
-
-const makeAnnotation_mind = d3.annotation()
-    .editMode(false)
-    .type(d3.annotationCallout)   
-    .annotations(annotation_mind)
-  svg.append("g")
-      .attr("id", "mind_anno")
-      .attr("class", "annotation-group")
-      .attr("class", "tk-atlas")
-      .attr("font-size", 12)
-      .call(makeAnnotation_mind)   
+   
 
 
 
@@ -135,12 +103,14 @@ const makeAnnotation_mind = d3.annotation()
 
       x.domain([-8,8]);
 
+      var axisX = d3.axisTop(x)
+           .tickFormat( function(d){ return (Math.abs(d)); })
+           .tickSize(-1900)
+
       svg.append("g")
-        .attr("class", "x axis")
-        .attr("class", "tk-atlas")
+        .attr("class", "x axis tk-atlas")
         .attr("transform", "translate(0, -50)")
-        .call(d3.axisTop(x)
-           .tickFormat( function(d){ return (Math.abs(d)); } ))
+        .call(axisX)
         .selectAll("text")
         .style("text-anchor", "middle");
 
@@ -158,14 +128,49 @@ const makeAnnotation_mind = d3.annotation()
         g.selectAll(".tick text").attr("dy", -8).attr("class", "label");
         }
 
+        const makeAnnotation_object = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCallout)   
+    .annotations(annotation_object)
+  svg.append("g")
+      .attr("id", "object_anno")
+      .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
+      .call(makeAnnotation_object)   
+
+
+
+const annotation_mind = [{
+      note: {
+        title: "Mind your powers",
+        label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
+        wrap:180
+      },
+          y: y('Empathy')+padBetween*5,
+          x: 10,
+          
+    }
+  ]
+
+const makeAnnotation_mind = d3.annotation()
+    .editMode(false)
+    .type(d3.annotationCallout)   
+    .annotations(annotation_mind)
+  svg.append("g")
+      .attr("id", "mind_anno")
+      .attr("class", "annotation-group")
+      .attr("class", "tk-atlas")
+      .attr("font-size", 12)
+      .call(makeAnnotation_mind)
 
       svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
         .attr("class", "power_bar")
         .style("fill", function(d, i) {
-          if(d.diff>=0) {return "rgb(39,123,191)"}
-          else return "rgb(243,185,47)"; })
+          if(d.diff>=0) {return colors.male}
+          else return colors.female; })
         .attr("x", function(d) { 
           if(d.diff>=0) {return x(0)}
           else return x(d.diff); })
@@ -182,8 +187,7 @@ const makeAnnotation_mind = d3.annotation()
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
-          .select('#value')
-          .html("<span class='bTooltip tk-atlas'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
+          .html("<p class='difference'>Difference: " + Math.abs(d.diff).toFixed(2) + "</p><p class='gender'><span>Males:</span> <span class='number'>" + Math.abs(d.per_males).toFixed(2) + "%</span></p><p class='gender'><span>Females:</span> <span class='number'>" + Math.abs(d.per_females).toFixed(2) + "%</span></p>");
            d3.select('#tooltip').classed('hidden', false);
         })
         .on("click",  function(d){
@@ -203,8 +207,10 @@ const makeAnnotation_mind = d3.annotation()
       var ls = svg.selectAll(".labels")
         .data(data)
         .enter().append("g");
-        
+      
+      // bg text 
       ls.append("text")
+        .attr("class", "bar__label bar__label--bg tk-atlas")
         .text(function(d) {
           return (d.power);
         })
@@ -220,22 +226,32 @@ const makeAnnotation_mind = d3.annotation()
           return y0(d.category) + categoryD[d.category](d.power) + 0.6*barHeight;
 
         })
-         .attr("class", "power_bar_bars")
-         .attr("class", "tk-atlas")
-         .style("fill", function(d){
-            if (d.sig == "y" ) {return "black"}
-              else {return "#696969"}
-            })
-         .attr("font-size", 10)
-         .on('mouseover', function (d) {
+
+      ls.append("text")
+        .attr("class", "bar__label tk-atlas")
+        .text(function(d) {
+          return (d.power);
+        })
+        .attr('text-anchor', function(d) {
+        if (d.diff <= 0) {return 'end'}
+          else {return 'start'}
+        })
+        .attr("x", function(d) {
+        if (d.diff <= 0) {return x(d.diff)-5}
+          else {return x(d.diff)+5}
+        })
+        .attr("y", function(d) {
+          return y0(d.category) + categoryD[d.category](d.power) + 0.6*barHeight;
+
+        })
+        .on('mouseover', function (d) {
           d3.select('#tooltip')
           .style("left", (d3.event.pageX + 5) + "px")
           .style("top", (d3.event.pageY - 28) + "px")
-          .select('#value')
-          .html("<span class='bTooltip'>Difference: " + Math.abs(d.diff).toFixed(2) + "</span><br><hr> Percent of males: " + Math.abs(d.per_males).toFixed(2) + "%<br/>Percent of females: " + Math.abs(d.per_females).toFixed(2) + "%");
+          .html("<p class='difference'>Difference: " + Math.abs(d.diff).toFixed(2) + "</p><p class='gender'><span>Males:</span> <span class='number'>" + Math.abs(d.per_males).toFixed(2) + "%</span></p><p class='gender'><span>Females:</span> <span class='number'>" + Math.abs(d.per_females).toFixed(2) + "%</span></p>");
            d3.select('#tooltip').classed('hidden', false);
         })
-          .on("click",  function(d){
+        .on("click",  function(d){
           $("#textInsert_powers").html(d.definition)
           $("#titleInsert_powers").html(d.power);
         })
