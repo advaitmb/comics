@@ -300,7 +300,7 @@ img.displayed_still {
   margin-left: auto;
   position:relative;
   width:100%;
-  max-width: 1000px;
+  max-width: 640px;
 }
 
 
@@ -367,7 +367,7 @@ img.displayed_still {
 .chart__labels {
   height: 100%;
   overflow: hidden;
-  max-width: 1000px;
+  max-width: 640px;
   margin: 0 auto 0.5rem auto;
 }
 
@@ -430,7 +430,7 @@ img.displayed_still {
 
 .power_bar {
     cursor:pointer;
-    stroke: rgba(0,0,0,0.65);
+    stroke: rgba(0,0,0,0.5);
     stroke-width: 0.5px;
 }
 
@@ -549,7 +549,11 @@ line.between {
 .genDot {
   cursor: pointer;
   stroke-width: 0.5px;
-  stroke: rgba(0,0,0,0.65);
+  stroke: rgba(0,0,0,0.5);
+}
+
+.genDot.is-active {
+  stroke-width: 2px;
 }
 
 #swarm {
@@ -561,34 +565,68 @@ line.between {
 
 
 #stick {
+  display: none;
   position:fixed;
-  top:10%;
-  right:2%;
+  top: 50%;
+  right: 0;
   z-index: 100;
   max-width: 250px;
   max-height: 300px;
   font-size: 12px;
-  display:none;
+  -webkit-transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
+  -webkit-transition: 500ms -webkit-transform;
+  transition: 500ms -webkit-transform;
+  -o-transition: 500ms transform;
+  transition: 500ms transform;
+  transition: 500ms transform, 500ms -webkit-transform;
+}
+
+#stick.is-visible {
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 #stick2 {
+  display: none;
   position:fixed;
-  top:10%;
-  right:2%;
+  top: 50%;
+  right: 0;
   z-index: 100;
   max-width: 250px;
   max-height: 300px;
   font-size: 12px;
-  display:none;
+  -webkit-transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
+  -webkit-transition: 500ms -webkit-transform;
+  transition: 500ms -webkit-transform;
+  -o-transition: 500ms transform;
+  transition: 500ms transform;
+  transition: 500ms transform, 500ms -webkit-transform;
+}
+
+#stick2.is-visible {
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
 }
 
 #titleInsert {
   color: #B90805;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
 #titleInsert_powers {
   color: #B90805;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
@@ -778,12 +816,13 @@ line.between {
 }
 
 
-@media only screen and (max-width: 1300px) {
-  .bubbles {
-    display:none;
+@media only screen and (min-width: 1080px) {
+  #stick {
+    display: block;
   }
-  #sideBarHero {
-    display:none;
+
+  #stick2 {
+    display: block;
   }
 
 }
