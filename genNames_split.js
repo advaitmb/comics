@@ -74,8 +74,7 @@ function redraw_names() {
             .annotations(circleAnnotations_girl)
           svg_names.append("g")
               .attr("id", "girl_anno")
-              .attr("class", "annotation-group")
-              .attr("class", "tk-atlas")
+              .attr("class", "tk-atlas annotation-group")
               .attr("font-size", 12)
               .call(makeCircleAnnotations_girl)   
 
@@ -98,8 +97,7 @@ function redraw_names() {
             .annotations(circleAnnotations_man)
           svg_names.append("g")
               .attr("id", "man_anno")
-              .attr("class", "annotation-group")
-              .attr("class", "tk-atlas")
+              .attr("class", "tk-atlas annotation-group")
               .attr("font-size", 12)
               .call(makeCircleAnnotations_man) 
 
@@ -107,8 +105,7 @@ function redraw_names() {
 
 
           svg_names.append("g")
-            .attr("class", "x axis")
-            .attr("class", "tk-atlas")
+            .attr("class", "tk-atlas x axis")
             .attr("id", "xAxis")
             .attr("transform", "translate(0, -50)")
             .call(d3.axisTop(x)
