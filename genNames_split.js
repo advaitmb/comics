@@ -85,7 +85,7 @@ function redraw_names() {
                 title: "Men, not boys",
                 label: "A full 30% of male characters with gendered names get 'man' in their name. That number is only 6% for 'woman'."
               },
-              x: x(.30),        
+              x: x(.31),        
               y: y('woman'), 
               dx: dx(-.02),
               dy: 50
