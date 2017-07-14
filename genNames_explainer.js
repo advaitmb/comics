@@ -109,12 +109,12 @@ function redraw_names() {
 
           // Make the lines between the dots
 
-          var linesBetween = svg_names_ex.selectAll("lines.between")
+          var linesBetween_ex = svg_names_ex.selectAll("lines.between_ex")
             .data(data)
             .enter()
             .append("line");
 
-          linesBetween.attr("class", "between")
+          linesBetween_ex.attr("class", "between_ex")
             .attr("x1", function(d){return x(d.gen_per)})
             .attr("y1", function(d){return y(d.gen_cat)})
             .attr("x2", function(d){return x(d.per_fake)})
@@ -123,11 +123,11 @@ function redraw_names() {
 
           // Dots for each gendered name
 
-          var genDots = svg_names_ex.selectAll(".genDot")
+          var genDots_ex = svg_names_ex.selectAll(".genDot_ex")
             .data(data);
 
-          genDots.enter().append("circle")
-              .attr("class", "genDot")
+          genDots_ex.enter().append("circle")
+              .attr("class", "genDot_ex")
               .attr("r", function(d) {return d.gen_name === 'lady' ? radius * 1.35 : radius})
               .attr("cx", function(d) { return x(d.gen_per); })
               .attr("cy", function(d) { return y(d.gen_cat); })
@@ -156,11 +156,11 @@ function redraw_names() {
 
 
               // Text for gender names
-          var texts = svg_names_ex.selectAll(".dodo")
+          var texts_ex = svg_names_ex.selectAll(".dodo_ex")
             .data(data);
 
-          texts.enter().append("text")
-              .attr("class", "bar__label dodo tk-atlas")
+          texts_ex.enter().append("text")
+              .attr("class", "bar__label dodo_ex tk-atlas")
               .attr("font-size", 10)
               .attr("x", function(d) {
                 if (d.gen_per <=0){return x(d.gen_per)-15}

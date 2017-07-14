@@ -432,9 +432,21 @@ line.between {
   stroke-width: 0.5px;
 }
 
+line.between_ex {
+  stroke: #888;
+  stroke-dasharray: 4px 4px;
+  stroke-width: 0.5px;
+}
+
 /*DOT STYLING*/
 
 .genDot {
+  cursor: pointer;
+  stroke-width: 0.5px;
+  stroke: rgba(0,0,0,0.5);
+}
+
+.genDot_ex {
   cursor: pointer;
   stroke-width: 0.5px;
   stroke: rgba(0,0,0,0.5);
