@@ -96,16 +96,23 @@ main {
     transition: background-color 250ms;
     }
 
-.btn:hover {
-  background-color:  #B90805;
+
+#descendingFemale:hover {
+  background-color:  #EEB635;
+
 }
 
-.active {
-   background-color:  #B90805;
+#descendingMale:hover {
+  background-color:  #265473;
 }
 
+.activeFemale {
+   background-color:  #EEB635;
+}
 
-
+.activeMale {
+   background-color:  #265473;
+}
 
 
 /*INTRO*/
@@ -302,44 +309,6 @@ img.displayed_still {
   width:100%;
   max-width: 640px;
 }
-
-
-
-
-
-
-
-/* EXPERT OPINION */
-/*.expertOpinion {
-  position:relative;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 50px;
-  width:50%;
-}
-
-.expertText {
-  padding-top: 0px;
-  margin-top: 0px;
-}
-
-.expert {
-  background-color:  #B90805;
-  color:white;
-  border: 1px solid #fff;
-    border-radius: 3px;
-    color: #fff;
-    padding: .25em .5em;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: .05em;
-    font-size: 12px;
-    float:left;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
-
-}
-*/
 
 
 
