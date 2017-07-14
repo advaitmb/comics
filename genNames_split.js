@@ -226,16 +226,16 @@ function redraw_names() {
      femaleOrder();
      $("#descendingFemale").toggleClass("active");
      $("#descendingMale").toggleClass("active");
-     $("#man_anno").delay(500).show(500);
-     $("#girl_anno").delay(500).show(500);
+     $("#man_anno").delay(200).show(500);
+     $("#girl_anno").delay(200).show(500);
     });
 
     $( "#descendingMale" ).click(function() {
      maleOrder();
      $("#descendingMale").toggleClass("active");
      $("#descendingFemale").toggleClass("active");
-     $("#man_anno").delay(500).hide(500);
-     $("#girl_anno").delay(500).hide(500);
+     $("#man_anno").delay(200).hide(500);
+     $("#girl_anno").delay(200).hide(500);
     });
 
     //BUTTON FUNCTIONS
