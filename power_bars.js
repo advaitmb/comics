@@ -145,7 +145,7 @@ const annotation_mind = [{
       note: {
         title: "Mind your powers",
         label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
-        wrap:180
+        wrap:130
       },
           y: y('Empathy')+padBetween*5,
           x: 10,
