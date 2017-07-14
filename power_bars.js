@@ -59,24 +59,6 @@
       y.domain(data.map(function(d) { return d.power; }));
 
 
-const annotation_object = [{
-      note: {
-        title: "Object—ified",
-        label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
-        wrap:180
-      },
-          y: y('Gadgets')+padBetween-15,
-          x: 10,
-          
-    }
-  ]
-
-   
-
-
-
-
-
       
       var y0Range = [0];
       var categoryD = d3.nest()
@@ -128,9 +110,24 @@ const annotation_object = [{
         g.selectAll(".tick text").attr("dy", -8).attr("class", "label");
         }
 
+
+
+
+const annotation_object = [{
+      note: {
+        title: "Object—ified",
+        label: "Though Wonder Woman has her lasso, and Stargirl has a cosmic staff, it's generally the male characters that like their stuff. Think Thor and his hammer, or Iron Man and his suit.",
+        wrap:180
+      },
+          y: y('Gadgets')+padBetween-15,
+          x: 100,
+          
+    }
+  ]
+
         const makeAnnotation_object = d3.annotation()
     .editMode(false)
-    .type(d3.annotationCallout)   
+    .type(d3.annotationLabel)   
     .annotations(annotation_object)
   svg.append("g")
       .attr("id", "object_anno")
@@ -147,15 +144,15 @@ const annotation_mind = [{
         label: "There is a clear trend here: Female characters are more often given non-physical, thought-induced abilities.",
         wrap:130
       },
-          y: y('Empathy')+padBetween*5,
-          x: 10,
+          y: y('Empathy')+10+padBetween*5,
+          x: 450,
           
     }
   ]
 
 const makeAnnotation_mind = d3.annotation()
     .editMode(false)
-    .type(d3.annotationCallout)   
+    .type(d3.annotationLabel)   
     .annotations(annotation_mind)
   svg.append("g")
       .attr("id", "mind_anno")

@@ -681,7 +681,7 @@ line.between {
 
 
 
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 35em) {
  
  #object_anno {
   visibility:hidden;
