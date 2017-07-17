@@ -720,8 +720,13 @@ line.between_ex {
 
 @media only screen and (min-width: 400px) {
   .bar__label {
-    font-size: 10px;
     text-transform: uppercase;
+  }
+}
+
+@media only screen and (min-width: 450px) {
+  .bar__label {
+    font-size: 10px;
   }
 }
 
